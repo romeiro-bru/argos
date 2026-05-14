@@ -1,10 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/layout";
+import Home from "./pages/home/home";
+import Favorites from "./pages/favorites/favorites";
+import { appRoutes } from "./components/sidebar";
 
 export default function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">
-        Projeto iniciado 🚀
-      </h1>
-    </main>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path={appRoutes.FAVORITES.path} element={<Favorites />} />
+      </Route>
+    </Routes>
   );
 }
