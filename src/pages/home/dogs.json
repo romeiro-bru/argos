@@ -2,73 +2,111 @@
   {
     "id": "1",
     "name": "Argos",
-    "genre": "fmacho",
-    "age": 3,
+    "genre": "macho",
+    "age": "filhote",
     "size": "pequeno",
-    "breed": "SRD"
+    "breed": "SRD",
+    "cidade": "Rio de Janeiro",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/0999.jpeg"
   },
   {
     "id": "2",
     "name": "Nina",
     "genre": "fêmea",
-    "age": 8,
+    "age": "adulto",
     "size": "médio",
-    "breed": "SRD"
+    "breed": "SRD",
+    "cidade": "Rio de Janeiro",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/16ff6543.jpg"
   },
   {
     "id": "4",
     "name": "Meg",
     "genre": "fêmea",
-    "age": 5,
-    "size": "grande",
-    "breed": "Poodle"
+    "age": "adulto",
+    "size": "pequeno",
+    "breed": "Lhasa apso",
+    "cidade": "Rio de Janeiro",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/lhasa.png"
   },
   {
     "id": "5",
     "name": "Thor",
     "genre": "macho",
-    "age": 3,
+    "age": "filhote",
     "size": "grande",
-    "breed": "Golden Retriever"
+    "breed": "Golden Retriever",
+    "cidade": "Niterói",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/8e6fcb9d.jpeg"
   },
   {
     "id": "6",
     "name": "Luna",
     "genre": "fêmea",
-    "age": 2,
+    "age": "filhote",
     "size": "pequeno",
-    "breed": "Chihuahua"
+    "breed": "SRD",
+    "cidade": "São Paulo",
+    "estado": "São Paulo",
+    "img": "../../../public/1853.jpeg"
   },
   {
     "id": "7",
     "name": "Rex",
     "genre": "macho",
-    "age": 7,
+    "age": "adulto",
     "size": "grande",
-    "breed": "Pastor Alemão"
+    "breed": "Pastor Alemão",
+    "cidade": "Cabo Frio",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/fa37e662.png"
   },
   {
     "id": "8",
     "name": "Mel",
     "genre": "fêmea",
-    "age": 1,
+    "age": "idoso",
     "size": "médio",
-    "breed": "Beagle"
+    "breed": "Beagle",
+    "cidade": "Seropédica",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/ef52a74.jpg"
   },
   {
     "id": "9",
     "name": "Bob",
     "genre": "macho",
-    "age": 4,
-    "size": "pequeno",
-    "breed": "Shih Tzu"
+    "age": "adulto",
+    "size": "médio",
+    "breed": "SRD",
+    "cidade": "Rio de Janeiro",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/e4b15df2.jpg"
   },
   {
     "id": "10",
     "name": "Nina",
     "genre": "fêmea",
-    "age": 6,
+    "age": "adulto",
     "size": "médio",
-    "breed": "Labrador"
+    "breed": "SRD",
+    "cidade": "Arraial do Cabo",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/abd34926.jpg"
+  },
+   {
+    "id": "11",
+    "name": "Bela",
+    "genre": "fêmea",
+    "age": "filhote",
+    "size": "pequeno",
+    "breed": "SRD",
+    "cidade": "Arraial do Cabo",
+    "estado": "Rio de Janeiro",
+    "img": "../../../public/baby.jpg"
   }
 ]
