@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 
 interface RoutesInterface {
-    path: string,
-    meta: {
-        label: string
-    }
+  path: string;
+  meta: {
+    label: string;
+  };
 }
 
 export const appRoutes = {
@@ -12,33 +12,34 @@ export const appRoutes = {
     path: "/",
     meta: {
       label: "Home",
-      icon: (<img className="w-8" src="favicon.png" />)
-    }
+      icon: <img className="w-12 ml-2" src="favicon.png" />,
+    },
   },
   FAVORITES: {
-    path: "/favorites",
+    path: "favorites",
     meta: {
-        label: "Favorites"
-    }
-  }
-
+      label: "Favorites",
+    },
+  },
 };
 
-export function Sidebar() {   
+export function Sidebar() {
   const location = useLocation();
-  const isActive = (route: RoutesInterface) =>
-    location.pathname.startsWith(route.path);
+  const isActive = (route: RoutesInterface) => {
+    if (route.path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith("/" + route.path);
+  };
 
   return (
     <nav className="flex flex-col items-center w-40 text-[var(--text)] bg-[var(--primary-color)]">
       {/* HOME */}
-      <Link
-        className="flex items-center w-full px-3 mt-3"
-        to={appRoutes.HOME.path}
-      >
-       {appRoutes.HOME.meta.icon}
-        <span className="ml-2 text-sm font-bold">Argos</span>
-      </Link>
+
+      <div className="flex items-center mt-4">
+        <span className="ml-4 text-2xl font-bold">Argos</span>
+        {appRoutes.HOME.meta.icon}
+      </div>
 
       <div className="w-full px-2">
         <div className="flex flex-col w-full mt-3 border-t border-gray-700">
@@ -48,9 +49,9 @@ export function Sidebar() {
                 {/* ITEM PRINCIPAL */}
                 <Link
                   to={route.path}
-                  className={`flex items-center w-full px-3 py-2 mt-2 rounded hover:bg-gray-700 hover:text-[var(--text-hover)] ${
+                  className={`flex items-center w-full px-3 py-2 mt-2 rounded hover:bg-[var(--bg-hover)] hover:text-[var(--text-hover)] ${
                     isActive(route)
-                      ? "bg-gray-700 text-[var(--text-hover)]"
+                      ? "bg-[var(--bg-hover)] text-[var(--text-hover)]"
                       : ""
                   }`}
                 >

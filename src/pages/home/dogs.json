@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Argos",
+    "genre": "fmacho",
+    "age": 3,
+    "size": "pequeno",
+    "breed": "SRD"
+  },
+  {
+    "id": "2",
+    "name": "Nina",
+    "genre": "fêmea",
+    "age": 8,
+    "size": "médio",
+    "breed": "SRD"
+  },
+  {
+    "id": "4",
+    "name": "Meg",
+    "genre": "fêmea",
+    "age": 5,
+    "size": "grande",
+    "breed": "Poodle"
+  },
+  {
+    "id": "5",
+    "name": "Thor",
+    "genre": "macho",
+    "age": 3,
+    "size": "grande",
+    "breed": "Golden Retriever"
+  },
+  {
+    "id": "6",
+    "name": "Luna",
+    "genre": "fêmea",
+    "age": 2,
+    "size": "pequeno",
+    "breed": "Chihuahua"
+  },
+  {
+    "id": "7",
+    "name": "Rex",
+    "genre": "macho",
+    "age": 7,
+    "size": "grande",
+    "breed": "Pastor Alemão"
+  },
+  {
+    "id": "8",
+    "name": "Mel",
+    "genre": "fêmea",
+    "age": 1,
+    "size": "médio",
+    "breed": "Beagle"
+  },
+  {
+    "id": "9",
+    "name": "Bob",
+    "genre": "macho",
+    "age": 4,
+    "size": "pequeno",
+    "breed": "Shih Tzu"
+  },
+  {
+    "id": "10",
+    "name": "Nina",
+    "genre": "fêmea",
+    "age": 6,
+    "size": "médio",
+    "breed": "Labrador"
+  }
+]
