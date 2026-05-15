@@ -5,7 +5,7 @@ export default function Home() {
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
 
-      <div className="grid grid-cols-5 gap-x-4 gap-y-8 relative">
+      <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 relative sm:grid-cols-2">
         {data.map((dog) => (
           <article
             className="grid shadow-[var(--shadow)] shadow-md w-54 pl-3 pr-2 py-2 rounded-2xl"
