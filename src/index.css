@@ -7,8 +7,8 @@
   --text: #44449a;
   --text-hover: #dad0f8;
   --primary-color: #a795d5;
-  --secondary-color: #0eeebd;
-  --secondary-color-hover: #78f1d7;
+  --secondary-color: #4dd7c9;
+  --secondary-color-hover: rgb(127, 231, 209);
   --shadow: #000000;
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: "Nunito", system-ui, "Segoe UI", Roboto, sans-serif;

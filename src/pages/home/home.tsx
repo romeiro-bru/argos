@@ -24,7 +24,10 @@ export default function Home() {
               {dog.genre}, {dog.age}
             </span>
             <span>Porte {dog.size}</span>
-            <span>Raça: {dog.breed}</span>
+
+            <button className="cursor-pointer bg-[var(--secondary-color)] font-semibold hover:bg-[var(--secondary-color-hover)] text-white my-2 py-2 px-4 rounded-full">
+              ver perfil
+            </button>
           </article>
         ))}
       </div>
