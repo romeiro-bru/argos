@@ -18,7 +18,7 @@ export const appRoutes = {
   FAVORITES: {
     path: "favorites",
     meta: {
-      label: "Favorites",
+      label: "Favoritados",
     },
   },
 };

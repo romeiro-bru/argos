@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { Card } from "./components/card";
+import { Card } from "../common/components/card";
+import data from "../dogs.json";
+import type { PetsList } from "./types";
 
 export default function Home() {
+  const list = data as PetsList[];
 
   return (
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
 
-      <Card />
+      <Card list={list} />
     </main>
   );
 }
