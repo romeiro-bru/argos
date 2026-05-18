@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import type { PetsList } from "../../home/types";
 import { FavoriteButton } from "./favoriteButton";
+import { useLocation } from "react-router-dom";
+import { NoData } from "../../../components/noData";
 
 interface CardProps {
   list: PetsList[] | null;
+  text: string;
+  supportText?: string
 }
 
-export function Card({ list }: CardProps) {
+export function Card({ list, text, supportText }: CardProps) {
+
   const [favoriteList, setFavoriteList] = useState<string[]>([]);
 
   const savedFavorites = localStorage.getItem("favoriteList");
@@ -19,7 +24,7 @@ export function Card({ list }: CardProps) {
 
   return (
     <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 relative sm:grid-cols-2">
-      {!list && <span>Não há pets favoritados</span>}
+      {list?.length === 0 && <NoData text={text} supportText={supportText} />}
 
       {list &&
         list.map((dog: PetsList) => (

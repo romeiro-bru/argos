@@ -9,7 +9,10 @@ export default function Home() {
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
 
-      <Card list={list} />
+      <Card
+        list={list}
+        text="Não encontramos nenhum pet correspondente a sua busca."
+      />
     </main>
   );
 }

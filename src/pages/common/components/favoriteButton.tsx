@@ -6,15 +6,19 @@ export function FavoriteButton({
   favoriteList: string[];
   setFavoriteList: React.Dispatch<React.SetStateAction<string[]>>;
   id: string;
-  
 }) {
   const isFavorite = favoriteList.includes(id);
 
   const handleFavorite = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    const uniqueFavorites = new Set(favoriteList);
-    setFavoriteList([...uniqueFavorites, e.currentTarget.value]);
+    const value = e.currentTarget.value; // captura antes do setFavoriteList
+
+    setFavoriteList((prev) =>
+      isFavorite
+        ? prev.filter((item) => item !== value)
+        : [...new Set([...prev, value])],
+    );
   };
 
   localStorage.setItem("favoriteList", JSON.stringify(favoriteList));
