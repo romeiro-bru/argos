@@ -9,7 +9,8 @@
   --primary-color: #b8abd7;
   --secondary-color: #4dd7c9;
   --secondary-color-hover: rgb(127, 231, 209);
-  --shadow: #000000;
+  --shadow: #646464;
+  --gray: #8f8f8f;
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: "Nunito", system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
