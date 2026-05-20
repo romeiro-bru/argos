@@ -36,6 +36,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // atualiza a lista no localStorage toda vez que a lista de favorites muda
+  //  se for a primeira vez que o useEffect de escrita roda — bloqueia o salvamento para não apagar o localStorage antes da leitura acontecer.
   useEffect(() => {
     if (!isMounted.current) {
       isMounted.current = true;

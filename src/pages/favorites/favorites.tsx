@@ -8,7 +8,7 @@ import {
 } from "../common/context/favoritesProvider";
 import { useContext } from "react";
 
-const foundFavorites = (list: PetsList[], savedFavorites: FavoriteItem[]) =>
+export const foundFavorites = (list: PetsList[], savedFavorites: FavoriteItem[]) =>
   list.filter((dog) => savedFavorites.some((fav) => fav.id === dog.id));
 
 export default function Favorites() {
