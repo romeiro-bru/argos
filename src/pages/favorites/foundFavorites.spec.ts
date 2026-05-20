@@ -60,4 +60,15 @@ describe("Found Favorites", () => {
 
     expect(foundFavorites(list, favorites)).toEqual(expected);
   });
+
+  it("Should handle duplicate favorite ids", () => {
+  const favorites = [
+    { id: "1", name: "Argos" },
+    { id: "1", name: "Argos" },
+  ];
+
+  const expected = [list[0]];
+
+  expect(foundFavorites(list, favorites)).toEqual(expected);
+});
 });
