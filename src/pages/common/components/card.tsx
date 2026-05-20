@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import type { PetsList } from "../../home/types";
 import { FavoriteButton } from "./favoriteButton";
 
@@ -7,15 +6,6 @@ interface CardProps {
 }
 
 export function Card({ list }: CardProps) {
-  const [favoriteList, setFavoriteList] = useState<string[]>([]);
-
-  const savedFavorites = localStorage.getItem("favoriteList");
-
-  useEffect(() => {
-    if (savedFavorites) {
-      setFavoriteList(JSON.parse(savedFavorites));
-    }
-  }, []);
 
   return (
     <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 relative sm:grid-cols-2">
@@ -26,10 +16,9 @@ export function Card({ list }: CardProps) {
           id={dog.id}
         >
           <div className="card rounded-2xl">
-            <FavoriteButton
-              favoriteList={favoriteList}
-              setFavoriteList={setFavoriteList}
+            <FavoriteButton             
               id={dog.id}
+              name={dog.name}
             />
             <img className="h-46 w-50 object-cover" alt="dog" src={dog.img} />
             <div className="card-text">
