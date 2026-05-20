@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 export type FavoriteItem = {
@@ -23,12 +24,8 @@ export const FavoritesContext = createContext<FavoritesContextType | null>(
 
 // cria provider, ele irá envolver os outros componentes (children) e dar acesso ao context.
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
+  const isMounted = useRef(false); // useRef retorna .current que persiste entre renders
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
-
-  // atualiza a lista no localStorage toda vez que a lista de favorites muda
-  useEffect(() => {
-    localStorage.setItem("favoriteList", JSON.stringify(favorites));
-  }, [favorites]);
 
   useEffect(() => {
     const stored = localStorage.getItem("favoriteList");
@@ -37,6 +34,16 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
       setFavorites(JSON.parse(stored));
     }
   }, []);
+
+  // atualiza a lista no localStorage toda vez que a lista de favorites muda
+  useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return; // entra no if, sai sem salvar no primeiro render
+    }
+    //  !isMounted.current = !true = false → NÃO entra no if
+    localStorage.setItem("favoriteList", JSON.stringify(favorites));
+  }, [favorites]);
 
   // verifica se o item com o id enviado está na lista de favoritos, retorna um boolean
   const isFavorite = useCallback(
