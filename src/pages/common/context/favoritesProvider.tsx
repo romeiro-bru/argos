@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 export type FavoriteItem = {
   id: string;
   name: string;
@@ -15,8 +21,14 @@ export const FavoritesContext = createContext<FavoritesContextType | null>(
   null,
 );
 
+// cria provider, ele irá envolver os outros componentes (children) e dar acesso ao context.
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
+
+  // atualiza a lista no localStorage toda vez que a lista de favorites muda
+  useEffect(() => {
+    localStorage.setItem("favoriteList", JSON.stringify(favorites));
+  }, [favorites]);
 
   useEffect(() => {
     const stored = localStorage.getItem("favoriteList");
@@ -26,10 +38,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("favoriteList", JSON.stringify(favorites));
-  }, [favorites]);
-
+  // verifica se o item com o id enviado está na lista de favoritos, retorna um boolean
   const isFavorite = useCallback(
     (id: string) => favorites.some((item) => item.id === id),
     [favorites],
@@ -43,14 +52,13 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const contextValue = useMemo(
+    () => ({ favorites, toggleFavorite, isFavorite }),
+    [favorites, toggleFavorite, isFavorite],
+  );
+
   return (
-    <FavoritesContext.Provider
-      value={{
-        favorites,
-        toggleFavorite,
-        isFavorite,
-      }}
-    >
+    <FavoritesContext.Provider value={contextValue}>
       {children}
     </FavoritesContext.Provider>
   );
