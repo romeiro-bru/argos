@@ -1,3 +1,6 @@
+import { female } from "../../../assets/female";
+import { male } from "../../../assets/male";
+import { Tooltip } from "../../../components/tooltip/tooltip";
 import type { PetsList } from "../../home/types";
 import { FavoriteButton } from "./favoriteButton";
 
@@ -6,7 +9,6 @@ interface CardProps {
 }
 
 export function Card({ list }: CardProps) {
-
   return (
     <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 relative sm:grid-cols-2">
       {list?.map((dog: PetsList) => (
@@ -16,10 +18,7 @@ export function Card({ list }: CardProps) {
           id={dog.id}
         >
           <div className="card rounded-2xl">
-            <FavoriteButton             
-              id={dog.id}
-              name={dog.name}
-            />
+            <FavoriteButton id={dog.id} name={dog.name} />
             <img className="h-46 w-50 object-cover" alt="dog" src={dog.img} />
             <div className="card-text">
               <span>
@@ -28,8 +27,14 @@ export function Card({ list }: CardProps) {
             </div>
           </div>
 
-          <span className="divide-solid">
-            {dog.gender}, {dog.age}
+          <span className="flex mt-2 gap-x-2">
+            {dog.age}
+
+            {dog.gender === "Fêmea" ? (
+              <Tooltip text="Fêmea" tooltipText={female} />
+            ) : (
+              <Tooltip text="Macho" tooltipText={male} />
+            )}
           </span>
           <span>Porte {dog.size}</span>
 
