@@ -5,9 +5,9 @@ const list: PetsList[] = [
   {
     id: "1",
     name: "Argos",
-    genre: "macho",
+    gender: "Macho",
     age: "Filhote",
-    size: "pequeno",
+    size: "Pequeno",
     breed: "SRD",
     cidade: "Rio de Janeiro",
     estado: "Rio de Janeiro",
@@ -16,9 +16,9 @@ const list: PetsList[] = [
   {
     id: "2",
     name: "Mel",
-    genre: "fêmea",
+    gender: "Fêmea",
     age: "Adulto",
-    size: "médio",
+    size: "Médio",
     breed: "SRD",
     cidade: "Rio de Janeiro",
     estado: "Rio de Janeiro",

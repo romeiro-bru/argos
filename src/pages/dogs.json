@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Argos",
-    "genre": "Macho",
+    "gender": "Macho",
     "age": "Filhote",
     "size": "Pequeno",
     "breed": "SRD",
@@ -13,7 +13,7 @@
   {
     "id": "2",
     "name": "Mel",
-    "genre": "Fêmea",
+    "gender": "Fêmea",
     "age": "Adulto",
     "size": "Médio",
     "breed": "SRD",
@@ -24,7 +24,7 @@
   {
     "id": "4",
     "name": "Meg",
-    "genre": "Fêmea",
+    "gender": "Fêmea",
     "age": "Adulto",
     "size": "Pequeno",
     "breed": "Lhasa apso",
@@ -35,7 +35,7 @@
   {
     "id": "5",
     "name": "Thor",
-    "genre": "Macho",
+    "gender": "Macho",
     "age": "Filhote",
     "size": "Grande",
     "breed": "Golden Retriever",
@@ -46,7 +46,7 @@
   {
     "id": "6",
     "name": "Luna",
-    "genre": "Fêmea",
+    "gender": "Fêmea",
     "age": "Filhote",
     "size": "Pequeno",
     "breed": "SRD",
@@ -57,7 +57,7 @@
   {
     "id": "7",
     "name": "Rex",
-    "genre": "Macho",
+    "gender": "Macho",
     "age": "Adulto",
     "size": "Grande",
     "breed": "Pastor Alemão",
@@ -68,7 +68,7 @@
   {
     "id": "8",
     "name": "Belinha",
-    "genre": "Fêmea",
+    "gender": "Fêmea",
     "age": "Sênior",
     "size": "Médio",
     "breed": "Beagle",
@@ -79,7 +79,7 @@
   {
     "id": "9",
     "name": "Bob",
-    "genre": "Macho",
+    "gender": "Macho",
     "age": "Jovem",
     "size": "Médio",
     "breed": "SRD",
@@ -90,7 +90,7 @@
   {
     "id": "10",
     "name": "Nina",
-    "genre": "Fêmea",
+    "gender": "Fêmea",
     "age": "Jovem",
     "size": "Médio",
     "breed": "SRD",
@@ -101,7 +101,7 @@
    {
     "id": "11",
     "name": "Bela",
-    "genre": "Fêmea",
+    "gender": "Fêmea",
     "age": "Filhote",
     "size": "Pequeno",
     "breed": "SRD",

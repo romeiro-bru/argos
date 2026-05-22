@@ -29,7 +29,7 @@ export function Card({ list }: CardProps) {
           </div>
 
           <span className="divide-solid">
-            {dog.genre}, {dog.age}
+            {dog.gender}, {dog.age}
           </span>
           <span>Porte {dog.size}</span>
 

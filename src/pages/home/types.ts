@@ -2,7 +2,7 @@
 export interface PetsList {
   id: string;
   name: string;
-  genre: "Macho" | "Fêmea";
+  gender: "Macho" | "Fêmea";
   age: "Filhote" | "Jovem" | "Adulto" | "Sênior";
   size: "Pequeno" | "Médio" | "Grande";
   breed: string;
