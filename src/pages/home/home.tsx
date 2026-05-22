@@ -1,6 +1,6 @@
 import { NoData } from "../../components/noData";
 import { Card } from "../common/components/card";
-import data from "../dogs.json";
+import data from "../pets.json";
 import type { PetsList } from "./types";
 
 export default function Home() {

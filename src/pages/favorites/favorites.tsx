@@ -1,4 +1,4 @@
-import data from "../dogs.json";
+import data from "../pets.json";
 import { Card } from "../common/components/card";
 import type { PetsList } from "../home/types";
 import { NoData } from "../../components/noData";
