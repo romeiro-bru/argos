@@ -1,7 +1,7 @@
 import type React from "react";
 import { FavoritesContext, FavoritesProvider } from "./favoritesProvider";
 import { act, useContext } from "react";
-import { fireEvent, render, renderHook, screen } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 
 const providerWrapper = ({ children }: { children: React.ReactNode }) => {
   return <FavoritesProvider>{children}</FavoritesProvider>;
@@ -15,21 +15,6 @@ function useFavoritesTest() {
   }
 
   return context;
-}
-
-function Component() {
-  const context = useContext(FavoritesContext);
-  if (!context) return null;
-  return (
-    <>
-      <button
-        onClick={() => context.toggleFavorite({ id: "1", name: "Argos" })}
-      >
-        toggle
-      </button>
-      <span data-testid="count">{context.favorites.length}</span>
-    </>
-  );
 }
 
 describe("Favorites Provider", () => {
@@ -115,5 +100,22 @@ describe("Favorites Provider", () => {
       "favoriteList",
       JSON.stringify([item]),
     );
+  });
+
+  it("Should load favorites from localStorage", () => {
+    const item = {
+      id: "1",
+      name: "Argos",
+    };
+
+    vi.spyOn(Storage.prototype, "getItem").mockReturnValue(
+      JSON.stringify([item]),
+    );
+
+    const { result } = renderHook(() => useFavoritesTest(), {
+      wrapper: providerWrapper,
+    });
+
+    expect(result.current.favorites).toEqual([item]);
   });
 });
