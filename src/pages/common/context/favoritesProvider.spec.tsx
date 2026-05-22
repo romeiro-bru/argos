@@ -1,10 +1,20 @@
 import type React from "react";
 import { FavoritesContext, FavoritesProvider } from "./favoritesProvider";
-import { useContext } from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, useContext } from "react";
+import { fireEvent, render, renderHook, screen } from "@testing-library/react";
 
-function renderProvider(children: React.ReactNode) {
-  return renderProvider(<FavoritesProvider>{children}</FavoritesProvider>);
+const providerWrapper = ({ children }: { children: React.ReactNode }) => {
+  return <FavoritesProvider>{children}</FavoritesProvider>;
+};
+
+function useFavoritesTest() {
+  const context = useContext(FavoritesContext);
+
+  if (!context) {
+    throw new Error("FavoritesContext not found");
+  }
+
+  return context;
 }
 
 function Component() {
@@ -23,20 +33,50 @@ function Component() {
 }
 
 describe("Favorites Provider", () => {
-  it("Should add and remove favorite", () => {
-    render(
-      <FavoritesProvider>
-        <Component />
-      </FavoritesProvider>,
-    );
+  beforeEach(() => {
+    localStorage.clear();
+    vi.restoreAllMocks();
+  });
 
-    const button = screen.getByText("toggle");
-    fireEvent.click(button);
+  it("Should start with empty favorites", () => {
+    const { result } = renderHook(() => useFavoritesTest(), {
+      wrapper: providerWrapper,
+    });
 
-    expect(screen.getByTestId("count").textContent).toBe("1");
+    expect(result.current.favorites).toEqual([]);
+  });
 
-    fireEvent.click(button);
+  it("Should add favorite", () => {
+    const { result } = renderHook(() => useFavoritesTest(), {
+      wrapper: providerWrapper,
+    });
+    const item = {
+      id: "1",
+      name: "Argos",
+    };
 
-    expect(screen.getByTestId("count").textContent).toBe("0");
+    act(() => {
+      result.current.toggleFavorite(item);
+    });
+
+    expect(result.current.favorites).toEqual([item]);
+  });
+
+  it("Should remove favorite", () => {
+    const { result } = renderHook(() => useFavoritesTest(), {
+      wrapper: providerWrapper,
+    });
+    const item = {
+      id: "1",
+      name: "Argos",
+    };
+    act(() => {
+      result.current.toggleFavorite(item);
+    });
+    act(() => {
+      result.current.toggleFavorite(item);
+    });
+
+    expect(result.current.favorites).toEqual([]);
   });
 });
