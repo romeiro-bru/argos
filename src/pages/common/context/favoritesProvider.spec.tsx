@@ -79,4 +79,41 @@ describe("Favorites Provider", () => {
 
     expect(result.current.favorites).toEqual([]);
   });
+
+  it("Should check if item is favorite", () => {
+    const { result } = renderHook(() => useFavoritesTest(), {
+      wrapper: providerWrapper,
+    });
+    const item = {
+      id: "1",
+      name: "Argos",
+    };
+    act(() => {
+      result.current.toggleFavorite(item);
+    });
+
+    expect(result.current.isFavorite("1")).toBeTruthy();
+    expect(result.current.isFavorite("234324")).toBeFalsy();
+  });
+
+  it("Should save favorites in localStorage", () => {
+    const setItemSpy = vi.spyOn(Storage.prototype, "setItem");
+    const item = {
+      id: "1",
+      name: "Argos",
+    };
+
+    const { result } = renderHook(() => useFavoritesTest(), {
+      wrapper: providerWrapper,
+    });
+
+    act(() => {
+      result.current.toggleFavorite(item);
+    });
+
+    expect(setItemSpy).toHaveBeenCalledWith(
+      "favoriteList",
+      JSON.stringify([item]),
+    );
+  });
 });
