@@ -7,18 +7,32 @@ interface RoutesInterface {
   };
 }
 
+// TODO: criar página de detalhes
+// planejar cadastro de pets
+
 export const appRoutes = {
   HOME: {
     path: "/",
     meta: {
       label: "Home",
       icon: <img className="w-12 ml-2" src="favicon.png" />,
+      showInSidebar: true,
     },
   },
+
   FAVORITES: {
-    path: "favorites",
+    path: "/favorites",
     meta: {
       label: "Favoritados",
+      showInSidebar: true,
+    },
+  },
+
+  DETAILS: {
+    path: "/details/:id",
+    meta: {
+      label: "Detalhes",
+      showInSidebar: false,
     },
   },
 };
@@ -43,7 +57,7 @@ export function Sidebar() {
 
       <div className="w-full px-2">
         <div className="flex flex-col w-full mt-3 border-t border-gray-700">
-          {Object.values(appRoutes).map((route) => {
+          {Object.values(appRoutes).filter((route) => route.meta.showInSidebar).map((route) => {
             return (
               <div key={route.path} className="w-full">
                 {/* ITEM PRINCIPAL */}
