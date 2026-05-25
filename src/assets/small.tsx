@@ -4,7 +4,7 @@ interface IconProps {
   className?: string;
 }
 
-export const Pin = ({
+export const Small = ({
   size = 30,
   color = "var(--text)",
   className,
