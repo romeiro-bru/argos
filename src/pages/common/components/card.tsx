@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { female } from "../../../assets/female";
 import { male } from "../../../assets/male";
 import { Tooltip } from "../../../components/tooltip/tooltip";
@@ -9,6 +10,8 @@ interface CardProps {
 }
 
 export function Card({ list }: CardProps) {
+  const navigate = useNavigate();
+
   return (
     <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 relative sm:grid-cols-2">
       {list?.map((dog: PetsList) => (
@@ -42,7 +45,10 @@ export function Card({ list }: CardProps) {
           </span>
           <span>Porte {dog.size}</span>
 
-          <button className="cursor-pointer bg-[var(--secondary-color)] font-semibold hover:bg-[var(--secondary-color-hover)] text-white my-2 py-2 px-4 rounded-full">
+          <button
+            onClick={() => navigate(`/details/${dog.id}`)}
+            className="cursor-pointer bg-[var(--secondary-color)] font-semibold hover:bg-[var(--secondary-color-hover)] text-white my-2 py-2 px-4 rounded-full"
+          >
             ver perfil
           </button>
         </article>
