@@ -1,9 +1,20 @@
-export const cake = (
+interface IconProps {
+  size?: number;
+  color?: string;
+  className?: string;
+}
+
+export const Cake = ({
+  size = 30,
+  color = "var(--text)",
+  className,
+}: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 44 44"
+    width={size}
+    viewBox="0 0 30 20"
+    fill={color}
+    className={className}
   >
     <path
       fill="var(--text)"
