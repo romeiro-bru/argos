@@ -31,9 +31,13 @@ export function Card({ list }: CardProps) {
             {dog.age}
 
             {dog.gender === "Fêmea" ? (
-              <Tooltip text="Fêmea" tooltipText={female} />
+              <div className="mt-1">
+                <Tooltip text="Fêmea" tooltipText={female} />
+              </div>
             ) : (
-              <Tooltip text="Macho" tooltipText={male} />
+              <div className="mt-1">
+                <Tooltip text="Macho" tooltipText={male} />
+              </div>
             )}
           </span>
           <span>Porte {dog.size}</span>

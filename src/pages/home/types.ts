@@ -9,4 +9,7 @@ export interface PetsList {
   cidade: string;
   estado: string;
   img: string;
+  neutered: boolean;
+  temperament: string[];
+  species: "Cachorro" | "Gato"
 }

@@ -9,7 +9,10 @@
     "cidade": "Rio de Janeiro",
     "estado": "Rio de Janeiro",
     "img": "../../../public/0999.jpeg",
-    "species": "dog"
+    "neutered": false,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "2",
@@ -21,7 +24,10 @@
     "cidade": "Rio de Janeiro",
     "estado": "Rio de Janeiro",
     "img": "../../../public/16ff6543.jpg",
-    "species": "dog"
+    "neutered": true,
+    "temperament": ["dócil", "brincalhão", "medroso"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "4",
@@ -33,7 +39,10 @@
     "cidade": "Rio de Janeiro",
     "estado": "Rio de Janeiro",
     "img": "../../../public/lhasa.png",
-    "species": "dog"
+    "neutered": true,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "5",
@@ -45,7 +54,10 @@
     "cidade": "Niterói",
     "estado": "Rio de Janeiro",
     "img": "../../../public/8e6fcb9d.jpeg",
-    "species": "dog"
+    "neutered": false,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "6",
@@ -57,7 +69,10 @@
     "cidade": "São Paulo",
     "estado": "São Paulo",
     "img": "../../../public/1853.jpeg",
-    "species": "dog"
+    "neutered": false,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "7",
@@ -69,7 +84,10 @@
     "cidade": "Cabo Frio",
     "estado": "Rio de Janeiro",
     "img": "../../../public/fa37e662.png",
-    "species": "dog"
+    "neutered": true,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "8",
@@ -81,7 +99,10 @@
     "cidade": "Seropédica",
     "estado": "Rio de Janeiro",
     "img": "../../../public/ef52a74.jpg",
-    "species": "dog"
+    "neutered": true,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "9",
@@ -93,7 +114,10 @@
     "cidade": "Rio de Janeiro",
     "estado": "Rio de Janeiro",
     "img": "../../../public/e4b15df2.jpg",
-    "species": "dog"
+    "neutered": false,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
   },
   {
     "id": "10",
@@ -105,17 +129,41 @@
     "cidade": "Arraial do Cabo",
     "estado": "Rio de Janeiro",
     "img": "../../../public/abd34926.jpg",
-    "species": "dog"
+    "neutered": false,
+    "temperament": ["dócil", "brincalhão"],
+    "species": "Cachorro",
+    "vaccinated": true
+  },
+
+  {
+    "id": "12",
+    "name": "Amora",
+    "gender": "Fêmea",
+    "age": "Jovem",
+    "size": "Pequeno",
+    "breed": "SRD",
+    "cidade": "São Paulo",
+    "estado": "São Paulo",
+    "neutered": false,
+    "temperament": ["dócil", "brincalhão"],
+    "img": "../../../public/cat.jpeg",
+    "species": "Gato",
+
+    "vaccinated": true
   },
   {
-    "id": "11",
-    "name": "Bela",
+    "id": "13",
+    "name": "Tangerina",
     "gender": "Fêmea",
-    "age": "Filhote",
+    "age": "Adulto",
     "size": "Pequeno",
     "breed": "SRD",
     "cidade": "Arraial do Cabo",
     "estado": "Rio de Janeiro",
-    "img": "../../../public/baby.jpg"
+    "neutered": true,
+    "temperament": ["dócil", "brincalhão"],
+    "img": "../../../public/cat2.jpeg",
+    "species": "Gato",
+    "vaccinated": true
   }
 ]
