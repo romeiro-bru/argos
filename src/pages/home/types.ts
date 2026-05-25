@@ -10,6 +10,7 @@ export interface PetsList {
   estado: string;
   img: string;
   neutered: boolean;
+  vaccinated: boolean;
   temperament: string[];
   species: "Cachorro" | "Gato"
 }
