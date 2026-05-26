@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { appRoutes } from "./routes";
+import { appRoutes } from "../routes";
 
 interface RoutesInterface {
   path: string;

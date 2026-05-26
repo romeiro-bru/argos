@@ -4,7 +4,7 @@ import Home from "./pages/home/home";
 import Favorites from "./pages/favorites/favorites";
 import { FavoritesProvider } from "./pages/common/context/favoritesProvider";
 import Details from "./pages/details/details";
-import { appRoutes } from "./components/routes";
+import { appRoutes } from "./routes";
 import Registration from "./pages/registration/registration";
 
 export default function App() {
