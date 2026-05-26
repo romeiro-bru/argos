@@ -42,10 +42,10 @@ export default function Registration() {
 
       <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4">
         <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 mb-8">
-          <div className="flex flex-col gap-2">
-            <span className="font-semibold">Selecione a espécie:</span>
+          <fieldset className="flex flex-col gap-2">
+            <legend className="font-semibold">Selecione a espécie:</legend>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mt-2">
               <TagCheckbox
                 key="cachorro"
                 label="Cachorro"
@@ -61,9 +61,9 @@ export default function Registration() {
                 color="purple"
               />
             </div>
-          </div>
+          </fieldset>
 
-          <div>
+          <fieldset>
             <label className="flex flex-col mb-2 font-semibold" htmlFor="name">
               Nome do pet para adoção:
             </label>
@@ -72,9 +72,9 @@ export default function Registration() {
               id="name"
               className="p-2 rounded-lg text-sm w-full"
             />
-          </div>
+          </fieldset>
 
-          <div className="flex flex-col gap-2">
+          <fieldset className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="breed">
               Raça:
             </label>
@@ -83,9 +83,9 @@ export default function Registration() {
                 <option value={breed.name}>{breed.name}</option>
               ))}
             </select>
-          </div>
+          </fieldset>
 
-          <div className="flex flex-col gap-2">
+          <fieldset className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="age">
               Idade:
             </label>
@@ -94,14 +94,12 @@ export default function Registration() {
                 <option value={pet.value}>{pet.label}</option>
               ))}
             </select>
-          </div>
+          </fieldset>
 
-          <div className="flex flex-col gap-2">
-            <label className="font-semibold" htmlFor="gender">
-              Sexo:
-            </label>
+          <fieldset>
+            <legend className="font-semibold">Sexo:</legend>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mt-2">
               <TagCheckbox
                 key="macho"
                 label="Macho"
@@ -117,11 +115,11 @@ export default function Registration() {
                 color="purple"
               />
             </div>
-          </div>
+          </fieldset>
 
           <HealthTagGroup />
 
-          <div className="flex flex-col gap-2">
+          <fieldset className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="size">
               Porte:
             </label>
@@ -137,9 +135,9 @@ export default function Registration() {
                 />
               ))}
             </div>
-          </div>
+          </fieldset>
 
-          <div className="flex flex-col gap-2">
+          <fieldset className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="state">
               Estado:
             </label>
@@ -147,22 +145,23 @@ export default function Registration() {
               <option value="RJ">Rio de Janeiro</option>
               <option value="SP">São Paulo</option>
             </select>
-          </div>
+          </fieldset>
 
-          <div className="flex flex-col gap-2">
+          <fieldset className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="city">
               Cidade:
             </label>
             <select id="city" className="text-sm">
-              <option value="Gato">Rio de Janeiro</option>
-              <option value="Cachorro">São Paulo</option>
+              <option value="Rio de Janeiro">Rio de Janeiro</option>
+              <option value="São Paulo">São Paulo</option>
             </select>
-          </div>
+          </fieldset>
         </div>
-        <div className="flex flex-wrap gap-2">
+
+        <fieldset className="flex flex-wrap gap-2">
           <span className="font-semibold">Temperamento:</span>
           <TemperamentTagGroup />
-        </div>
+        </fieldset>
       </form>
     </main>
   );

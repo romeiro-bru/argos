@@ -95,7 +95,7 @@
     "origem": "Alemanha",
     "grupo": "Trabalho",
     "porte": "Grande",
-    "temperament": ["Alegre", "Enérgico", "Leal"],
+    "temperament": ["Alegre", "Afetivo", "Leal"],
     "pelo": "Curto e brilhante"
   },
   {
@@ -149,7 +149,7 @@
     "origem": "Alemanha",
     "grupo": "Trabalho",
     "porte": "Grande",
-    "temperament": ["Enérgico", "Obediente", "Alerta"],
+    "temperament": ["Energético", "Obediente", "Alerta", "Profundamente Leal"],
     "pelo": "Curto e liso"
   },
   {
@@ -185,7 +185,7 @@
     "origem": "Japão",
     "grupo": "Utilidade",
     "porte": "Grande",
-    "temperament": ["Corajoso", "Digno", "Profundamente Leal"],
+    "temperament": ["Corajoso", "Quieto", "Profundamente Leal"],
     "pelo": "Duplo e denso"
   },
   {
