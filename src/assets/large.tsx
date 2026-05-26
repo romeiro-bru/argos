@@ -12,7 +12,7 @@ export const Large = ({
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
-    viewBox="0 0 30 20"
+    viewBox="0 3 30 20"
     fill={color}
     className={className}
   >
