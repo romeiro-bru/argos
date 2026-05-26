@@ -15,7 +15,7 @@ export const appRoutes = {
     path: "/",
     meta: {
       label: "Home",
-      icon: <img className="w-12 ml-2" src="favicon.png" />,
+      icon: <img className="w-12 ml-2" src="/favicon.png" />,
       showInSidebar: true,
     },
   },
