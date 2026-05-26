@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { FavoritesContext } from "../context/favoritesProvider";
 
-export function FavoriteButton({ id, name }: { id: string; name: string }) {
+export function FavoriteButton({ id, name, className }: { id: string; name: string, className?: string }) {
   const context = useContext(FavoritesContext);
 
   if (!context) return null;
@@ -10,7 +10,7 @@ export function FavoriteButton({ id, name }: { id: string; name: string }) {
   
   return (
     <button
-      className="card-heart rounded-full bg-purple-500 cursor-pointer"
+      className={`card-heart ${className} rounded-full bg-purple-500 cursor-pointer`}
       onClick={() => toggleFavorite({ id, name })}
       id={id}
       value={id}
