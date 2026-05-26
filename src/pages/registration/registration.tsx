@@ -1,6 +1,9 @@
 import type { PetsList } from "../home/types";
 import dogsBreed from "../../dogsBreed.json";
-import { temper } from "./temper";
+import { TagCheckbox } from "./tagCheckbox";
+import { useState } from "react";
+import { HealthTagGroup } from "./healthTagGroup";
+import { TemperamentTagGroup } from "./temperamentTagGroup";
 
 interface AgeInterface {
   label: string;
@@ -11,13 +14,7 @@ interface SizeInterface {
   value: PetsList["size"];
 }
 
-// TODO: barra de progresso
-const health = [
-  { label: "Castrado", value: "neutered" },
-  { label: "Vacinado", value: "vaccinated" },
-  { label: "Vermifugado", value: "dewormed" },
-];
-
+// TODO: raça e porte devem mudar de acordo com espécie selecionada
 const age: AgeInterface[] = [
   { label: "filhote (0 - 06 meses)", value: "Filhote" },
   { label: "jovem (06 meses - 2 anos)", value: "Jovem" },
@@ -33,126 +30,138 @@ const size: SizeInterface[] = [
 ];
 
 export default function Registration() {
+  const [selectedSize, setSelectedSize] = useState<PetsList["size"]>("Médio");
+  const [selectedGender, setSelectedGender] =
+    useState<PetsList["gender"]>("Fêmea");
+  const [species, setSpecies] = useState<PetsList["species"]>("Cachorro");
+  const [temperament, setTemperament] = useState<PetsList["temperament"]>([]);
+
   return (
     <main>
       <h1 className="mb-8">Cadastre um pet para adoção</h1>
 
-      <form className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4">
-        <div>
-          <span>Selecione a espécie</span>
+      <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4">
+        <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 mb-8">
+          <div className="flex flex-col gap-2">
+            <span className="font-semibold">Selecione a espécie:</span>
 
-          <div>
-            <label className="mr-1" htmlFor="gato">
-              gato
-            </label>
-            <input id="gato" name="species" value="Gato" type="radio" />
-          </div>
-
-          <div>
-            <label className="mr-1" htmlFor="cachorro">
-              cachorro
-            </label>
-            <input id="cachorro" name="species" value="Cachorro" type="radio" />
-          </div>
-        </div>
-
-        <div>
-          <label className="flex flex-col mb-2" htmlFor="name">
-            Nome do pet para adoção
-          </label>
-          <input type="text" id="name" className="p-2 rounded-lg text-sm w-full" />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="breed">Raça</label>
-          <select className="text-sm" id="breed">
-            {dogsBreed.map((breed) => (
-              <option value={breed.name}>{breed.name}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="age">Idade</label>
-          <select id="age" className="text-sm">
-            {age.map((pet) => (
-              <option value={pet.value}>{pet.label}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="gender">Sexo</label>
-          <select id="gender" className="text-sm">
-            <option value="macho">macho</option>
-            <option value="fêmea">fêmea</option>
-          </select>
-        </div>
-
-        <div>
-          <span className="flex flex-col mb-4">
-            Informações sobre a saúde do animal:
-          </span>
-          {health.map((pet) => (
-            <>
-              <label className="mr-1" htmlFor={pet.value}>
-                {pet.label}
-              </label>
-              <input
-                type="checkbox"
-                value={pet.value}
-                name={pet.value}
-                id={pet.value}
-                className="mr-4"
+            <div className="flex flex-wrap gap-2">
+              <TagCheckbox
+                key="cachorro"
+                label="Cachorro"
+                checked={species === "Cachorro"}
+                onChange={() => setSpecies("Cachorro")}
+                color="purple"
               />
-            </>
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="size">Porte</label>
-          <select id="size" className="text-sm">
-            {size.map((pet) => (
-              <option value={pet.value}>{pet.label}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="state">Estado</label>
-          <select id="state" className="text-sm">
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="SP">São Paulo</option>
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="city">Cidade</label>
-          <select id="city" className="text-sm">
-            <option value="Gato">Rio de Janeiro</option>
-            <option value="Cachorro">São Paulo</option>
-          </select>
-        </div>
-
-
-        <div>
-          <span className="mr-2">Temperamento</span>
-          <div className="flex flex-wrap">
-            {temper.map((item) => (
-              <>
-                <label className="mr-1" htmlFor={item}>
-                  {item}
-                </label>
-                <input
-                  type="checkbox"
-                  value={item}
-                  name={item}
-                  id={item}
-                  className="mr-2"
-                />
-              </>
-            ))}
+              <TagCheckbox
+                key="gato"
+                label="Gato"
+                checked={species === "Gato"}
+                onChange={() => setSpecies("Gato")}
+                color="purple"
+              />
+            </div>
           </div>
+
+          <div>
+            <label className="flex flex-col mb-2 font-semibold" htmlFor="name">
+              Nome do pet para adoção:
+            </label>
+            <input
+              type="text"
+              id="name"
+              className="p-2 rounded-lg text-sm w-full"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold" htmlFor="breed">
+              Raça:
+            </label>
+            <select className="text-sm" id="breed">
+              {dogsBreed.map((breed) => (
+                <option value={breed.name}>{breed.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold" htmlFor="age">
+              Idade:
+            </label>
+            <select id="age" className="text-sm">
+              {age.map((pet) => (
+                <option value={pet.value}>{pet.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold" htmlFor="gender">
+              Sexo:
+            </label>
+
+            <div className="flex flex-wrap gap-2">
+              <TagCheckbox
+                key="macho"
+                label="Macho"
+                checked={selectedGender === "Macho"}
+                onChange={() => setSelectedGender("Macho")}
+                color="purple"
+              />
+              <TagCheckbox
+                key="femea"
+                label="Fêmea"
+                checked={selectedGender === "Fêmea"}
+                onChange={() => setSelectedGender("Fêmea")}
+                color="purple"
+              />
+            </div>
+          </div>
+
+          <HealthTagGroup />
+
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold" htmlFor="size">
+              Porte:
+            </label>
+
+            <div className="flex flex-wrap gap-2">
+              {size.map((size) => (
+                <TagCheckbox
+                  key={size.value}
+                  label={size.label}
+                  checked={selectedSize === size.value}
+                  onChange={() => setSelectedSize(size.value)}
+                  color="purple"
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold" htmlFor="state">
+              Estado:
+            </label>
+            <select id="state" className="text-sm">
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="SP">São Paulo</option>
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold" htmlFor="city">
+              Cidade:
+            </label>
+            <select id="city" className="text-sm">
+              <option value="Gato">Rio de Janeiro</option>
+              <option value="Cachorro">São Paulo</option>
+            </select>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <span className="font-semibold">Temperamento:</span>
+          <TemperamentTagGroup />
         </div>
       </form>
     </main>
