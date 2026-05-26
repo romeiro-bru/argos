@@ -4,6 +4,7 @@
 :root {
   --bg: #f7f4fa;
   --bg-hover: #392367;
+  --card-bg: #f0f0f0;
   --text: #44449a;
   --subtitle: #eea900;
   --text-hover: #dad0f8;
@@ -12,6 +13,8 @@
   --secondary-color-hover: rgb(127, 231, 209);
   --shadow: #646464;
   --gray: #8f8f8f;
+  --accent: #d5b3f7;
+  --accent-bg: rgb(143, 53, 221);
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: "Nunito", system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
@@ -34,22 +37,6 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
 #root {
   width: 100%;
   max-width: 100%;
@@ -59,6 +46,13 @@
 
 body {
   margin: 0;
+}
+
+input[type="radio"] {
+  accent-color: var(--accent-bg);
+}
+input[type="radio"] {
+  accent-color: var(--accent-bg);
 }
 
 h1,
@@ -88,6 +82,29 @@ h2 {
 p {
   margin: 0;
 }
+input[type="text"] {
+  background-color: #93929219;
+  color: var(--text);
+}
+/* fundo e texto da option */
+option {
+  background-color: var(--card-bg);
+  color: var(--primary-color);
+}
+option:checked {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* select fechado */
+select {
+  background: #93929219;
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;  
+}
+
 /* -------------------- */
 .card {
   position: relative;
@@ -95,17 +112,13 @@ p {
 }
 
 .card::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(0, 0, 0, 0.75)
-  );
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.75));
 }
 
 .card-text {
