@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { female } from "../../../assets/female";
-import { male } from "../../../assets/male";
+
 import { Tooltip } from "../../../components/tooltip/tooltip";
 import type { PetsList } from "../../home/types";
 import { FavoriteButton } from "./favoriteButton";
+import { female } from "../../../assets/female";
+import { male } from "../../../assets/male";
+import { petSizes } from "../helpers/petSizes";
 
 interface CardProps {
   list: PetsList[] | null;
@@ -21,7 +23,7 @@ export function Card({ list }: CardProps) {
           id={dog.id}
         >
           <div className="card rounded-2xl">
-            <FavoriteButton id={dog.id} name={dog.name} />
+            <FavoriteButton id={dog.id} name={dog.name} className="top-2 right-2" />
             <img className="h-46 w-50 object-cover" alt="dog" src={dog.img} />
             <div className="card-text">
               <span>
@@ -43,7 +45,7 @@ export function Card({ list }: CardProps) {
               </div>
             )}
           </span>
-          <span>Porte {dog.size}</span>
+          <span className="flex">Porte {dog.size} {petSizes({size: dog.size}).icon}</span>
 
           <button
             onClick={() => navigate(`/details/${dog.id}`)}
