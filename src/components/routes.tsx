@@ -1,0 +1,34 @@
+export const appRoutes = {
+  HOME: {
+    path: "/",
+    meta: {
+      label: "Home",
+      icon: <img className="w-12 ml-2" src="/favicon.png" />,
+      showInSidebar: true,
+    },
+  },
+
+  FAVORITES: {
+    path: "/favorites",
+    meta: {
+      label: "Favoritados",
+      showInSidebar: true,
+    },
+  },
+
+  DETAILS: {
+    path: "/details/:id",
+    meta: {
+      label: "Detalhes",
+      showInSidebar: false,
+    },
+  },
+
+  REGISTER: {
+    path: "/register-pet",
+    meta: {
+      label: "Cadastro de pet",
+      showInSidebar: true,
+    },
+  },
+};
