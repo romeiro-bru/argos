@@ -9,9 +9,14 @@ const list: PetsList[] = [
     age: "Filhote",
     size: "Pequeno",
     breed: "SRD",
-    cidade: "Rio de Janeiro",
-    estado: "Rio de Janeiro",
+    city: "Rio de Janeiro",
+    state: "Rio de Janeiro",
     img: "../../../public/0999.jpeg",
+    dewormed: true,
+    neutered: true,
+    species: "Cachorro",
+    temperament: [],
+    vaccinated: true,
   },
   {
     id: "2",
@@ -20,9 +25,14 @@ const list: PetsList[] = [
     age: "Adulto",
     size: "Médio",
     breed: "SRD",
-    cidade: "Rio de Janeiro",
-    estado: "Rio de Janeiro",
+    city: "Rio de Janeiro",
+    state: "Rio de Janeiro",
     img: "../../../public/16ff6543.jpg",
+    dewormed: true,
+    neutered: true,
+    species: "Cachorro",
+    temperament: [],
+    vaccinated: true,
   },
 ];
 
@@ -62,13 +72,13 @@ describe("Found Favorites", () => {
   });
 
   it("Should handle duplicate favorite ids", () => {
-  const favorites = [
-    { id: "1", name: "Argos" },
-    { id: "1", name: "Argos" },
-  ];
+    const favorites = [
+      { id: "1", name: "Argos" },
+      { id: "1", name: "Argos" },
+    ];
 
-  const expected = [list[0]];
+    const expected = [list[0]];
 
-  expect(foundFavorites(list, favorites)).toEqual(expected);
-});
+    expect(foundFavorites(list, favorites)).toEqual(expected);
+  });
 });

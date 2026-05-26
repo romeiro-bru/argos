@@ -6,11 +6,12 @@ export interface PetsList {
   age: "Filhote" | "Jovem" | "Adulto" | "Sênior";
   size: "Pequeno" | "Médio" | "Grande" | "Gigante";
   breed: string;
-  cidade: string;
-  estado: string;
+  city: string;
+  state: string;
   img: string;
   neutered: boolean;
   vaccinated: boolean;
   temperament: string[];
-  species: "Cachorro" | "Gato"
+  species: "Cachorro" | "Gato",
+  dewormed: boolean
 }

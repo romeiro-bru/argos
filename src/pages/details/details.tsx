@@ -54,7 +54,7 @@ export default function Details() {
 
             <span className="flex mb-2">
               <Pin />
-              {pet?.cidade}, {pet?.estado}.
+              {pet?.city}, {pet?.state}.
             </span>
 
             <h3 className="text-lg font-semibold text-[var(--subtitle)] mb-2">
@@ -70,6 +70,12 @@ export default function Details() {
               {pet.vaccinated && (
                 <span className="flex items-center">
                   Vacinado <Check color="green" />
+                </span>
+              )}
+
+              {pet.dewormed && (
+                <span className="flex items-center">
+                  Vermifugado <Check color="green" />
                 </span>
               )}
             </section>

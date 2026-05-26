@@ -27,7 +27,7 @@ export function Card({ list }: CardProps) {
             <img className="h-46 w-50 object-cover" alt="dog" src={dog.img} />
             <div className="card-text">
               <span>
-                {dog.name} | {dog.cidade}
+                {dog.name} | {dog.city}
               </span>
             </div>
           </div>
