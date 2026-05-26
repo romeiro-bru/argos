@@ -1,0 +1,236 @@
+[
+  {
+    "id": 89,
+    "name": "SRD (Sem Raça Definida)",
+    "origem": "Brasil",
+    "grupo": "Misturado",
+    "porte": "Variável",
+    "temperament": ["Variável"],
+    "pelo": "Variável"
+  },
+  {
+    "id": 1,
+    "name": "Labrador Retriever",
+    "origem": "Canadá",
+    "grupo": "Recuperadores",
+    "porte": "Grande",
+    "temperament": ["Amigável", "Ativo", "Confiável"],
+    "pelo": "Curto e denso"
+  },
+  {
+    "id": 2,
+    "name": "Pastor Alemão",
+    "origem": "Alemanha",
+    "grupo": "Pastoreio",
+    "porte": "Grande",
+    "temperament": ["Corajoso", "Inteligente", "Leal"],
+    "pelo": "Duplo, médio"
+  },
+  {
+    "id": 3,
+    "name": "Golden Retriever",
+    "origem": "Escócia",
+    "grupo": "Recuperadores",
+    "porte": "Grande",
+    "temperament": ["Confiável", "Confiante", "Amigável"],
+    "pelo": "Longo e denso"
+  },
+  {
+    "id": 4,
+    "name": "Bulldog Francês",
+    "origem": "França",
+    "grupo": "Companhia",
+    "porte": "Pequeno",
+    "temperament": ["Brincalhão", "Afetivo", "Sociável"],
+    "pelo": "Curto e liso"
+  },
+  {
+    "id": 5,
+    "name": "Poodle",
+    "origem": "França / Alemanha",
+    "grupo": "Companhia",
+    "porte": "Variável (Toy, Miniatura, Padrão)",
+    "temperament": ["Inteligente", "Ativo", "Instintivo"],
+    "pelo": "Crespo e denso"
+  },
+  {
+    "id": 6,
+    "name": "Beagle",
+    "origem": "Inglaterra",
+    "grupo": "Farejadores",
+    "porte": "Médio",
+    "temperament": ["Curioso", "Amigável", "Alegre"],
+    "pelo": "Curto e resistente"
+  },
+  {
+    "id": 7,
+    "name": "Rottweiler",
+    "origem": "Alemanha",
+    "grupo": "Trabalho",
+    "porte": "Grande",
+    "temperament": ["Obediente", "Calmo", "Corajoso"],
+    "pelo": "Curto, denso e brilhante"
+  },
+  {
+    "id": 8,
+    "name": "Yorkshire Terrier",
+    "origem": "Inglaterra",
+    "grupo": "Terriers",
+    "porte": "Pequeno",
+    "temperament": ["Corajoso", "Inteligente", "Determinado"],
+    "pelo": "Longo e sedoso"
+  },
+  {
+    "id": 9,
+    "name": "Dachshund",
+    "origem": "Alemanha",
+    "grupo": "Farejadores",
+    "porte": "Pequeno",
+    "temperament": ["Persistente", "Espirituoso", "Brincalhão"],
+    "pelo": "Curto, longo ou arame"
+  },
+  {
+    "id": 10,
+    "name": "Boxer",
+    "origem": "Alemanha",
+    "grupo": "Trabalho",
+    "porte": "Grande",
+    "temperament": ["Alegre", "Enérgico", "Leal"],
+    "pelo": "Curto e brilhante"
+  },
+  {
+    "id": 11,
+    "name": "Husky Siberiano",
+    "origem": "Rússia (Sibéria)",
+    "grupo": "Trabalho",
+    "porte": "Médio",
+    "temperament": ["Extrovertido", "Amigável", "Gentil"],
+    "pelo": "Duplo e espesso"
+  },
+  {
+    "id": 12,
+    "name": "Shih Tzu",
+    "origem": "China / Tibet",
+    "grupo": "Companhia",
+    "porte": "Pequeno",
+    "temperament": ["Afetivo", "Brincalhão", "Dócil"],
+    "pelo": "Longo e duplo"
+  },
+  {
+    "id": 13,
+    "name": "Border Collie",
+    "origem": "Grã-Bretanha",
+    "grupo": "Pastoreio",
+    "porte": "Médio",
+    "temperament": ["Inteligente", "Energético", "Responsivo"],
+    "pelo": "Médio e denso"
+  },
+  {
+    "id": 14,
+    "name": "Lhasa Apso",
+    "origem": "Tibet",
+    "grupo": "Companhia",
+    "porte": "Pequeno",
+    "temperament": ["Assertivo", "Esperto", "Seguro"],
+    "pelo": "Longo, liso e pesado"
+  },
+  {
+    "id": 15,
+    "name": "Maltês",
+    "origem": "Malta",
+    "grupo": "Companhia",
+    "porte": "Pequeno",
+    "temperament": ["Dócil", "Responsivo", "Confiante"],
+    "pelo": "Longo, liso e sedoso"
+  },
+  {
+    "id": 16,
+    "name": "Dobermann",
+    "origem": "Alemanha",
+    "grupo": "Trabalho",
+    "porte": "Grande",
+    "temperament": ["Enérgico", "Obediente", "Alerta"],
+    "pelo": "Curto e liso"
+  },
+  {
+    "id": 17,
+    "name": "Pug",
+    "origem": "China",
+    "grupo": "Companhia",
+    "porte": "Pequeno",
+    "temperament": ["Carinhoso", "Obstinado", "Brincalhão"],
+    "pelo": "Fino, suave e curto"
+  },
+  {
+    "id": 18,
+    "name": "Chihuahua",
+    "origem": "México",
+    "grupo": "Companhia",
+    "porte": "Miniatura",
+    "temperament": ["Esperto", "Animado", "Leal"],
+    "pelo": "Curto ou longo"
+  },
+  {
+    "id": 19,
+    "name": "Chow Chow",
+    "origem": "China",
+    "grupo": "Utilidade",
+    "porte": "Médio",
+    "temperament": ["Independente", "Leal", "Quieto"],
+    "pelo": "Denso, duplo, áspero ou liso"
+  },
+  {
+    "id": 20,
+    "name": "Akita",
+    "origem": "Japão",
+    "grupo": "Utilidade",
+    "porte": "Grande",
+    "temperament": ["Corajoso", "Digno", "Profundamente Leal"],
+    "pelo": "Duplo e denso"
+  },
+  {
+    "id": 21,
+    "name": "Bernese Mountain Dog",
+    "origem": "Suíça",
+    "grupo": "Trabalho",
+    "porte": "Grande",
+    "temperament": ["Bom temperamento", "Afetivo", "Leal"],
+    "pelo": "Longo, espesso e liso ou levemente ondulado"
+  },
+  {
+    "id": 22,
+    "name": "São Bernardo",
+    "origem": "Suíça / Itália",
+    "grupo": "Trabalho",
+    "porte": "Gigante",
+    "temperament": ["Gentil", "Amigável", "Paciente"],
+    "pelo": "Curto e liso, ou longo e ondulado"
+  },
+  {
+    "id": 23,
+    "name": "Spitz Alemão",
+    "origem": "Alemanha",
+    "grupo": "Utilidade",
+    "porte": "Variável",
+    "temperament": ["Dedicado", "Animado", "Atento"],
+    "pelo": "Duplo, abundante"
+  },
+  {
+    "id": 24,
+    "name": "Basset Hound",
+    "origem": "França / Inglaterra",
+    "grupo": "Farejadores",
+    "porte": "Médio",
+    "temperament": ["Gentil", "Teimoso", "Amigável"],
+    "pelo": "Curto, liso e denso"
+  },
+  {
+    "id": 25,
+    "name": "Cocker Spaniel Inglês",
+    "origem": "Inglaterra",
+    "grupo": "Espaniéis",
+    "porte": "Médio",
+    "temperament": ["Alegre", "Afetivo", "Sociável"],
+    "pelo": "Sedoso, liso ou levemente ondulado"
+  }
+]
