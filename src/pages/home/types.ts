@@ -4,7 +4,7 @@ export interface PetsList {
   name: string;
   gender: "Macho" | "Fêmea";
   age: "Filhote" | "Jovem" | "Adulto" | "Sênior";
-  size: "Pequeno" | "Médio" | "Grande";
+  size: "Pequeno" | "Médio" | "Grande" | "Gigante";
   breed: string;
   cidade: string;
   estado: string;
