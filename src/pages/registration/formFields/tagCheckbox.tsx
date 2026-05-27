@@ -33,7 +33,7 @@ export function TagCheckbox({
       aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm border
-        cursor-pointer transition-all duration-150
+        cursor-pointer transition-all duration-150 shadow-sm
         ${checked ? variant.active : variant.base}`}
     >
       {checked && (
