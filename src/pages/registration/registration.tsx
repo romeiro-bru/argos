@@ -67,11 +67,14 @@ export default function Registration() {
           <HealthTagGroup />
           <Select label="Estado:" options={city} onChange={() => {}} />
           <Select label="Cidade:" options={city} onChange={() => {}} />
-          <Select
-            onChange={(value) => setSize(value as PetsList["size"])}
-            label="Porte:"
-            options={options}
-          />
+
+          {species === "Cachorro" && (
+            <Select
+              onChange={(value) => setSize(value as PetsList["size"])}
+              label="Porte:"
+              options={options}
+            />
+          )}
         </div>
 
         <fieldset className="flex flex-wrap gap-2">
