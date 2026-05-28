@@ -1,4 +1,3 @@
-import dogsBreed from "../../dogsBreed.json";
 import type { PetsList } from "../home/types";
 import { useState } from "react";
 import { HealthTagGroup } from "./formFields/healthTagGroup";
@@ -7,41 +6,11 @@ import { SpeciesGroup } from "./formFields/speciesGroup";
 import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
+import { age, breeds, city, options } from "./constants";
 
 // TODO: raça e porte devem mudar de acordo com espécie selecionada
-interface SizeInterface {
-  label: string;
-  value: PetsList["size"];
-}
-const city = [
-  { label: "Rio de Janeiro", value: "Rio de Janeiro" },
-  { label: "São Paulo", value: "São Paulo" },
-  { label: "Seropédica", value: "Seropédica" },
-];
+// TODO: add husky
 
-const options: SizeInterface[] = [
-  { label: "Pequeno (até 10kg)", value: "Pequeno" },
-  { label: "Médio (10 - 25kg)", value: "Médio" },
-  { label: "Grande (25 - 45kg)", value: "Grande" },
-  { label: "Gigante (45kg >)", value: "Gigante" },
-];
-interface AgeInterface {
-  label: string;
-  value: PetsList["age"];
-}
-
-const age: AgeInterface[] = [
-  { label: "filhote (0 - 06 meses)", value: "Filhote" },
-  { label: "jovem (06 meses - 2 anos)", value: "Jovem" },
-  { label: "adulto (2 - 8 anos)", value: "Adulto" },
-  { label: "sênior (acima de 8 anos)", value: "Sênior" },
-];
-const breeds = dogsBreed.map((breed) => {
-  const label = breed.name;
-  const value = breed.name;
-
-  return { label, value };
-});
 
 export default function Registration() {
   const [size, setSize] = useState<PetsList["size"]>("Pequeno");
