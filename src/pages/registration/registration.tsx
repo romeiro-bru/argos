@@ -7,12 +7,15 @@ import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
 import { age, breeds, city, options } from "./constants";
+import { useNavigate } from "react-router-dom";
+import { appRoutes } from "../../routes";
 
 // TODO: raça e porte devem mudar de acordo com espécie selecionada
 // TODO: add husky
 
 
 export default function Registration() {
+  const navigate = useNavigate()
   const [size, setSize] = useState<PetsList["size"]>("Pequeno");
   const [selectedGender, setSelectedGender] =
     useState<PetsList["gender"]>("Fêmea");
@@ -60,7 +63,7 @@ export default function Registration() {
           >
             submit
           </button>
-          <button type="button" className="cursor-pointer bg-[var(--gray)] shadow-md font-semibold text-white rounded-lg py-2 px-6">
+          <button onClick={() => navigate(appRoutes.HOME.path)} type="button" className="cursor-pointer bg-[var(--gray)] shadow-md font-semibold text-white rounded-lg py-2 px-6">
             cancelar
           </button>
         </div>
