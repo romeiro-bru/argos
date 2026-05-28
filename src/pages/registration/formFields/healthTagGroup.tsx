@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TagCheckbox } from "./tagCheckbox";
+import { TagCheckbox } from "../../common/components/tagCheckbox";
 
 const health = [
   { label: "Castrado", value: "neutered" },
@@ -29,7 +29,7 @@ export function HealthTagGroup() {
             label={option.label}
             checked={selected.has(option.value)}
             onChange={() => toggle(option.value)}
-            color="green"
+            color="purple"
           />
         ))}
       </div>

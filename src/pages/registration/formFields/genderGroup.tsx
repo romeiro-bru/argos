@@ -1,5 +1,5 @@
 import type { PetsList } from "../../home/types";
-import { TagCheckbox } from "./tagCheckbox";
+import { TagCheckbox } from "../../common/components/tagCheckbox";
 
 interface GenderGroupProps {
   selectedGender: PetsList["gender"];

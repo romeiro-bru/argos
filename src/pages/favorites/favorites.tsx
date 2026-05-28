@@ -26,7 +26,7 @@ export default function Favorites() {
         <Card list={foundFavorites(list, favorites)} />
       ) : (
         <NoData
-          text="Você ainda não tem nenhum aumigo favorito."
+          text="Você ainda não tem um aumigo favorito."
           supportText="Volte para a página inicial e favorite um amigo!"
         />
       )}
