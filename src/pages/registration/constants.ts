@@ -1,5 +1,6 @@
 import type { PetsList } from "../home/types";
 import dogsBreed from "../../dogsBreed.json";
+import type { ApiResponse } from "./service/service";
 
 interface SizeInterface {
   label: string;
@@ -10,6 +11,13 @@ interface AgeInterface {
   value: PetsList["age"];
 }
 
+export const stateOptions = (states: ApiResponse[]) =>
+  states.map((state) => {
+    const label = state.sigla;
+    const value = state.sigla;
+
+    return { label, value };
+  });
 
 export const city = [
   { label: "Rio de Janeiro", value: "Rio de Janeiro" },

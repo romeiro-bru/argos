@@ -6,13 +6,15 @@ import { SpeciesGroup } from "./formFields/speciesGroup";
 import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
-import { age, breeds, city, options } from "./constants";
+import { age, breeds, city, options, stateOptions } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { Upload } from "../../assets/upload";
+import { useGetStates } from "./hooks/useGetStates";
 
 // TODO: raça e porte devem mudar de acordo com espécie selecionada
 // TODO: add husky
+
 
 export default function Registration() {
   const navigate = useNavigate();
@@ -22,6 +24,8 @@ export default function Registration() {
   const [species, setSpecies] = useState<PetsList["species"]>("Cachorro");
   const [temperament, setTemperament] = useState<PetsList["temperament"]>([]);
   const [fileName, setFileName] = useState<string | null>(null);
+
+  const { states, error, loading } = useGetStates();
 
   return (
     <main>
@@ -42,8 +46,13 @@ export default function Registration() {
               setSelectedGender={setSelectedGender}
             />
             <HealthTagGroup />
-            <Select label="Estado:" options={city} onChange={() => {}} />
-            <Select label="Cidade:" options={city} onChange={() => {}} />
+            <Select
+              disabled={loading}
+              label="Estado:"
+              options={stateOptions(states)}
+              onChange={() => {}}
+            />
+            <Select disabled={loading} label="Cidade:" options={city} onChange={() => {}} />
 
             {species === "Cachorro" && (
               <Select
