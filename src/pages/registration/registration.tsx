@@ -6,15 +6,22 @@ import { SpeciesGroup } from "./formFields/speciesGroup";
 import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
-import { age, breeds, city, options, stateOptions } from "./constants";
+import {
+  age,
+  breeds,
+  city,
+  districtsOptions,
+  options,
+  stateOptions,
+} from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { Upload } from "../../assets/upload";
 import { useGetStates } from "./hooks/useGetStates";
+import { useGetDistricts } from "./hooks/useGetDistricts";
 
 // TODO: raça e porte devem mudar de acordo com espécie selecionada
 // TODO: add husky
-
 
 export default function Registration() {
   const navigate = useNavigate();
@@ -24,8 +31,10 @@ export default function Registration() {
   const [species, setSpecies] = useState<PetsList["species"]>("Cachorro");
   const [temperament, setTemperament] = useState<PetsList["temperament"]>([]);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [state, setState] = useState("");
 
   const { states, error, loading } = useGetStates();
+  const { districts, loading: isLoading } = useGetDistricts({ UF: state });
 
   return (
     <main>
@@ -50,9 +59,14 @@ export default function Registration() {
               disabled={loading}
               label="Estado:"
               options={stateOptions(states)}
+              onChange={(value) => setState(value)}
+            />
+            <Select
+              disabled={loading || isLoading || districts.length === 0}
+              label="Cidade:"
+              options={districtsOptions(districts)}
               onChange={() => {}}
             />
-            <Select disabled={loading} label="Cidade:" options={city} onChange={() => {}} />
 
             {species === "Cachorro" && (
               <Select
