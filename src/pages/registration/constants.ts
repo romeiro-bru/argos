@@ -1,6 +1,6 @@
 import type { PetsList } from "../home/types";
 import dogsBreed from "../../dogsBreed.json";
-import type { ApiResponse } from "./service/service";
+import type { ApiResponse } from "./types";
 
 interface SizeInterface {
   label: string;
