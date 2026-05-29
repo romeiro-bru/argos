@@ -1,10 +1,14 @@
 import axios from "axios";
 import type { ApiResponse } from "../types";
 
-const url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
+const api = axios.create({
+  baseURL: "https://servicodados.ibge.gov.br/api/v1/localidades",
+});
 
 async function getStates(): Promise<ApiResponse[]> {
-  const response = await axios.get(url);
+  const url = "/estados";
+  
+  const response = await api.get(url);
 
   if (response.status !== 200) {
     throw new Error("Erro ao buscar dados de Estados.");
