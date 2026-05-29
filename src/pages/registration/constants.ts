@@ -1,6 +1,6 @@
 import type { PetsList } from "../home/types";
 import dogsBreed from "../../dogsBreed.json";
-import type { ApiResponse } from "./types";
+import type { ApiResponse, DistrictResponse } from "./types";
 
 interface SizeInterface {
   label: string;
@@ -12,9 +12,17 @@ interface AgeInterface {
 }
 
 export const stateOptions = (states: ApiResponse[]) =>
-  states.map((state) => {
-    const label = state.sigla;
+  states.sort((a, b) => a.sigla.localeCompare(b.sigla)).map((state) => {
+    const label = `${state.sigla} - ${state.nome}` ;
     const value = state.sigla;
+
+    return { label, value };
+  });
+
+export const districtsOptions = (districts: DistrictResponse[]) =>
+  districts.sort((a, b) => a.nome.localeCompare(b.nome)).map((district) => {
+    const label = district.nome;
+    const value = district.nome;
 
     return { label, value };
   });
