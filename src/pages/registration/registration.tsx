@@ -9,18 +9,19 @@ import { Select } from "../common/components/select";
 import { age, breeds, city, options } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
+import { Upload } from "../../assets/upload";
 
 // TODO: raça e porte devem mudar de acordo com espécie selecionada
 // TODO: add husky
 
-
 export default function Registration() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [size, setSize] = useState<PetsList["size"]>("Pequeno");
   const [selectedGender, setSelectedGender] =
     useState<PetsList["gender"]>("Fêmea");
   const [species, setSpecies] = useState<PetsList["species"]>("Cachorro");
   const [temperament, setTemperament] = useState<PetsList["temperament"]>([]);
+  const [fileName, setFileName] = useState<string | null>(null);
 
   return (
     <main>
@@ -29,7 +30,10 @@ export default function Registration() {
       <form>
         <section className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">
           <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 mb-8">
-            <SpeciesGroup species={species} setSpecies={setSpecies} />
+            <SpeciesGroup
+              species={species}
+              setSpecies={(value) => setSpecies(value)}
+            />
             <NameInputField />
             <Select label="Raça:" options={breeds} onChange={(value) => {}} />
             <Select label="Idade:" options={age} onChange={(value) => {}} />
@@ -48,6 +52,27 @@ export default function Registration() {
                 options={options}
               />
             )}
+            <div>
+              <label className="font-semibold">Imagem:</label>
+              <input
+                id="f2"
+                type="file"
+                className="hidden"
+                onChange={(e) => setFileName(e.target.files?.[0]?.name ?? null)}
+              />
+              <label
+                htmlFor="f2"
+                className="flex items-center gap-2 cursor-pointer p-2 bg-[var(--bg) shadow-md rounded-lg hover:opacity-80 transition-opacity"
+              >
+                <Upload />
+                Escolher imagem
+                {fileName && (
+                  <span className="text-xs italic text-[var(--gray)] px-2">
+                    ✓ {fileName}
+                  </span>
+                )}
+              </label>
+            </div>
           </div>
 
           <fieldset className="flex flex-wrap gap-2">
@@ -63,7 +88,11 @@ export default function Registration() {
           >
             submit
           </button>
-          <button onClick={() => navigate(appRoutes.HOME.path)} type="button" className="cursor-pointer bg-[var(--gray)] shadow-md font-semibold text-white rounded-lg py-2 px-6">
+          <button
+            onClick={() => navigate(appRoutes.HOME.path)}
+            type="button"
+            className="cursor-pointer bg-[var(--gray)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
+          >
             cancelar
           </button>
         </div>
