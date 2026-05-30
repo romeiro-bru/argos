@@ -8,14 +8,14 @@ interface SelectProps {
 export function Select({ label, options, onChange, disabled }: SelectProps) {
   return (
     <fieldset className="flex flex-col gap-2">
-      <label className="font-semibold" htmlFor={label}>
+      <label className={`${disabled ? "text-[var(--gray)]" : ""} font-semibold`} htmlFor={label}>
         {label}
       </label>
       <select
         disabled={disabled}
         onChange={(e) => onChange(e.target.value)}
         id={label}
-        className={`text-sm ${disabled ? "text-gray-300! cursor-not-allowed" : ""}`}
+        className={`text-sm ${disabled ? "text-[var(--gray)]! cursor-not-allowed" : ""}`}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
