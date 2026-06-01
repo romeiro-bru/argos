@@ -9,7 +9,6 @@ import { Select } from "../common/components/select";
 import {
   age,
   breeds,
-  city,
   districtsOptions,
   options,
   stateOptions,

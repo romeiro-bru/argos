@@ -9,11 +9,12 @@ interface UseGetDistrictsProps {
 export function useGetDistricts({ UF }: UseGetDistrictsProps) {
   const [districts, setdistricts] = useState<DistrictResponse[]>([]);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
-    
+    if (!UF) return;
+    setLoading(true);
+
     ServiceLocation.getDistrict({ UF })
       .then(setdistricts)
       .catch((err) => setError(err))
