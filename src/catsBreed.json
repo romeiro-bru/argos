@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "name": "Persa",
+    "origem": "Irã",
+    "grupo": "Pelo Longo",
+    "porte": "Médio",
+    "temperament": ["Calmo", "Carinhoso", "Reservado"],
+    "pelo": "Longo e denso"
+  },
+  {
+    "id": 2,
+    "name": "Maine Coon",
+    "origem": "Estados Unidos",
+    "grupo": "Natural",
+    "porte": "Grande",
+    "temperament": ["Sociável", "Inteligente", "Gentil"],
+    "pelo": "Longo e espesso"
+  },
+  {
+    "id": 3,
+    "name": "Siamês",
+    "origem": "Tailândia",
+    "grupo": "Oriental",
+    "porte": "Médio",
+    "temperament": ["Comunicativo", "Afetuoso", "Ativo"],
+    "pelo": "Curto e fino"
+  },
+  {
+    "id": 4,
+    "name": "Ragdoll",
+    "origem": "Estados Unidos",
+    "grupo": "Pelo Semilongo",
+    "porte": "Grande",
+    "temperament": ["Dócil", "Tranquilo", "Carinhoso"],
+    "pelo": "Semilongo e sedoso"
+  },
+  {
+    "id": 5,
+    "name": "Bengal",
+    "origem": "Estados Unidos",
+    "grupo": "Híbrido",
+    "porte": "Médio",
+    "temperament": ["Energético", "Curioso", "Inteligente"],
+    "pelo": "Curto e macio"
+  },
+  {
+    "id": 6,
+    "name": "British Shorthair",
+    "origem": "Reino Unido",
+    "grupo": "Pelo Curto",
+    "porte": "Médio",
+    "temperament": ["Calmo", "Independente", "Leal"],
+    "pelo": "Curto e denso"
+  },
+  {
+    "id": 7,
+    "name": "Sphynx",
+    "origem": "Canadá",
+    "grupo": "Sem Pelo",
+    "porte": "Médio",
+    "temperament": ["Extrovertido", "Afetuoso", "Brincalhão"],
+    "pelo": "Ausente"
+  },
+  {
+    "id": 8,
+    "name": "Scottish Fold",
+    "origem": "Escócia",
+    "grupo": "Pelo Curto",
+    "porte": "Médio",
+    "temperament": ["Doce", "Calmo", "Adaptável"],
+    "pelo": "Curto e macio"
+  },
+  {
+    "id": 9,
+    "name": "Norueguês da Floresta",
+    "origem": "Noruega",
+    "grupo": "Natural",
+    "porte": "Grande",
+    "temperament": ["Independente", "Amigável", "Corajoso"],
+    "pelo": "Longo e impermeável"
+  },
+  {
+    "id": 10,
+    "name": "Abissínio",
+    "origem": "Etiópia",
+    "grupo": "Pelo Curto",
+    "porte": "Médio",
+    "temperament": ["Ativo", "Curioso", "Inteligente"],
+    "pelo": "Curto e sedoso"
+  },
+  {
+    "id": 11,
+    "name": "Birmanês",
+    "origem": "Mianmar",
+    "grupo": "Pelo Semilongo",
+    "porte": "Médio",
+    "temperament": ["Gentil", "Afetuoso", "Sociável"],
+    "pelo": "Semilongo e sedoso"
+  },
+  {
+    "id": 12,
+    "name": "Russian Blue",
+    "origem": "Rússia",
+    "grupo": "Pelo Curto",
+    "porte": "Médio",
+    "temperament": ["Reservado", "Leal", "Inteligente"],
+    "pelo": "Curto e aveludado"
+  },
+  {
+    "id": 13,
+    "name": "Bombay",
+    "origem": "Estados Unidos",
+    "grupo": "Pelo Curto",
+    "porte": "Médio",
+    "temperament": ["Afetuoso", "Brincalhão", "Sociável"],
+    "pelo": "Curto e brilhante"
+  },
+  {
+    "id": 14,
+    "name": "Exotic Shorthair",
+    "origem": "Estados Unidos",
+    "grupo": "Pelo Curto",
+    "porte": "Médio",
+    "temperament": ["Calmo", "Carinhoso", "Gentil"],
+    "pelo": "Curto e denso"
+  },
+  {
+    "id": 15,
+    "name": "Angorá Turco",
+    "origem": "Turquia",
+    "grupo": "Pelo Longo",
+    "porte": "Médio",
+    "temperament": ["Elegante", "Ativo", "Inteligente"],
+    "pelo": "Longo e sedoso"
+  }
+]
