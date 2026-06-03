@@ -17,7 +17,13 @@ export function useGetDistricts({ UF }: UseGetDistrictsProps) {
 
     ServiceLocation.getDistrict({ UF })
       .then(setdistricts)
-      .catch((err) => setError(err))
+      .catch((err: unknown) => {
+        const message =
+          err instanceof Error
+            ? err.message
+            : String(err ?? "Erro ao buscar distritos");
+        setError(message);
+      })
       .finally(() => setLoading(false));
   }, [UF]);
 
