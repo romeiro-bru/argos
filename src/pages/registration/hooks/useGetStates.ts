@@ -10,7 +10,13 @@ export function useGetStates() {
   useEffect(() => {
     ServiceLocation.getStates()
       .then(setStates)
-      .catch((err) => setError(err))
+      .catch((err: unknown) => {
+        const message =
+          err instanceof Error
+            ? err.message
+            : String(err ?? "Erro ao buscar estados");
+        setError(message);
+      })
       .finally(() => setLoading(false));
   }, []);
 
