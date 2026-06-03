@@ -33,12 +33,6 @@ export const districtsOptions = (districts: DistrictResponse[]) =>
       return { label, value };
     });
 
-export const city = [
-  { label: "Rio de Janeiro", value: "Rio de Janeiro" },
-  { label: "São Paulo", value: "São Paulo" },
-  { label: "Seropédica", value: "Seropédica" },
-];
-
 export const options: SizeInterface[] = [
   { label: "Pequeno (até 10kg)", value: "Pequeno" },
   { label: "Médio (10 - 25kg)", value: "Médio" },
