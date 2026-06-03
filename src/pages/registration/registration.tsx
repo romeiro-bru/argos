@@ -8,7 +8,8 @@ import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
 import {
   age,
-  breeds,
+  dogBreeds,
+  catBreeds,
   districtsOptions,
   options,
   stateOptions,
@@ -47,7 +48,7 @@ export default function Registration() {
               setSpecies={(value) => setSpecies(value)}
             />
             <NameInputField />
-            <Select label="Raça:" options={breeds} onChange={(value) => {}} />
+            <Select label="Raça:" options={species === "Cachorro" ? dogBreeds : catBreeds} onChange={(value) => {}} />
             <Select label="Idade:" options={age} onChange={(value) => {}} />
             <GenderGroup
               selectedGender={selectedGender}

@@ -1,5 +1,7 @@
 import type { PetsList } from "../home/types";
 import dogsBreed from "../../dogsBreed.json";
+import catsBreed from "../../catsBreed.json";
+
 import type { ApiResponse, DistrictResponse } from "./types";
 
 interface SizeInterface {
@@ -12,20 +14,24 @@ interface AgeInterface {
 }
 
 export const stateOptions = (states: ApiResponse[]) =>
-  states.sort((a, b) => a.sigla.localeCompare(b.sigla)).map((state) => {
-    const label = `${state.sigla} - ${state.nome}` ;
-    const value = state.sigla;
+  states
+    .sort((a, b) => a.sigla.localeCompare(b.sigla))
+    .map((state) => {
+      const label = `${state.sigla} - ${state.nome}`;
+      const value = state.sigla;
 
-    return { label, value };
-  });
+      return { label, value };
+    });
 
 export const districtsOptions = (districts: DistrictResponse[]) =>
-  districts.sort((a, b) => a.nome.localeCompare(b.nome)).map((district) => {
-    const label = district.nome;
-    const value = district.nome;
+  districts
+    .sort((a, b) => a.nome.localeCompare(b.nome))
+    .map((district) => {
+      const label = district.nome;
+      const value = district.nome;
 
-    return { label, value };
-  });
+      return { label, value };
+    });
 
 export const city = [
   { label: "Rio de Janeiro", value: "Rio de Janeiro" },
@@ -47,7 +53,14 @@ export const age: AgeInterface[] = [
   { label: "sênior (acima de 8 anos)", value: "Sênior" },
 ];
 
-export const breeds = dogsBreed.map((breed) => {
+export const dogBreeds = dogsBreed.map((breed) => {
+  const label = breed.name;
+  const value = breed.name;
+
+  return { label, value };
+});
+
+export const catBreeds = catsBreed.map((breed) => {
   const label = breed.name;
   const value = breed.name;
 
