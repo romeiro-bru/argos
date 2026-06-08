@@ -20,9 +20,6 @@ import { Upload } from "../../assets/upload";
 import { useGetStates } from "./hooks/useGetStates";
 import { useGetDistricts } from "./hooks/useGetDistricts";
 
-// TODO: raça e porte devem mudar de acordo com espécie selecionada
-// TODO: add husky
-
 export default function Registration() {
   const navigate = useNavigate();
   const [size, setSize] = useState<PetsList["size"]>("Pequeno");
@@ -100,7 +97,7 @@ export default function Registration() {
 
           <fieldset className="flex flex-wrap gap-2">
             <span className="font-semibold">Temperamento:</span>
-            <TemperamentTagGroup />
+            <TemperamentTagGroup setTemperament={setTemperament} />
           </fieldset>
         </section>
 
