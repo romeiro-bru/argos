@@ -4,7 +4,7 @@ import { vi, describe, it, expect, beforeEach } from "vitest";
 import { useGetDistricts } from "./useGetDistricts";
 import { ServiceLocation } from "../service/service";
 
-vi.mock("../../service/service", () => ({
+vi.mock("../service/service", () => ({
   ServiceLocation: {
     getDistrict: vi.fn(),
   },
