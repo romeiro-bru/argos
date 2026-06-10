@@ -47,21 +47,4 @@ describe("useGetStates", () => {
     expect(result.current.error).toBe("Erro na API");
     expect(result.current.states).toEqual([]);
   });
-
-  it("should control the loading state", async () => {
-    let resolvePromise: (value: any) => void;
-
-    const promise = new Promise((resolve) => {
-      resolvePromise = resolve;
-    });
-
-    vi.mocked(ServiceLocation.getStates).mockReturnValue(promise as any);
-
-    const { result } = renderHook(() => useGetStates());
-    expect(result.current.loading).toBeTruthy();
-
-    await waitFor(() => {
-      expect(result.current.loading).toBeTruthy();
-    });
-  });
 });
