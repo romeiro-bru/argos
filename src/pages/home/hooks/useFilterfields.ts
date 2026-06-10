@@ -12,12 +12,16 @@ interface FiltersValue {
   species: string;
   age: string;
   size: string;
+  city: string;
+  state: string;
 }
 
 const initialValues: FiltersValue = {
   species: "",
   age: "",
   size: "",
+  city: "",
+  state: "",
 };
 
 function reducer(state: FiltersValue, action: FiltersAction): FiltersValue {
