@@ -33,14 +33,14 @@ export const districtsOptions = (districts: DistrictResponse[]) =>
       return { label, value };
     });
 
-export const options: SizeInterface[] = [
+export const sizeOptions: SizeInterface[] = [
   { label: "Pequeno (até 10kg)", value: "Pequeno" },
   { label: "Médio (10 - 25kg)", value: "Médio" },
   { label: "Grande (25 - 45kg)", value: "Grande" },
   { label: "Gigante (45kg >)", value: "Gigante" },
 ];
 
-export const age: AgeInterface[] = [
+export const ageOptions: AgeInterface[] = [
   { label: "filhote (0 - 06 meses)", value: "Filhote" },
   { label: "jovem (06 meses - 2 anos)", value: "Jovem" },
   { label: "adulto (2 - 8 anos)", value: "Adulto" },

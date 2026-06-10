@@ -6,12 +6,12 @@ import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
 import {
-  age,
   dogBreeds,
   catBreeds,
   districtsOptions,
-  options,
   stateOptions,
+  ageOptions,
+  sizeOptions,
 } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
@@ -45,7 +45,7 @@ export default function Registration() {
               options={formState.species === "Cachorro" ? dogBreeds : catBreeds}
               onChange={() => {}}
             />
-            <Select label="Idade:" options={age} onChange={() => {}} />
+            <Select label="Idade:" options={ageOptions} onChange={() => {}} />
             <GenderGroup
               selectedGender={formState.gender}
               setSelectedGender={(value) => setField("gender", value)}
@@ -75,7 +75,7 @@ export default function Registration() {
                   setField("species", value as PetsList["size"])
                 }
                 label="Porte:"
-                options={options}
+                options={sizeOptions}
               />
             )}
             <div>
