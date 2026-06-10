@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import type { FormAction, FormState } from "../types";
 
 const initialState: FormState = {
+  name: "",
   size: "Pequeno",
   gender: "Fêmea",
   species: "Cachorro",
@@ -11,7 +12,9 @@ const initialState: FormState = {
   city: "",
   breed: "",
   age: "",
-  name: "",
+  neutered: false,
+  vaccinated: false,
+  dewormed: false,
 };
 
 function formReducer(state: FormState, action: FormAction): FormState {
