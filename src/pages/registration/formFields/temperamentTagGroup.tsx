@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { TagCheckbox } from "../../common/components/tagCheckbox";
 import dogsBreed from "../../../dogsBreed.json";
+import type { PetsList } from "../../home/types";
 
 interface TemperamentTagGroupProps {
-  setTemperament: React.Dispatch<React.SetStateAction<string[]>>;
+  setTemperament: (value: PetsList["temperament"]) => void;
 }
 
 const temper = [...new Set(dogsBreed.flatMap((b) => b.temperament))];

@@ -3,7 +3,7 @@ import { TagCheckbox } from "../../common/components/tagCheckbox";
 
 interface SpeciesGroupProps {
   species: PetsList["species"];
-  setSpecies: React.Dispatch<React.SetStateAction<PetsList["species"]>>;
+  setSpecies: (value: PetsList["species"]) => void;
 }
 
 export function SpeciesGroup({ species, setSpecies }: SpeciesGroupProps) {

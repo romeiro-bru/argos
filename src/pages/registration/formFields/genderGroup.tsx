@@ -3,7 +3,7 @@ import { TagCheckbox } from "../../common/components/tagCheckbox";
 
 interface GenderGroupProps {
   selectedGender: PetsList["gender"];
-  setSelectedGender: React.Dispatch<React.SetStateAction<PetsList["gender"]>>;
+  setSelectedGender: (value: PetsList["gender"]) => void;
 }
 
 export function GenderGroup({

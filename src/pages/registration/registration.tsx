@@ -1,5 +1,4 @@
 import type { PetsList } from "../home/types";
-import { useState } from "react";
 import { HealthTagGroup } from "./formFields/healthTagGroup";
 import { TemperamentTagGroup } from "./formFields/temperamentTagGroup";
 import { SpeciesGroup } from "./formFields/speciesGroup";
@@ -19,19 +18,15 @@ import { appRoutes } from "../../routes";
 import { Upload } from "../../assets/upload";
 import { useGetStates } from "./hooks/useGetStates";
 import { useGetDistricts } from "./hooks/useGetDistricts";
+import { useRegistrationForm } from "./hooks/useRegistrationForm";
 
 export default function Registration() {
+  const { formState, setField } = useRegistrationForm();
   const navigate = useNavigate();
-  const [size, setSize] = useState<PetsList["size"]>("Pequeno");
-  const [selectedGender, setSelectedGender] =
-    useState<PetsList["gender"]>("Fêmea");
-  const [species, setSpecies] = useState<PetsList["species"]>("Cachorro");
-  const [temperament, setTemperament] = useState<PetsList["temperament"]>([]);
-  const [fileName, setFileName] = useState<string | null>(null);
-  const [state, setState] = useState("");
-
-  const { states, error, loading } = useGetStates();
-  const { districts, loading: isLoading } = useGetDistricts({ UF: state });
+  const { states, loading } = useGetStates();
+  const { districts, loading: isLoading } = useGetDistricts({
+    UF: formState.state,
+  });
 
   return (
     <main>
@@ -41,22 +36,26 @@ export default function Registration() {
         <section className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">
           <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 mb-8">
             <SpeciesGroup
-              species={species}
-              setSpecies={(value) => setSpecies(value)}
+              species={formState.species}
+              setSpecies={(value) => setField("species", value)}
             />
             <NameInputField />
-            <Select label="Raça:" options={species === "Cachorro" ? dogBreeds : catBreeds} onChange={(value) => {}} />
-            <Select label="Idade:" options={age} onChange={(value) => {}} />
+            <Select
+              label="Raça:"
+              options={formState.species === "Cachorro" ? dogBreeds : catBreeds}
+              onChange={() => {}}
+            />
+            <Select label="Idade:" options={age} onChange={() => {}} />
             <GenderGroup
-              selectedGender={selectedGender}
-              setSelectedGender={setSelectedGender}
+              selectedGender={formState.gender}
+              setSelectedGender={(value) => setField("gender", value)}
             />
             <HealthTagGroup />
             <Select
               disabled={loading}
               label="Estado:"
               options={stateOptions(states)}
-              onChange={(value) => setState(value)}
+              onChange={(value) => setField("state", value)}
             />
             <Select
               disabled={loading || isLoading || districts.length === 0}
@@ -65,9 +64,11 @@ export default function Registration() {
               onChange={() => {}}
             />
 
-            {species === "Cachorro" && (
+            {formState.species === "Cachorro" && (
               <Select
-                onChange={(value) => setSize(value as PetsList["size"])}
+                onChange={(value) =>
+                  setField("species", value as PetsList["size"])
+                }
                 label="Porte:"
                 options={options}
               />
@@ -78,7 +79,9 @@ export default function Registration() {
                 id="f2"
                 type="file"
                 className="hidden"
-                onChange={(e) => setFileName(e.target.files?.[0]?.name ?? null)}
+                onChange={(e) =>
+                  setField("fileName", e.target.files?.[0]?.name ?? null)
+                }
               />
               <label
                 htmlFor="f2"
@@ -86,9 +89,9 @@ export default function Registration() {
               >
                 <Upload />
                 Escolher imagem
-                {fileName && (
+                {formState.fileName && (
                   <span className="text-xs italic text-[var(--gray)] px-2">
-                    ✓ {fileName}
+                    ✓ {formState.fileName}
                   </span>
                 )}
               </label>
@@ -97,7 +100,9 @@ export default function Registration() {
 
           <fieldset className="flex flex-wrap gap-2">
             <span className="font-semibold">Temperamento:</span>
-            <TemperamentTagGroup setTemperament={setTemperament} />
+            <TemperamentTagGroup
+              setTemperament={(value) => setField("temperament", value)}
+            />
           </fieldset>
         </section>
 
