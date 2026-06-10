@@ -50,7 +50,12 @@ export default function Registration() {
               selectedGender={formState.gender}
               setSelectedGender={(value) => setField("gender", value)}
             />
-            <HealthTagGroup />
+            <HealthTagGroup
+              dewormed={formState.dewormed}
+              neutered={formState.neutered}
+              vaccinated={formState.vaccinated}
+              onChange={(field, value) => setField(field, value)}
+            />
             <Select
               disabled={loading}
               label="Estado:"

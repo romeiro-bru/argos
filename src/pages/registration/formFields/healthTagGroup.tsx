@@ -1,23 +1,26 @@
-import { useState } from "react";
 import { TagCheckbox } from "../../common/components/tagCheckbox";
 
-const health = [
-  { label: "Castrado", value: "neutered" },
-  { label: "Vacinado", value: "vaccinated" },
-  { label: "Vermifugado", value: "dewormed" },
-];
+interface HealthTagGroupProps {
+  neutered: boolean;
+  vaccinated: boolean;
+  dewormed: boolean;
+  onChange: (
+    field: "neutered" | "vaccinated" | "dewormed",
+    value: boolean,
+  ) => void;
+}
 
-export function HealthTagGroup() {
-  const [selected, setSelected] = useState<Set<string>>(
-    new Set(["Castrado", "Vacinado"]),
-  );
-
-  const toggle = (label: string) =>
-    setSelected((prev) => {
-      const next = new Set(prev);
-      next.has(label) ? next.delete(label) : next.add(label);
-      return next;
-    });
+export function HealthTagGroup({
+  dewormed,
+  neutered,
+  vaccinated,
+  onChange,
+}: HealthTagGroupProps) {
+  const health = [
+    { label: "Castrado", field: "neutered" as const, value: neutered },
+    { label: "Vacinado", field: "vaccinated" as const, value: vaccinated },
+    { label: "Vermifugado", field: "dewormed" as const, value: dewormed },
+  ];
 
   return (
     <div className="flex flex-col gap-2">
@@ -25,10 +28,10 @@ export function HealthTagGroup() {
       <div className="flex flex-wrap gap-2">
         {health.map((option) => (
           <TagCheckbox
-            key={option.value}
+            key={option.field}
             label={option.label}
-            checked={selected.has(option.value)}
-            onChange={() => toggle(option.value)}
+            checked={option.value}
+            onChange={() => onChange(option.field, !option.value)}
             color="purple"
           />
         ))}
