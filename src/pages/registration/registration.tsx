@@ -8,17 +8,16 @@ import { Select } from "../common/components/select";
 import {
   dogBreeds,
   catBreeds,
-  districtsOptions,
-  stateOptions,
   ageOptions,
   sizeOptions,
 } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { Upload } from "../../assets/upload";
-import { useGetStates } from "./hooks/useGetStates";
-import { useGetDistricts } from "./hooks/useGetDistricts";
 import { useRegistrationForm } from "./hooks/useRegistrationForm";
+import { districtsOptions, stateOptions } from "../common/constants";
+import { useGetStates } from "../common/hooks/useGetStates";
+import { useGetDistricts } from "../common/hooks/useGetDistricts";
 
 export default function Registration() {
   const { formState, setField } = useRegistrationForm();

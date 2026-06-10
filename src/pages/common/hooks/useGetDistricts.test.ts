@@ -2,9 +2,9 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 
 import { useGetDistricts } from "./useGetDistricts";
-import { ServiceLocation } from "../../common/service/service";
+import { ServiceLocation } from "../service/service";
 
-vi.mock("../../common/service/service", () => ({
+vi.mock("../../service/service", () => ({
   ServiceLocation: {
     getDistrict: vi.fn(),
   },

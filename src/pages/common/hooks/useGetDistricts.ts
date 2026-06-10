@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ServiceLocation } from "../../common/service/service";
-import type { DistrictResponse } from "../types";
+import type { DistrictResponse } from "../service/types";
 
 interface UseGetDistrictsProps {
   UF: string;
