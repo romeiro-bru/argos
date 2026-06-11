@@ -1,4 +1,4 @@
-import type { PetsList } from "./types";
+import type { PetsList } from "../common/types";
 
 interface SizeInterface {
   label: string;

@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import type { PetsList } from "../types";
+import type { PetsList } from "../../common/types";
 import data from "../../pets.json";
 import type { FiltersAction, FiltersValue } from "./types";
 

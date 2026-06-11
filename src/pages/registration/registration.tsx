@@ -1,4 +1,4 @@
-import type { PetsList } from "../home/types";
+import type { PetsList } from "../common/types";
 import { HealthTagGroup } from "./formFields/healthTagGroup";
 import { TemperamentTagGroup } from "./formFields/temperamentTagGroup";
 import { SpeciesGroup } from "./formFields/speciesGroup";

@@ -1,4 +1,4 @@
-import type { PetsList } from "../home/types";
+import type { PetsList } from "../common/types";
 
 export type FormAction =
   | {

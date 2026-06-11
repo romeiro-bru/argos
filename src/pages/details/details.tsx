@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import list from "../pets.json";
 import { useEffect, useState } from "react";
-import type { PetsList } from "../home/types";
+import type { PetsList } from "../common/types";
 import { NoData } from "../../components/noData";
 import { Check } from "../../assets/check";
 import { Pin } from "../../assets/pin";
