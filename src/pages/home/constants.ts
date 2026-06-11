@@ -10,7 +10,7 @@ interface AgeInterface {
 }
 
 export const ageOptions: AgeInterface[] = [
-  { label: "Todas", value: "" },
+  { label: "-", value: "" },
 
   { label: "filhote (0 - 06 meses)", value: "Filhote" },
   { label: "jovem (06 meses - 2 anos)", value: "Jovem" },
@@ -18,12 +18,12 @@ export const ageOptions: AgeInterface[] = [
   { label: "sênior (acima de 8 anos)", value: "Sênior" },
 ];
 export const species = [
-  { label: "Todos", value: "" },
+  { label: "-", value: "" },
   { label: "Cachorro", value: "Cachorro" },
   { label: "Gato", value: "Gato" },
 ];
 export const sizeOptions: SizeInterface[] = [
-  { label: "Todos", value: "" },
+  { label: "-", value: "" },
 
   { label: "Pequeno (até 10kg)", value: "Pequeno" },
   { label: "Médio (10 - 25kg)", value: "Médio" },
