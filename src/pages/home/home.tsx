@@ -1,39 +1,25 @@
 import { NoData } from "../../components/noData";
 import { Card } from "../common/components/card";
 import { Select } from "../common/components/select";
-import data from "../pets.json";
 import { ageOptions, sizeOptions, species } from "./constants";
-import type { PetsList } from "./types";
 import { useFilterFields } from "./hooks/useFilterfields";
 import { districtsOptions, stateOptions } from "../common/constants";
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
 import { useGetStates } from "../common/hooks/useGetStates";
 
 export default function Home() {
-  const { filters, setField, reset } = useFilterFields();
-  const { states, loading } = useGetStates();
+  const { filters, setField, reset, filteredList } = useFilterFields();
 
+  const { states, loading } = useGetStates();
   const { districts, loading: isLoading } = useGetDistricts({
     UF: filters.state,
-  });
-
-  const list = data as PetsList[];
-
-  const filteredList = list.filter((pet) => {
-    // filtro ativo? o pet atende a condição do filtro para ser incluído na lista filtrada?
-    if (filters.species && pet.species !== filters.species) return false;
-    if (filters.age && pet.age !== filters.age) return false;
-    if (filters.size && pet.size !== filters.size) return false;
-    if (filters.state && pet.state !== filters.state) return false;
-    if (filters.city && pet.city !== filters.city) return false;
-    return true;
   });
 
   return (
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
 
-      <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
+      <form className="sticky top-0 z-10 bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
         <div className="flex flex-wrap gap-4 ">
           <Select
             label="Espécie:"
@@ -70,8 +56,8 @@ export default function Home() {
 
         <button
           onClick={() => reset()}
-          type="button"
-          className="cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-xs text-white rounded-lg px-4 py-2 mt-8"
+          type="reset"
+          className="cursor-pointer bg-[var(--primary-color)] shadow-md font-semibold text-xs text-white rounded-lg px-4 py-2 mt-8"
         >
           limpar filtros
         </button>
