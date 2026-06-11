@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ServiceLocation } from "../../common/service/service";
-import type { ApiResponse } from "../types";
+import type { ApiResponse } from "../../registration/types";
 
 export function useGetStates() {
   const [states, setStates] = useState<ApiResponse[]>([]);
