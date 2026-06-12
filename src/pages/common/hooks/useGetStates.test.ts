@@ -1,5 +1,5 @@
 import { vi, describe, it, expect, beforeEach } from "vitest";
-import { ServiceLocation } from "../service/service";
+import { ServiceLocation } from "../../common/service/service";
 import { renderHook, waitFor } from "@testing-library/react";
 import { useGetStates } from "./useGetStates";
 

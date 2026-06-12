@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { Tooltip } from "../../../components/tooltip/tooltip";
-import type { PetsList } from "../../home/types";
+import type { PetsList } from "../types";
 import { FavoriteButton } from "./favoriteButton";
 import { female } from "../../../assets/female";
 import { male } from "../../../assets/male";

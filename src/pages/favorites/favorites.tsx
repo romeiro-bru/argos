@@ -1,6 +1,6 @@
 import data from "../pets.json";
 import { Card } from "../common/components/card";
-import type { PetsList } from "../home/types";
+import type { PetsList } from "../common/types";
 import { NoData } from "../../components/noData";
 import {
   FavoritesContext,

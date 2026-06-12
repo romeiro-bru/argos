@@ -1,4 +1,4 @@
-import type { PetsList } from "../home/types";
+import type { PetsList } from "../common/types";
 
 export type FormAction =
   | {
@@ -30,15 +30,6 @@ export interface ApiResponse {
   regiao?: {
     id: number;
     sigla: string;
-    nome: string;
-  };
-}
-
-export interface DistrictResponse {
-  id: number;
-  nome: string;
-  municipoio: {
-    id: number;
     nome: string;
   };
 }

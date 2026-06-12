@@ -1,4 +1,4 @@
-import type { PetsList } from "../home/types";
+import type { PetsList } from "../common/types";
 import { foundFavorites } from "./favorites";
 
 const list: PetsList[] = [

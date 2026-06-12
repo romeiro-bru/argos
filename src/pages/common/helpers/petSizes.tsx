@@ -2,7 +2,7 @@ import { Gigantic } from "../../../assets/gigantic";
 import { Large } from "../../../assets/large";
 import { Medium } from "../../../assets/medium";
 import { Small } from "../../../assets/small";
-import type { PetsList } from "../../home/types";
+import type { PetsList } from "../types";
 
 type SizesType = Pick<PetsList, "size">;
 

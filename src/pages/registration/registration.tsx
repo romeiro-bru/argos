@@ -1,4 +1,4 @@
-import type { PetsList } from "../home/types";
+import type { PetsList } from "../common/types";
 import { HealthTagGroup } from "./formFields/healthTagGroup";
 import { TemperamentTagGroup } from "./formFields/temperamentTagGroup";
 import { SpeciesGroup } from "./formFields/speciesGroup";
@@ -6,19 +6,18 @@ import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
 import {
-  age,
   dogBreeds,
   catBreeds,
-  districtsOptions,
-  options,
-  stateOptions,
+  ageOptions,
+  sizeOptions,
 } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { Upload } from "../../assets/upload";
-import { useGetStates } from "./hooks/useGetStates";
-import { useGetDistricts } from "./hooks/useGetDistricts";
 import { useRegistrationForm } from "./hooks/useRegistrationForm";
+import { districtsOptions, stateOptions } from "../common/constants";
+import { useGetStates } from "../common/hooks/useGetStates";
+import { useGetDistricts } from "../common/hooks/useGetDistricts";
 
 export default function Registration() {
   const { formState, setField } = useRegistrationForm();
@@ -45,7 +44,7 @@ export default function Registration() {
               options={formState.species === "Cachorro" ? dogBreeds : catBreeds}
               onChange={() => {}}
             />
-            <Select label="Idade:" options={age} onChange={() => {}} />
+            <Select label="Idade:" options={ageOptions} onChange={() => {}} />
             <GenderGroup
               selectedGender={formState.gender}
               setSelectedGender={(value) => setField("gender", value)}
@@ -75,7 +74,7 @@ export default function Registration() {
                   setField("species", value as PetsList["size"])
                 }
                 label="Porte:"
-                options={options}
+                options={sizeOptions}
               />
             )}
             <div>
