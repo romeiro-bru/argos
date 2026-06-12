@@ -1,8 +1,22 @@
 import { act, render, screen } from "@testing-library/react";
 import Registration from "./registration";
 import { MemoryRouter } from "react-router-dom";
+import { appRoutes } from "../../routes";
+import userEvent from "@testing-library/user-event";
+
+const mockNavigate = vi.fn();
+
+vi.mock(import("react-router-dom"), async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  };
+});
 
 describe("Registration Page", () => {
+  beforeEach(() => mockNavigate.mockClear());
+
   it("should render page title", () => {
     render(
       <MemoryRouter>
@@ -45,5 +59,18 @@ describe("Registration Page", () => {
     expect(
       screen.queryByRole("combobox", { name: "Porte:" }),
     ).not.toBeInTheDocument();
+  });
+
+  it("should navigate to home page when cancel button is clicked", async () => {
+    render(
+      <MemoryRouter>
+        <Registration />
+      </MemoryRouter>,
+    );
+
+    await userEvent.click(screen.getByRole("button", { name: "cancelar" }));
+
+    expect(mockNavigate).toHaveBeenCalledWith(appRoutes.HOME.path);
+    expect(mockNavigate).toHaveBeenCalledTimes(1);
   });
 });
