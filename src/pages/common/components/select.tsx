@@ -4,12 +4,23 @@ interface SelectProps {
   onChange: (value: string) => void;
   disabled?: boolean;
   className?: string;
+  error?: string;
 }
 
-export function Select({ label, options, onChange, disabled, className }: SelectProps) {
+export function Select({
+  label,
+  options,
+  onChange,
+  disabled,
+  className,
+  error,
+}: SelectProps) {
   return (
     <fieldset className={`flex flex-col gap-2 ${className}`}>
-      <label className={`${disabled ? "text-[var(--gray)]" : ""} font-semibold`} htmlFor={label}>
+      <label
+        className={`${disabled ? "text-[var(--gray)]" : ""} font-semibold`}
+        htmlFor={label}
+      >
         {label}
       </label>
       <select
@@ -24,6 +35,7 @@ export function Select({ label, options, onChange, disabled, className }: Select
           </option>
         ))}
       </select>
+      <span className="text-[var(--error)] italic text-xs">{error}</span>
     </fieldset>
   );
 }
