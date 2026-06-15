@@ -5,6 +5,7 @@ import type { PetsList } from "../../common/types";
 
 interface TemperamentTagGroupProps {
   setTemperament: (value: PetsList["temperament"]) => void;
+  error?: string;
 }
 
 const temper = [...new Set(dogsBreed.flatMap((b) => b.temperament))];
@@ -21,6 +22,7 @@ export const toggle = (
 
 export function TemperamentTagGroup({
   setTemperament,
+  error,
 }: TemperamentTagGroupProps) {
   const [selected, setSelected] = useState<Set<string>>(new Set([]));
 
@@ -39,6 +41,7 @@ export function TemperamentTagGroup({
           color="purple"
         />
       ))}
+      <span className="text-[var(--error)] italic text-xs">{error}</span>
     </div>
   );
 }

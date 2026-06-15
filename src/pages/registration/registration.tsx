@@ -1,4 +1,3 @@
-import type { PetsList } from "../common/types";
 import { HealthTagGroup } from "./formFields/healthTagGroup";
 import { TemperamentTagGroup } from "./formFields/temperamentTagGroup";
 import { SpeciesGroup } from "./formFields/speciesGroup";
@@ -15,7 +14,7 @@ import { useGetStates } from "../common/hooks/useGetStates";
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
 
 export default function Registration() {
-  const { formState, setField } = useRegistrationForm();
+  const { formState, setField, errors, validateForm } = useRegistrationForm();
   const navigate = useNavigate();
   const { states, loading } = useGetStates();
   const { districts, loading: isLoading } = useGetDistricts({
@@ -24,7 +23,12 @@ export default function Registration() {
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    console.log({ formState });
+    if (!validateForm()) return; // segue com o submit
   };
+
+  console.log({ errors });
 
   return (
     <main>
@@ -37,7 +41,10 @@ export default function Registration() {
               species={formState.species}
               setSpecies={(value) => setField("species", value)}
             />
-            <NameInputField onChange={(value) => setField("name", value)} />
+            <NameInputField
+              onChange={(value) => setField("name", value)}
+              error={errors.name}
+            />
             <Select
               label="Raça:"
               options={formState.species === "Cachorro" ? dogBreeds : catBreeds}
@@ -63,12 +70,14 @@ export default function Registration() {
               label="Estado:"
               options={stateOptions(states)}
               onChange={(value) => setField("state", value)}
+              error={errors.state}
             />
             <Select
               disabled={loading || isLoading || districts.length === 0}
               label="Cidade:"
               options={districtsOptions(districts)}
               onChange={(value) => setField("city", value)}
+              error={errors.city}
             />
 
             {formState.species === "Cachorro" && (
@@ -84,8 +93,9 @@ export default function Registration() {
                 id="f2"
                 type="file"
                 className="hidden"
+                accept="image/jpeg"
                 onChange={(e) =>
-                  setField("fileName", e.target.files?.[0]?.name ?? null)
+                  setField("fileName", e.target.files?.[0]?.name || "")
                 }
               />
               <label
@@ -100,6 +110,9 @@ export default function Registration() {
                   </span>
                 )}
               </label>
+              <span className="text-[var(--error)] italic text-xs">
+                {errors.fileName}
+              </span>
             </div>
           </div>
 
@@ -107,6 +120,7 @@ export default function Registration() {
             <span className="font-semibold">Temperamento:</span>
             <TemperamentTagGroup
               setTemperament={(value) => setField("temperament", value)}
+              error={errors.temperament}
             />
           </fieldset>
         </section>
