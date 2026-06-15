@@ -24,7 +24,6 @@ export default function Registration() {
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formState);
   };
 
   return (
@@ -74,9 +73,7 @@ export default function Registration() {
 
             {formState.species === "Cachorro" && (
               <Select
-                onChange={(value) =>
-                  setField("species", value as PetsList["size"])
-                }
+                onChange={(value) => setField("size", value)}
                 label="Porte:"
                 options={sizeOptions}
               />
