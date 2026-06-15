@@ -2,6 +2,7 @@ interface SelectProps {
   label: string;
   options: { label: string; value: string }[];
   onChange: (value: string) => void;
+  onBlur?: React.FocusEventHandler<HTMLElement>;
   disabled?: boolean;
   className?: string;
   error?: string;
@@ -14,6 +15,7 @@ export function Select({
   disabled,
   className,
   error,
+  onBlur
 }: SelectProps) {
   return (
     <fieldset className={`flex flex-col gap-2 ${className}`}>
@@ -26,6 +28,7 @@ export function Select({
       <select
         disabled={disabled}
         onChange={(e) => onChange(e.target.value)}
+        onBlur={onBlur}
         id={label}
         className={`text-sm ${disabled ? "text-[var(--gray)]! cursor-not-allowed" : ""}`}
       >
@@ -35,7 +38,7 @@ export function Select({
           </option>
         ))}
       </select>
-      <span className="text-[var(--error)] italic text-xs">{error}</span>
+      <span className="text-[var(--error)] italic text-xs min-h-[1rem] block">{error}</span>
     </fieldset>
   );
 }

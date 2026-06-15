@@ -11,7 +11,7 @@
   --primary-color: #b8abd7;
   --secondary-color: #78cfc7;
   --secondary-color-hover: #8cefe5;
-  --error: rgb(237, 11, 11) ;
+  --error: rgb(237, 11, 11);
   --shadow: #646464;
   --gray: #b1b4b8;
   --accent: #d5b3f7;
@@ -89,6 +89,10 @@ input[type="text"] {
   box-shadow:
     0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
     0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+}
+button:disabled {
+  background-color: #e7e9eb;
+  color: var(--gray);
 }
 /* fundo e texto da option */
 option {

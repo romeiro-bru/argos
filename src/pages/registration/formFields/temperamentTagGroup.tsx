@@ -6,6 +6,7 @@ import type { PetsList } from "../../common/types";
 interface TemperamentTagGroupProps {
   setTemperament: (value: PetsList["temperament"]) => void;
   error?: string;
+  onBlur?: React.FocusEventHandler<HTMLElement>;
 }
 
 const temper = [...new Set(dogsBreed.flatMap((b) => b.temperament))];
@@ -23,6 +24,7 @@ export const toggle = (
 export function TemperamentTagGroup({
   setTemperament,
   error,
+  onBlur,
 }: TemperamentTagGroupProps) {
   const [selected, setSelected] = useState<Set<string>>(new Set([]));
 
@@ -38,6 +40,7 @@ export function TemperamentTagGroup({
           label={option}
           checked={selected.has(option)}
           onChange={() => toggle(option, setSelected)}
+          onBlur={onBlur}
           color="purple"
         />
       ))}

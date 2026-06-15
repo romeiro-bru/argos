@@ -4,6 +4,7 @@ interface TagCheckboxProps {
   label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
+  onBlur?: React.FocusEventHandler<HTMLElement>;
   color?: Color;
 }
 
@@ -15,7 +16,8 @@ const colorMap: Record<Color, { base: string; active: string }> = {
   },
   green: {
     base: "border-[var(--secondary-color-hover)] text-gray-500 hover:border-[var(--secondary-color)] hover:text-green-700 hover:bg-green-50",
-    active: "border-[var(--secondary-color)] bg-[var(--secondary-color-hover)]  text-green-800 font-medium",
+    active:
+      "border-[var(--secondary-color)] bg-[var(--secondary-color-hover)]  text-green-800 font-medium",
   },
 };
 
@@ -23,6 +25,7 @@ export function TagCheckbox({
   label,
   checked,
   onChange,
+  onBlur,
   color = "purple",
 }: TagCheckboxProps) {
   const variant = colorMap[color];
@@ -32,6 +35,7 @@ export function TagCheckbox({
       role="checkbox"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
+      onBlur={onBlur}
       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm border
         cursor-pointer transition-all duration-150 shadow-sm
         ${checked ? variant.active : variant.base}`}
