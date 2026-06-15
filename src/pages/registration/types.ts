@@ -20,7 +20,7 @@ export interface FormState {
   state: string;
   city: string;
   breed: string;
-  age: string;
+  age: PetsList["age"];
   name: string;
 }
 export interface ApiResponse {

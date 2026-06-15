@@ -5,12 +5,7 @@ import { SpeciesGroup } from "./formFields/speciesGroup";
 import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
-import {
-  dogBreeds,
-  catBreeds,
-  ageOptions,
-  sizeOptions,
-} from "./constants";
+import { dogBreeds, catBreeds, ageOptions, sizeOptions } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { Upload } from "../../assets/upload";
@@ -27,24 +22,33 @@ export default function Registration() {
     UF: formState.state,
   });
 
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(formState);
+  };
+
   return (
     <main>
       <h1 className="mb-8">Cadastre um pet para adoção</h1>
 
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <section className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">
           <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 mb-8">
             <SpeciesGroup
               species={formState.species}
               setSpecies={(value) => setField("species", value)}
             />
-            <NameInputField />
+            <NameInputField onChange={(value) => setField("name", value)} />
             <Select
               label="Raça:"
               options={formState.species === "Cachorro" ? dogBreeds : catBreeds}
-              onChange={() => {}}
+              onChange={(value) => setField("breed", value)}
             />
-            <Select label="Idade:" options={ageOptions} onChange={() => {}} />
+            <Select
+              label="Idade:"
+              options={ageOptions}
+              onChange={(value) => setField("age", value)}
+            />
             <GenderGroup
               selectedGender={formState.gender}
               setSelectedGender={(value) => setField("gender", value)}
@@ -65,7 +69,7 @@ export default function Registration() {
               disabled={loading || isLoading || districts.length === 0}
               label="Cidade:"
               options={districtsOptions(districts)}
-              onChange={() => {}}
+              onChange={(value) => setField("city", value)}
             />
 
             {formState.species === "Cachorro" && (
