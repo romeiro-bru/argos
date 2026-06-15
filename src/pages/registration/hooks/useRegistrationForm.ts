@@ -43,8 +43,11 @@ function validateFields(formState: FormState): FormErrors {
   if (formState.temperament.length === 0)
     errors.temperament = "Selecione pelo menos uma característica.";
 
-  if (!formState.fileName) errors.fileName = "Selecione uma imagem.";
-
+  if (!formState.fileName) {
+    errors.fileName = "Selecione uma imagem.";
+  } else if (!/\.(jpg|jpeg|png|webp|gif)$/i.test(formState.fileName)) {
+    errors.fileName = "Formato inválido. Use JPG, PNG, WEBP ou GIF.";
+  }
   return errors;
 }
 
@@ -72,7 +75,11 @@ export function useRegistrationForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  console.log("hook", errors);
-
-  return { formState, setField, reset, errors, validateForm };
+  return {
+    formState,
+    setField,
+    reset,
+    errors,
+    validateForm,
+  };
 }
