@@ -23,12 +23,10 @@ export default function Registration() {
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    console.log({ formState });
     if (!validateForm()) return; // segue com o submit
   };
 
-  console.log({ errors });
+  console.log(errors);
 
   return (
     <main>
@@ -36,7 +34,7 @@ export default function Registration() {
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">
-          <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-8">
             <SpeciesGroup
               species={formState.species}
               setSpecies={(value) => setField("species", value)}
@@ -44,11 +42,13 @@ export default function Registration() {
             <NameInputField
               onChange={(value) => setField("name", value)}
               error={errors.name}
+              onBlur={validateForm}
             />
             <Select
               label="Raça:"
               options={formState.species === "Cachorro" ? dogBreeds : catBreeds}
               onChange={(value) => setField("breed", value)}
+              onBlur={validateForm}
             />
             <Select
               label="Idade:"
@@ -70,6 +70,7 @@ export default function Registration() {
               label="Estado:"
               options={stateOptions(states)}
               onChange={(value) => setField("state", value)}
+              onBlur={validateForm}
               error={errors.state}
             />
             <Select
@@ -77,6 +78,7 @@ export default function Registration() {
               label="Cidade:"
               options={districtsOptions(districts)}
               onChange={(value) => setField("city", value)}
+              onBlur={validateForm}
               error={errors.city}
             />
 
@@ -97,6 +99,7 @@ export default function Registration() {
                 onChange={(e) =>
                   setField("fileName", e.target.files?.[0]?.name || "")
                 }
+                onBlur={validateForm}
               />
               <label
                 htmlFor="f2"
@@ -120,6 +123,7 @@ export default function Registration() {
             <span className="font-semibold">Temperamento:</span>
             <TemperamentTagGroup
               setTemperament={(value) => setField("temperament", value)}
+              onBlur={validateForm}
               error={errors.temperament}
             />
           </fieldset>
