@@ -33,18 +33,20 @@ export function TemperamentTagGroup({
   }, [selected]);
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {temper.map((option) => (
-        <TagCheckbox
-          key={option}
-          label={option}
-          checked={selected.has(option)}
-          onChange={() => toggle(option, setSelected)}
-          onBlur={onBlur}
-          color="purple"
-        />
-      ))}
+    <>
+      <div className="flex flex-wrap gap-2">
+        {temper.map((option) => (
+          <TagCheckbox
+            key={option}
+            label={option}
+            checked={selected.has(option)}
+            onChange={() => toggle(option, setSelected)}
+            onBlur={onBlur}
+            color="purple"
+          />
+        ))}
+      </div>
       <span className="text-[var(--error)] italic text-xs">{error}</span>
-    </div>
+    </>
   );
 }
