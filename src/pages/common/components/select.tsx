@@ -38,7 +38,7 @@ export function Select({
           </option>
         ))}
       </select>
-      <span className="text-[var(--error)] italic text-xs min-h-[1rem] block">{error}</span>
+      <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">{error}</span>
     </fieldset>
   );
 }

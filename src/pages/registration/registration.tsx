@@ -113,13 +113,13 @@ export default function Registration() {
                   </span>
                 )}
               </label>
-              <span className="text-[var(--error)] italic text-xs">
+              <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">
                 {errors.fileName}
               </span>
             </div>
           </div>
 
-          <fieldset className="flex flex-wrap gap-2">
+          <fieldset className="flex flex-wrap gap-2 mt-2">
             <span className="font-semibold">Temperamento:</span>
             <TemperamentTagGroup
               setTemperament={(value) => setField("temperament", value)}
