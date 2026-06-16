@@ -30,14 +30,9 @@ Em seguida, abra o navegador em:
 http://localhost:5173
 ```
 
-## Construir para produção
-```bash
-npm run build
-```
-
 ## Testes
 ```bash
-npm test
+npm run test
 ```
 
 ## Estrutura do projeto
@@ -53,10 +48,6 @@ npm test
 * Listar animais disponíveis para adoção
 * Salvar favoritos
 * Cadastro de pets com formulário (em andamento)
-
-## Observações
-* Se estiver usando um proxy ou ambiente diferente, verifique as configurações em `vite.config.ts`.
-* Caso precise utilizar outro gerenciador de pacotes, `npm` pode ser substituído por `pnpm` ou `yarn` desde que as dependências estejam instaladas corretamente.
 
 ## Hooks e  Hooks personalizados
 * `useRegistrationForm` -  para lógica de cadastro e validação do formulário.
