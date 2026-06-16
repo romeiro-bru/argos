@@ -58,4 +58,20 @@ npm test
 * Se estiver usando um proxy ou ambiente diferente, verifique as configurações em `vite.config.ts`.
 * Caso precise utilizar outro gerenciador de pacotes, `npm` pode ser substituído por `pnpm` ou `yarn` desde que as dependências estejam instaladas corretamente.
 
+## Hooks e  Hooks personalizados
+* `useRegistrationForm` -  para lógica de cadastro e validação do formulário.
+* `useFilterFields` -   para lógica de filtros e lista filtrada da página inicial.
+  
+* `useReducer` para gerenciar o estado e ações do formulário de cadastro.
+* `useReducer` em useFilterfields.ts para gerenciar os filtros de busca de pets.
+* `createContext` + `useContext` para compartilhar o estado de favoritos globalmente.
+* `useCallback` para memoizar as funções isFavorite e toggleFavorite.
+* `useMemo` para memoizar o valor do contexto e evitar rerenders desnecessários.
+* `useRef` para controlar o primeiro render e impedir que o localStorage seja sobrescrito antes da leitura inicial.
+* `useNavigate` para navegar entre rotas.
+* `useLocation` para identificar a rota ativa e destacar o item correto do menu.
+* `useParams` para ler o id do pet a partir da URL.
 
+## APIs e recursos externos
+* `localStorage` para persistir e carregar a lista de favoritos no navegador.
+* API de localidades para retornar estados e cidades do Brasil.
