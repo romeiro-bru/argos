@@ -10,6 +10,7 @@ const initialState: FormState = {
   species: "Cachorro",
   temperament: [],
   fileName: null,
+  file: null,
   state: "",
   city: "",
   breed: "SRD",

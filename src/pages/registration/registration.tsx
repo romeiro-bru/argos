@@ -7,11 +7,11 @@ import { Select } from "../common/components/select";
 import { dogBreeds, catBreeds, ageOptions, sizeOptions } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
-import { Upload } from "../../assets/upload";
 import { useRegistrationForm } from "./hooks/useRegistrationForm";
 import { districtsOptions, stateOptions } from "../common/constants";
 import { useGetStates } from "../common/hooks/useGetStates";
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
+import { UploadImageField } from "./formFields/uploadImageField";
 
 export default function Registration() {
   const { formState, setField, errors, validateForm } = useRegistrationForm();
@@ -23,10 +23,10 @@ export default function Registration() {
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    console.log(formState);
     if (!validateForm()) return; // segue com o submit
   };
-
-  console.log(errors);
 
   return (
     <main>
@@ -89,34 +89,16 @@ export default function Registration() {
                 options={sizeOptions}
               />
             )}
-            <div>
-              <label className="font-semibold">Imagem:</label>
-              <input
-                id="f2"
-                type="file"
-                className="hidden"
-                accept="image/jpeg"
-                onChange={(e) =>
-                  setField("fileName", e.target.files?.[0]?.name || "")
-                }
-                onBlur={validateForm}
-              />
-              <label
-                htmlFor="f2"
-                className="flex items-center gap-2 cursor-pointer p-2 bg-[var(--bg) shadow-md rounded-lg hover:opacity-80 transition-opacity"
-              >
-                <Upload />
-                Escolher imagem
-                {formState.fileName && (
-                  <span className="text-xs italic text-[var(--gray)] px-2">
-                    ✓ {formState.fileName}
-                  </span>
-                )}
-              </label>
-              <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">
-                {errors.fileName}
-              </span>
-            </div>
+
+            <UploadImageField
+              formState={formState}
+              setField={(file) => {
+                setField("fileName", file ? file.name : "");
+                setField("file", file);
+              }}
+              validateForm={validateForm}
+              errors={errors}
+            />
           </div>
 
           <fieldset className="flex flex-wrap gap-2 mt-2">

@@ -4,7 +4,7 @@ export type FormAction =
   | {
       type: "SET_FIELD";
       field: keyof FormState;
-      value: string | string[] | boolean | null;
+      value: string | string[] | boolean | null | File | null;
     }
   | { type: "RESET" };
 
@@ -17,6 +17,7 @@ export interface FormState {
   vaccinated: boolean;
   dewormed: boolean;
   fileName: string | null;
+  file: File | null;
   state: string;
   city: string;
   breed: string;

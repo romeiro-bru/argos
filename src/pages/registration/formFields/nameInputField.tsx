@@ -21,7 +21,7 @@ export function NameInputField({
         id="name"
         className="p-2 rounded-lg text-sm w-full"
       />
-      <span className="text-[var(--error)] italic text-xs min-h-[1rem] block">
+      <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">
         {error}
       </span>
     </fieldset>
