@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { appRoutes } from "../../routes";
+import { Accordion } from "./accordion";
 
 export default function Landing() {
   return (
-    <main className="relative flex justify-center">
-      <div className="flex absolute top-[9rem] gap-2">
+    <main className="md:flex flex-wrap lg:block">
+      <div className="lg:flex justify-center gap-2 md:flex-wrap gap-2">
         <Link to={appRoutes.HOME.path}>
           <button
             className="flex gap-2 bg-[var(--text-hover)] cursor-pointer rounded-lg px-[2rem] py-[1rem] hover:bg-[var(--primary-color)] shadow-md"
@@ -32,8 +33,18 @@ export default function Landing() {
         </Link>
       </div>
 
-      <div className="absolute top-70 right-0">
+      {/* <div className="absolute top-80 right-0">
         <img src="/landing.png" className="h-90" />
+      </div> */}
+
+      <Accordion />
+
+      <div className="flex w-fit m-auto gap-2 items-center text-xs text-[var(--shadow)] border bg-[#f0edf1] rounded-sm px-2 py-4">
+        <img src="sign.png" className="h-4" />
+        <p>
+          Argos não compactua com a venda de animais de estimação. Não incentive
+          esta prática.
+        </p>
       </div>
     </main>
   );
