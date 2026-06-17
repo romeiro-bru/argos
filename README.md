@@ -35,7 +35,7 @@ http://localhost:5173
 npm run test
 ```
 
-## Estrutura do projeto
+## Estrutura do projeto 📂
 * `src/` - código fonte da aplicação
 * `src/pages/registration/` - página de cadastro de pets
 * `src/pages/home/` - página inicial
@@ -44,12 +44,12 @@ npm run test
 * `src/components/` - componentes reutilizáveis
 * `src/routes.tsx` - rotas da aplicação
 
-## Funcionalidades principais
-* Listar animais disponíveis para adoção
-* Salvar favoritos
-* Cadastro de pets com formulário (em andamento)
+## Funcionalidades principais ✨
+* Listar animais disponíveis para adoção ✅
+* Salvar favoritos ✅
+* Cadastro de pets com formulário (em andamento) 🚧
 
-## Hooks e  Hooks personalizados
+## Hooks e  Hooks personalizados 🎣
 * `useRegistrationForm` -  para lógica de cadastro e validação do formulário.
 * `useFilterFields` -   para lógica de filtros e lista filtrada da página inicial.
   
@@ -63,6 +63,6 @@ npm run test
 * `useLocation` para identificar a rota ativa e destacar o item correto do menu.
 * `useParams` para ler o id do pet a partir da URL.
 
-## APIs e recursos externos
+## APIs e recursos externos 📤👽️
 * `localStorage` para persistir e carregar a lista de favoritos no navegador.
 * API de localidades para retornar estados e cidades do Brasil.
