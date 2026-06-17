@@ -21,10 +21,12 @@ export function Sidebar() {
     <nav className="flex flex-col items-center w-40 text-[var(--text)] bg-[var(--primary-color)]">
       {/* HOME */}
 
-      <div className="flex items-center mt-4">
-        <span className="ml-4 text-2xl font-bold">Argos</span>
-        {appRoutes.HOME.meta.icon}
-      </div>
+      <Link to={appRoutes.LANDING.path}>
+        <div className="flex items-center mt-4">
+          <span className="ml-4 text-2xl font-bold">Argos</span>
+          {appRoutes.LANDING.meta.icon}
+        </div>
+      </Link>
 
       <div className="w-full px-2">
         <div className="flex flex-col w-full mt-3 border-t border-gray-700">

@@ -1,9 +1,18 @@
 export const appRoutes = {
-  HOME: {
+  LANDING: {
     path: "/",
+    meta: {
+      label: "landing",
+      icon: <img className="w-12 ml-2" src="/favicon.png" />,
+      showInSidebar: false,
+    },
+  },
+  HOME: {
+    path: "/home",
     meta: {
       label: "Home",
       icon: <img className="w-12 ml-2" src="/favicon.png" />,
+
       showInSidebar: true,
     },
   },

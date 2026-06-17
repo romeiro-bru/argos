@@ -6,13 +6,15 @@ import { FavoritesProvider } from "./pages/common/context/favoritesProvider";
 import Details from "./pages/details/details";
 import { appRoutes } from "./routes";
 import Registration from "./pages/registration/registration";
+import Landing from "./pages/landing/landing";
 
 export default function App() {
   return (
     <FavoritesProvider>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Landing />} />
+          <Route path={appRoutes.HOME.path} element={<Home />} />
           <Route path={appRoutes.FAVORITES.path} element={<Favorites />} />
           <Route path={appRoutes.DETAILS.path} element={<Details />} />
           <Route path={appRoutes.REGISTER.path} element={<Registration />} />
