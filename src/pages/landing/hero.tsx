@@ -4,7 +4,7 @@ import { appRoutes } from "../../routes";
 export function Hero() {
   return (
     <div className="lg:flex md:flex-wrap w-fit m-auto justify-between pl-4 bg-[var(--primary-color-light)] rounded-md md:flex-wrap gap-2">
-      <div>
+      <div className="lg:px-8">
         <section className="mt-8">
           <h2 className="w-fit">Cada adoção é uma vida transformada</h2>
           <p className="max-w-md">
@@ -13,7 +13,7 @@ export function Hero() {
           </p>
         </section>
 
-        <div className="lg:flex gap-2 my-4 md:flex-wrap md:gap-2">
+        <div className="lg:flex gap-2 my-8 md:flex-wrap md:gap-2">
           <Link to={appRoutes.HOME.path}>
             <button
               className="flex gap-2 bg-[var(--text-hover)] border-2 border-[var(--text-hover)] cursor-pointer rounded-lg p-[8px] lg:px-[2rem] py-[1rem] hover:bg-[var(--primary-color)] shadow-md"
