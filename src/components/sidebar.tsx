@@ -28,8 +28,8 @@ export function Sidebar() {
         </div>
       </Link>
 
-      <div className="w-full px-2">
-        <div className="flex flex-col w-full mt-3 border-t border-gray-700">
+      <div className="flex flex-col flex-1 w-full px-2">
+        <div className="flex flex-col w-full mt-3 border-t border-gray-700 flex-1">
           {Object.values(appRoutes)
             .filter((route) => route.meta.showInSidebar)
             .map((route) => {
@@ -51,6 +51,10 @@ export function Sidebar() {
                 </div>
               );
             })}
+          <span className="flex items-center gap-2 mt-auto pb-8 ml-2 text-xs font-medium">
+            <img src="/user.png" className="h-6" />
+            Minha conta
+          </span>
         </div>
       </div>
     </nav>
