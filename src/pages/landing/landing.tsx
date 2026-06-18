@@ -10,12 +10,12 @@ export default function Landing() {
       <ImpactStats />
       <Steps />
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center gap-8 m-auto items-center">
         <Accordion />
-        <img src="/cat-main.avif" className="h-[18rem] rounded-lg shadow-md" />
+        <img src="/cat-main.avif" className="h-[17rem] rounded-lg shadow-md" />
       </div>
 
-      <div className="flex w-fit m-auto gap-2 items-center text-xs text-[var(--shadow)] border bg-[#f0edf1] rounded-sm px-2 py-4">
+      <div className="flex w-fit m-auto mt-2 gap-2 items-center text-xs text-[var(--shadow)] border bg-[#f0edf1] rounded-sm px-2 py-4">
         <img src="sign.png" className="h-4" />
         <p>
           Argos não compactua com a venda de animais de estimação. Não incentive
