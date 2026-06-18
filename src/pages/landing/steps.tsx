@@ -36,8 +36,8 @@ export function Steps() {
       </div>
 
       <div className="flex flex-wrap gap-2 text-[var(--subtitle)] mt-2">
-        {list.map((item) => (
-          <div className="grid border-1 border-[var(--subtitle)] px-4 py-6 rounded-lg">
+        {list.map((item, i) => (
+          <div key={i} className="grid border-1 border-[var(--subtitle)] px-4 py-6 rounded-lg">
             <span className="flex font-semibold">
               {item.icon}
               {item.title}

@@ -38,8 +38,8 @@ export function Accordion() {
     <div className="flex flex-wrap m-auto lg:flex-nowrap gap-8 justify-evenly items-center my-8 lg:w-2/5 md:w-fit border-2 border-[var(--primary-color-light)] rounded-lg px-4 py-6">
       <img src="/questionmark.png" className="h-20" />
       <ul className="text-sm flex flex-col gap-2 w-full list-disc">
-        {list.map((item) => (
-          <li>
+        {list.map((item, i) => (
+          <li key={i}>
             <details className="group">
               <summary className="cursor-pointer font-medium list-none flex justify-between items-center">
                 {item.title}
