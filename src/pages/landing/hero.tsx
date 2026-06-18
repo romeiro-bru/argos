@@ -3,7 +3,7 @@ import { appRoutes } from "../../routes";
 
 export function Hero() {
   return (
-    <div className="flex w-fit m-auto justify-between pl-4 bg-[var(--primary-color-light)] rounded-md md:flex-wrap gap-2">
+    <div className="lg:flex md:flex-wrap w-fit m-auto justify-between pl-4 bg-[var(--primary-color-light)] rounded-md md:flex-wrap gap-2">
       <div>
         <section className="mt-8">
           <h2 className="w-fit">Cada adoção é uma vida transformada</h2>
@@ -16,7 +16,7 @@ export function Hero() {
         <div className="lg:flex gap-2 my-4 md:flex-wrap md:gap-2">
           <Link to={appRoutes.HOME.path}>
             <button
-              className="flex gap-2 bg-[var(--text-hover)] border-2 border-[var(--text-hover)] cursor-pointer rounded-lg px-[2rem] py-[1rem] hover:bg-[var(--primary-color)] shadow-md"
+              className="flex gap-2 bg-[var(--text-hover)] border-2 border-[var(--text-hover)] cursor-pointer rounded-lg p-[8px] lg:px-[2rem] py-[1rem] hover:bg-[var(--primary-color)] shadow-md"
               type="button"
             >
               <img src="/find.png" className="h-8" />
@@ -29,7 +29,7 @@ export function Hero() {
 
           <Link to={appRoutes.REGISTER.path}>
             <button
-              className="flex gap-2 border-2 border-[var(--text-hover)] cursor-pointer border-solid rounded-lg px-[1rem] py-[1rem] hover:bg-[var(--card-bg)] shadow-md"
+              className="flex gap-2 border-2 border-[var(--text-hover)] cursor-pointer border-solid rounded-lg p-[8px] lg:px-[1rem] lg:py-[1rem] lg:mt-0 mt-2 hover:bg-[var(--card-bg)] shadow-md"
               type="button"
             >
               <img src="/animal-care.png" className="h-8" />
@@ -42,7 +42,7 @@ export function Hero() {
         </div>
       </div>
 
-      <img src="/hero.png" className="lg:h-60 rounded-r-md md:h-40" />
+      <img src="/hero.png" className="lg:h-60 rounded-r-md md:h-30" />
     </div>
   );
 }
