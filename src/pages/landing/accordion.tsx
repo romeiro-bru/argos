@@ -36,7 +36,7 @@ const list = [
 export function Accordion() {
   return (
     <div className="flex flex-wrap lg:flex-nowrap gap-10 justify-evenly items-center my-8 lg:w-3/5 md:w-fit border-2 border-[var(--primary-color-light)] rounded-lg px-4 py-6">
-      <img src="/questionmark.png" className="h-22" />
+      <img src="/questionmark.png" className="h-22 mx-6" />
       <ul className="text-sm flex flex-col gap-4 w-full list-disc">
         {list.map((item, i) => (
           <li key={i}>
