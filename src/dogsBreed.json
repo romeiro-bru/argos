@@ -5,7 +5,7 @@
     "origem": "Brasil",
     "grupo": "Misturado",
     "porte": "Variável",
-    "temperament": [],
+    "temperament": ["Medroso", "Brincalhão", "Desconfiado", "Observador", "Impaciente", "Caçador"],
     "pelo": "Variável"
   },
   {

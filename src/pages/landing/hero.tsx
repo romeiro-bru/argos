@@ -44,7 +44,7 @@ export function Hero() {
         </div>
       </div>
 
-      <img src="/hero.png" className="lg:h-66 rounded-r-md md:h-30" />
+      <img src="/hero.png" className="lg:h-79 rounded-r-md md:h-30" />
     </div>
   );
 }
