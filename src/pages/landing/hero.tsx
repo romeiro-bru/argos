@@ -29,7 +29,7 @@ export function Hero() {
             </button>
           </Link>
 
-          <Link to={appRoutes.REGISTER.path}>
+          <Link to={appRoutes.SIGN_UP.path}>
             <button
               className="flex gap-2 border-2 border-[var(--text-hover)] cursor-pointer border-solid rounded-lg p-[8px] lg:px-[1rem] lg:py-[1rem] lg:mt-0 mt-2 hover:bg-[var(--bg)] shadow-md"
               type="button"

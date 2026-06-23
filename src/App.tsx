@@ -7,6 +7,7 @@ import Details from "./pages/details/details";
 import { appRoutes } from "./routes";
 import Registration from "./pages/registration/registration";
 import Landing from "./pages/landing/landing";
+import { Signup } from "./pages/signup/signup";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path={appRoutes.FAVORITES.path} element={<Favorites />} />
           <Route path={appRoutes.DETAILS.path} element={<Details />} />
           <Route path={appRoutes.REGISTER.path} element={<Registration />} />
+          <Route path={appRoutes.SIGN_UP.path} element={<Signup />} />
         </Route>
       </Routes>
     </FavoritesProvider>

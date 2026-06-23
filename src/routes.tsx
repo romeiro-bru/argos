@@ -40,4 +40,12 @@ export const appRoutes = {
       showInSidebar: true,
     },
   },
+
+  SIGN_UP: {
+    path: "/sign-up",
+    meta: {
+      label: "Criar usuários",
+      showInSidebar: false
+    }
+  }
 };
