@@ -49,6 +49,14 @@ npm run test
 * Salvar favoritos ✅
 * Cadastro de pets com formulário (em andamento) 🚧
 
+## Integração com Supabase 🚧
+A integração com o Supabase está em andamento e será usada para:
+* autenticação de usuários
+* armazenamento de dados dos pets
+* cadastro e recuperação de informações no backend do projeto
+
+Para o funcionamento local, é necessário configurar variáveis de ambiente no arquivo `.env` com as chaves do projeto.
+
 ## Hooks e  Hooks personalizados 🎣
 * `useRegistrationForm` -  para lógica de cadastro e validação do formulário.
 * `useFilterFields` -   para lógica de filtros e lista filtrada da página inicial.
