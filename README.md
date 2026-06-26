@@ -72,5 +72,6 @@ Para o funcionamento local, é necessário configurar variáveis de ambiente no 
 * `useParams` para ler o id do pet a partir da URL.
 
 ## APIs e recursos externos 📤👽️
-* `localStorage` para persistir e carregar a lista de favoritos no navegador.
-* API de localidades para retornar estados e cidades do Brasil.
+* `localStorage`: persiste e carrega a lista de favoritos no navegador.
+* API de localidades: retorna os estados e cidades do Brasil.
+* `Supabase`: utilizado para armazenamento de dados.
