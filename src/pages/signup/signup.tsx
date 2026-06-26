@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../../../supabase-client";
 
 export function Signup() {
   const [name, setName] = useState<string | undefined>();
@@ -10,8 +11,12 @@ export function Signup() {
     e.preventDefault();
     setLoading(true);
 
-    console.log(name, email, password)
-    // envia dados para supabase
+    const payload = { name, email, password };
+    
+    // add o nome da table 'users' criada no supabase e envia dados
+    const {data, error}  = await supabase.from("users").insert(payload).single()
+    
+    console.log(data, error);
 
     setLoading(false);
   };
@@ -20,7 +25,7 @@ export function Signup() {
     <main>
       <div className="flex gap-2 mb-8 items-center">
         <h1>Criar conta</h1>
-        <p className="flex w-fit m-auto gap-2 items-center text-xs text-[var(--subtitle)] border bg-[#fff] rounded-sm p-2">
+        <p className="flex w-fit m-auto gap-2 items-center font-semibold text-xs text-[var(--subtitle)] border bg-[#fff] rounded-sm p-2">
           <img src="/user-yellow.png" className="h-4" />É necessário criar uma
           conta antes de cadastrar um animal para adoção.
         </p>
