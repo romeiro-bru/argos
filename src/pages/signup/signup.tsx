@@ -2,6 +2,7 @@ import { useState } from "react";
 import { supabase } from "../../../supabase-client";
 
 export function Signup() {
+  const [isSignUp, setIsSignUp] = useState(false);
   const [name, setName] = useState<string | undefined>();
   const [email, setEmail] = useState<string | undefined>();
   const [password, setPassword] = useState<string | undefined>();
@@ -12,10 +13,13 @@ export function Signup() {
     setLoading(true);
 
     const payload = { name, email, password };
-    
+
     // add o nome da table 'users' criada no supabase e envia dados
-    const {data, error}  = await supabase.from("users").insert(payload).single()
-    
+    const { data, error } = await supabase
+      .from("users")
+      .insert(payload)
+      .single();
+
     console.log(data, error);
 
     setLoading(false);
@@ -44,18 +48,25 @@ export function Signup() {
               required
             />
           </fieldset>
-          <fieldset>
-            <label className="flex flex-col mb-2 font-semibold" htmlFor="name">
-              Nome:
-            </label>
-            <input
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-              id="name"
-              className="p-2 rounded-lg text-sm w-full"
-              required
-            />
-          </fieldset>
+          {isSignUp ? (
+            ""
+          ) : (
+            <fieldset>
+              <label
+                className="flex flex-col mb-2 font-semibold"
+                htmlFor="name"
+              >
+                Nome:
+              </label>
+              <input
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                id="name"
+                className="p-2 rounded-lg text-sm w-full"
+                required
+              />
+            </fieldset>
+          )}
 
           <fieldset>
             <label
@@ -75,11 +86,17 @@ export function Signup() {
           </fieldset>
         </section>
         <button
+          onClick={() => setIsSignUp(!isSignUp)}
+          className="cursor-pointer border-2 border-[var(--secondary-color)] text-[var(--secondary-color)] shadow-md rounded-lg py-2 px-4 mr-2"
+        >
+          Trocar para {isSignUp ? "Criar conta" : "Logar"}
+        </button>
+        <button
           disabled={loading}
           type="submit"
           className="cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
         >
-          Criar conta
+          {isSignUp ? "Logar conta" : "Criar conta"}
         </button>
       </form>
     </main>
