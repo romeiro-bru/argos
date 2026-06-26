@@ -48,6 +48,7 @@ npm run test
 * Listar animais disponíveis para adoção ✅
 * Salvar favoritos ✅
 * Cadastro de pets com formulário (em andamento) 🚧
+* Cadastro de usuários (em andamento) 🚧
 
 ## Integração com Supabase 🚧
 A integração com o Supabase está em andamento e será usada para:
