@@ -12,6 +12,7 @@ import { districtsOptions, stateOptions } from "../common/constants";
 import { useGetStates } from "../common/hooks/useGetStates";
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
 import { UploadImageField } from "./formFields/uploadImageField";
+import { supabase } from "../../../supabase-client";
 
 export default function Registration() {
   const { formState, setField, errors, validateForm } = useRegistrationForm();
@@ -21,10 +22,13 @@ export default function Registration() {
     UF: formState.state,
   });
 
-  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("submitted", formState);
 
-    console.log(formState);
+    const {data, error} = await supabase.from("new-pets").insert(formState).single()
+  
+    console.log(data, error)
     if (!validateForm()) return; // segue com o submit
   };
 
