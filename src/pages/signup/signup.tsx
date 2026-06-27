@@ -3,24 +3,42 @@ import { supabase } from "../../../supabase-client";
 
 export function Signup() {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [name, setName] = useState<string | undefined>();
-  const [email, setEmail] = useState<string | undefined>();
-  const [password, setPassword] = useState<string | undefined>();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setLoading(true);
 
-    const payload = { name, email, password };
+    if (isSignUp) {
+      const { error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            name: formData.name,
+          },
+        },
+      });
 
-    // add o nome da table 'users' criada no supabase e envia dados
-    const { data, error } = await supabase
-      .from("users")
-      .insert(payload)
-      .single();
+      if (error) {
+        console.error("Error signing up:", error.message);
+      }
+    } else {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
 
-    console.log(data, error);
+      if (error) {
+        console.error("Error signing in:", error.message);
+      }
+    }
 
     setLoading(false);
   };
@@ -41,7 +59,9 @@ export function Signup() {
               E-mail:
             </label>
             <input
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               type="email"
               id="email"
               className="p-2 rounded-lg text-sm w-full"
@@ -49,8 +69,6 @@ export function Signup() {
             />
           </fieldset>
           {isSignUp ? (
-            ""
-          ) : (
             <fieldset>
               <label
                 className="flex flex-col mb-2 font-semibold"
@@ -59,13 +77,17 @@ export function Signup() {
                 Nome:
               </label>
               <input
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 type="text"
                 id="name"
                 className="p-2 rounded-lg text-sm w-full"
                 required
               />
             </fieldset>
+          ) : (
+            ""
           )}
 
           <fieldset>
@@ -76,7 +98,9 @@ export function Signup() {
               Senha:
             </label>
             <input
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
               type="password"
               id="password"
               minLength={6}
@@ -86,17 +110,18 @@ export function Signup() {
           </fieldset>
         </section>
         <button
+          disabled={loading}
           onClick={() => setIsSignUp(!isSignUp)}
           className="cursor-pointer border-2 border-[var(--secondary-color)] text-[var(--secondary-color)] shadow-md rounded-lg py-2 px-4 mr-2"
         >
-          Trocar para {isSignUp ? "Criar conta" : "Logar"}
+          Trocar para {isSignUp ? "Login" : "Criar conta"}
         </button>
         <button
           disabled={loading}
           type="submit"
           className="cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
         >
-          {isSignUp ? "Logar conta" : "Criar conta"}
+          {isSignUp ? "Criar conta" : "Login"}
         </button>
       </form>
     </main>
