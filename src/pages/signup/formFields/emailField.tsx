@@ -1,6 +1,6 @@
 import type { FormFieldProps } from "./types";
 
-export function EmailField({ setFormData, formData, loading }: FormFieldProps) {
+export function EmailField({ setFormData, formData }: FormFieldProps) {
   return (
     <div>
       <label className="flex flex-col mb-2 font-semibold" htmlFor="email">
@@ -12,7 +12,6 @@ export function EmailField({ setFormData, formData, loading }: FormFieldProps) {
         id="email"
         className="p-2 rounded-lg text-sm w-full"
         required
-        disabled={loading}
       />
     </div>
   );
