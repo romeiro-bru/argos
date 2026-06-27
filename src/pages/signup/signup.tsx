@@ -5,6 +5,9 @@ import { PasswordField } from "./formFields/passwordField";
 import { NameField } from "./formFields/nameField";
 import { PulseLoading } from "../../components/pulseLoading";
 import { Spinner } from "../../assets/spinner";
+import { SuccessModal } from "../../components/modalSuccess";
+import { appRoutes } from "../../routes";
+import { useNavigate } from "react-router-dom";
 
 export interface FormDataInterface {
   name: string;
@@ -13,7 +16,10 @@ export interface FormDataInterface {
 }
 
 export function Signup() {
+  const navigate = useNavigate();
+
   const [isSignUp, setIsSignUp] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState<FormDataInterface>({
     name: "",
     email: "",
@@ -39,6 +45,8 @@ export function Signup() {
 
       if (error) {
         console.error("Error signing up:", error.message);
+      } else {
+        setShowSuccess(true);
       }
     } else {
       const { error } = await supabase.auth.signInWithPassword({
@@ -48,6 +56,8 @@ export function Signup() {
 
       if (error) {
         console.error("Error signing in:", error.message);
+      } else {
+        setShowSuccess(true);
       }
     }
 
@@ -103,6 +113,19 @@ export function Signup() {
             {isSignUp ? "Login" : "Criar conta"}
           </button>
         </div>
+
+        <SuccessModal
+          isOpen={showSuccess}
+          onClose={() => setShowSuccess(false)}
+          title={!isSignUp ? "Conta criada!" : "Login realizado!"}
+          message={
+            !isSignUp
+              ? "Sua conta foi criada com sucesso. Agora você já pode cadastrar um animal para adoção."
+              : "Login realizado com sucesso."
+          }
+          actionLabel="Continuar"
+          onAction={() => navigate(appRoutes.HOME.path)}
+        />
       </form>
     </main>
   );
