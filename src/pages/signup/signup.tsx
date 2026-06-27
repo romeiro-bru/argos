@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { supabase } from "../../../supabase-client";
+import { EmailField } from "./formFields/emailField";
+import { PasswordField } from "./formFields/passwordField";
+import { NameField } from "./formFields/nameField";
+
+export interface FormDataInterface {
+  name: string;
+  email: string;
+  password: string;
+}
 
 export function Signup() {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataInterface>({
     name: "",
     email: "",
     password: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,60 +63,24 @@ export function Signup() {
       </div>
       <form onSubmit={handleSubmit} className="mb-8">
         <section className="flex flex-wrap gap-4 bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">
-          <fieldset>
-            <label className="flex flex-col mb-2 font-semibold" htmlFor="email">
-              E-mail:
-            </label>
-            <input
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              type="email"
-              id="email"
-              className="p-2 rounded-lg text-sm w-full"
-              required
+          <EmailField
+            formData={formData}
+            setFormData={setFormData}
+            loading={loading}
+          />
+          {!isSignUp && (
+            <NameField
+              formData={formData}
+              setFormData={setFormData}
+              loading={loading}
             />
-          </fieldset>
-          {isSignUp ? (
-            ""
-          ) : (
-            <fieldset>
-              <label
-                className="flex flex-col mb-2 font-semibold"
-                htmlFor="name"
-              >
-                Nome:
-              </label>
-              <input
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                type="text"
-                id="name"
-                className="p-2 rounded-lg text-sm w-full"
-                required
-              />
-            </fieldset>
           )}
 
-          <fieldset>
-            <label
-              className="flex flex-col mb-2 font-semibold"
-              htmlFor="password"
-            >
-              Senha:
-            </label>
-            <input
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-              type="password"
-              id="password"
-              minLength={6}
-              className="p-2 rounded-lg text-sm w-full"
-              required
-            />
-          </fieldset>
+          <PasswordField
+            formData={formData}
+            setFormData={setFormData}
+            loading={loading}
+          />
         </section>
         <button
           disabled={loading}
