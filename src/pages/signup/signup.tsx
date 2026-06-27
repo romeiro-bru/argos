@@ -69,6 +69,8 @@ export function Signup() {
             />
           </fieldset>
           {isSignUp ? (
+            ""
+          ) : (
             <fieldset>
               <label
                 className="flex flex-col mb-2 font-semibold"
@@ -86,8 +88,6 @@ export function Signup() {
                 required
               />
             </fieldset>
-          ) : (
-            ""
           )}
 
           <fieldset>
@@ -112,16 +112,17 @@ export function Signup() {
         <button
           disabled={loading}
           onClick={() => setIsSignUp(!isSignUp)}
+          type="button"
           className="cursor-pointer border-2 border-[var(--secondary-color)] text-[var(--secondary-color)] shadow-md rounded-lg py-2 px-4 mr-2"
         >
-          Trocar para {isSignUp ? "Login" : "Criar conta"}
+          Trocar para {isSignUp ? "Criar conta" : "Login"}
         </button>
         <button
           disabled={loading}
           type="submit"
           className="cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
         >
-          {isSignUp ? "Criar conta" : "Login"}
+          {isSignUp ? "Login" : "Criar conta"}
         </button>
       </form>
     </main>
