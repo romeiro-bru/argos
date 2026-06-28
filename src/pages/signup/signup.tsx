@@ -8,6 +8,7 @@ import { Spinner } from "../../assets/spinner";
 import { SuccessModal } from "../../components/modalSuccess";
 import { appRoutes } from "../../routes";
 import { useNavigate } from "react-router-dom";
+import { ErrorModal } from "../../components/modalError";
 
 export interface FormDataInterface {
   name: string;
@@ -20,6 +21,9 @@ export function Signup() {
 
   const [isSignUp, setIsSignUp] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const [formData, setFormData] = useState<FormDataInterface>({
     name: "",
     email: "",
@@ -33,6 +37,18 @@ export function Signup() {
     setLoading(true);
 
     if (isSignUp) {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (error) {
+        setShowError(true);
+        setErrorMessage(error.message);
+      } else {
+        setShowSuccess(true);
+      }
+    } else {
       const { error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
@@ -44,18 +60,8 @@ export function Signup() {
       });
 
       if (error) {
-        console.error("Error signing up:", error.message);
-      } else {
-        setShowSuccess(true);
-      }
-    } else {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (error) {
-        console.error("Error signing in:", error.message);
+        setShowError(true);
+        setErrorMessage(error.message);
       } else {
         setShowSuccess(true);
       }
@@ -117,14 +123,20 @@ export function Signup() {
         <SuccessModal
           isOpen={showSuccess}
           onClose={() => setShowSuccess(false)}
-          title={!isSignUp ? "Conta criada!" : "Login realizado!"}
+          title={isSignUp ? "Login realizado!" : "Conta criada!"}
           message={
-            !isSignUp
-              ? "Sua conta foi criada com sucesso. Agora você já pode cadastrar um animal para adoção."
-              : "Login realizado com sucesso."
+            isSignUp
+              ? "Login realizado com sucesso."
+              : "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
           }
           actionLabel="Continuar"
           onAction={() => navigate(appRoutes.HOME.path)}
+        />
+        <ErrorModal
+          isOpen={showError}
+          onClose={() => setShowError(false)}
+          title={isSignUp ? "Erro ao autenticar" : "Não foi possível criar a sua conta."}
+          message={errorMessage}
         />
       </form>
     </main>
