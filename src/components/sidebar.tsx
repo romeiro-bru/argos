@@ -10,11 +10,14 @@ interface RoutesInterface {
 
 export function Sidebar() {
   const location = useLocation();
+
   const isActive = (route: RoutesInterface) => {
     if (route.path === "/") {
       return location.pathname === "/";
     }
-    return location.pathname.startsWith("/" + route.path);
+    // Remove parâmetros dinâmicos da rota (tudo depois de ":")
+    const routeBase = route.path.split(":")?.[0] || route.path;
+    return location.pathname.startsWith(routeBase);
   };
 
   return (
@@ -51,7 +54,12 @@ export function Sidebar() {
                 </div>
               );
             })}
-          <span className="flex items-center gap-2 mt-auto pb-8 ml-2 text-xs font-medium">
+
+          <span className="flex items-center gap-2 mt-auto pb-8 ml-2 text-xs font-semibold">
+            {/* TODO: logado ? mostrar inicial do nome : mostrar img placeholder */}
+            {/* <div className="bg-[var(--primary-color-light)] text-[var(--text)] px-2 py-1 rounded-full">
+              B
+            </div> */}
             <img src="/user.png" className="h-6" />
             Minha conta
           </span>
