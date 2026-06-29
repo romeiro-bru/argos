@@ -13,6 +13,9 @@ export function useGetDistricts({ UF }: UseGetDistrictsProps) {
 
   useEffect(() => {
     if (!UF) return;
+    
+    setError("");
+    setdistricts([]);
     setLoading(true);
 
     ServiceLocation.getDistrict({ UF })

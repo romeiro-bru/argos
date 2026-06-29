@@ -26,10 +26,18 @@ export default function Registration() {
     e.preventDefault();
     console.log("submitted", formState);
 
+    if (!validateForm()) return;
+
     const {data, error} = await supabase.from("new-pets").insert(formState).single()
   
     console.log(data, error)
-    if (!validateForm()) return; // segue com o submit
+    if (error) {
+      console.error("Erro ao cadastrar pet:", error);
+      // TODO: Adicionar tratamento visual de erro (modal de erro)
+      return;
+    }
+    
+    // TODO: Adicionar feedback de sucesso ao usuário
   };
 
   return (

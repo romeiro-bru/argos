@@ -8,6 +8,8 @@ export function useGetStates() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setError("");
+    
     ServiceLocation.getStates()
       .then(setStates)
       .catch((err: unknown) => {

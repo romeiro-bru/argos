@@ -34,6 +34,8 @@ export function Signup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setShowError(false);
+    setErrorMessage("");
     setLoading(true);
 
     if (isSignUp) {
@@ -135,7 +137,11 @@ export function Signup() {
         <ErrorModal
           isOpen={showError}
           onClose={() => setShowError(false)}
-          title={isSignUp ? "Erro ao autenticar" : "Não foi possível criar a sua conta."}
+          title={
+            isSignUp
+              ? "Erro ao autenticar"
+              : "Não foi possível criar a sua conta."
+          }
           message={errorMessage}
         />
       </form>
