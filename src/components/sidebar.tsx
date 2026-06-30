@@ -1,5 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { appRoutes } from "../routes";
+import { supabase } from "../../supabase-client";
+import { useUserSupabase } from "../context/userSupabaseContext";
+import type { Session } from "@supabase/supabase-js";
+import { useState } from "react";
 
 interface RoutesInterface {
   path: string;
@@ -8,8 +12,29 @@ interface RoutesInterface {
   };
 }
 
+function getButtonText(session: Session | null, isLoaggingOut: boolean) {
+  if (session && isLoaggingOut) return "Saindo...";
+  if (session) return "logout";
+  return "login";
+}
+
 export function Sidebar() {
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { userName, isLoading, session } = useUserSupabase();
+
+  const handleSessionButton = () =>
+    session ? handleLogout() : navigate(appRoutes.SIGN_UP.path);
+
+  async function handleLogout() {
+    setIsLoggingOut(true);
+    try {
+      await supabase.auth.signOut();
+    } finally {
+      setIsLoggingOut(false);
+    }
+  }
 
   const isActive = (route: RoutesInterface) => {
     if (route.path === "/") {
@@ -55,13 +80,27 @@ export function Sidebar() {
               );
             })}
 
+          <button
+            onClick={handleSessionButton}
+            disabled={isLoading}
+            className="text-sm font-medium border-1 border-[var(--bg-hover)] rounded-lg py-1 mt-2 cursor-pointer hover:opacity-60 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {getButtonText(session, isLoggingOut)}
+          </button>
           <span className="flex items-center gap-2 mt-auto pb-8 ml-2 text-xs font-semibold">
-            {/* TODO: logado ? mostrar inicial do nome : mostrar img placeholder */}
-            {/* <div className="bg-[var(--primary-color-light)] text-[var(--text)] px-2 py-1 rounded-full">
-              B
-            </div> */}
-            <img src="/user.png" className="h-6" />
-            Minha conta
+            {userName ? (
+              <>
+                <div className="bg-[var(--primary-color-light)] text-[var(--text)] px-2 py-1 rounded-full">
+                  {userName.charAt(0).toUpperCase()}
+                </div>
+                <span className="truncate">Minha conta</span>
+              </>
+            ) : (
+              <>
+                <img src="/user.png" className="h-6" />
+                <span>Minha conta</span>
+              </>
+            )}
           </span>
         </div>
       </div>
