@@ -61,7 +61,7 @@ export function UserSupabaseProvider({
   );
 }
 
-// Hook customizado para usar o context com segurança
+// Hook customizado para usar o context
 export function useUserSupabase() {
   const context = React.useContext(UserSupabaseContext);
   if (!context) {
