@@ -1,6 +1,8 @@
+import type React from "react";
+
 interface NoDataProps {
   text: string;
-  supportText?: string;
+  supportText?: React.ReactNode;
 }
 
 export function NoData({ text, supportText }: NoDataProps) {

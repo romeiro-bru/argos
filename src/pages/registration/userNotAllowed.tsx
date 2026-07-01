@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { NoData } from "../../components/noData";
 import { WarningTag } from "../../components/warningTag";
+import { appRoutes } from "../../routes";
 
 export function UserNotAllowed() {
   return (
@@ -13,7 +15,15 @@ export function UserNotAllowed() {
 
       <NoData
         text="É necessário estar logado na plataforma para cadastrar um animal para adoção."
-        supportText="Vá até a página de login ou cadastro para criar uma conta."
+        supportText={
+          <>
+            Vá até a página de{" "}
+            <Link to={appRoutes.SIGN_UP.path} className="text-blue-500 underline">
+              login ou cadastro
+            </Link>{" "}
+            para criar uma conta.
+          </>
+        }
       />
     </section>
   );
