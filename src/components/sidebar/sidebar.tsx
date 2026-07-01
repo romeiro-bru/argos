@@ -1,15 +1,15 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { useUserSupabase } from "../../context/userSupabaseContext";
-import { isActive } from "./isActive";
-import { LogoutButton } from "./logoutButton";
+import { isActive } from "./helpers/isActive";
+import { LogoutButton } from "./logout/logoutButton";
 import { AccountBadge } from "./accountBadge";
 import { ErrorModal } from "../modalError";
-import { useState } from "react";
 
 export function Sidebar() {
-  const [showError, setShowError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [showLogoutError, setShowLogoutError] = useState(false);
+  const [logoutErrorMessage, setlogoutErrorMessage] = useState("");
 
   const { userName, isLoading, session } = useUserSupabase();
   const { pathname } = useLocation();
@@ -52,20 +52,20 @@ export function Sidebar() {
             session={session} 
             isLoading={isLoading} 
             onError={(message) => {
-              setErrorMessage(message);
-              setShowError(true);
+              setlogoutErrorMessage(message);
+              setShowLogoutError(true);
             }}
           />
         </div>
       </div>
 
       <ErrorModal
-        isOpen={showError}
-        onClose={() => setShowError(false)}
+        isOpen={showLogoutError}
+        onClose={() => setShowLogoutError(false)}
         title="Erro ao fazer logout"
-        message={errorMessage}
+        message={logoutErrorMessage}
         actionLabel="Tentar novamente"
-        onAction={() => setShowError(false)}
+        onAction={() => setShowLogoutError(false)}
       />
     </nav>
   );

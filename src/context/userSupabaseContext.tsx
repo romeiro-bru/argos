@@ -27,9 +27,9 @@ export function UserSupabaseProvider({
   useEffect(() => {
     supabase.auth
       .getSession()
-      .then(({ data: { session } }) => {
-        setSession(session);
-        setUserName(extractUserName(session));
+      .then(({ data }) => {
+        setSession(data.session);
+        setUserName(extractUserName(data.session));
       })
       .catch((error) => {
         console.error("Erro ao buscar sessão:", error);
@@ -38,14 +38,14 @@ export function UserSupabaseProvider({
         setIsLoading(false);
       });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+    const { data } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setSession(session);
         setUserName(extractUserName(session));
       }
     );
 
-    return () => subscription?.unsubscribe();
+    return () => data.subscription.unsubscribe();
   }, []);
 
   const value: UserContextType = {

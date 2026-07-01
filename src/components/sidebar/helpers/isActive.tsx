@@ -1,9 +1,4 @@
-interface RoutesInterface {
-  path: string;
-  meta: {
-    label: string;
-  };
-}
+import type { RoutesInterface } from "../../../routes";
 
 interface IsActiveProps {
   route: RoutesInterface;
