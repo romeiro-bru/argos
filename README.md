@@ -11,44 +11,36 @@ Aplicação em React + TypeScript + Vite para exibir animais disponíveis para a
 ```bash
 git clone https://github.com/seu-usuario/argos.git
 cd argos
-```
-
-> Substitua `https://github.com/seu-usuario/argos.git` pela URL correta do repositório, se necessário.
-
-## Instalar dependências
-```bash
 npm install
-```
-
-## Executar em modo de desenvolvimento
-```bash
 npm run dev
 ```
-
 Em seguida, abra o navegador em:
 ```text
 http://localhost:5173
 ```
 
-## Testes
-```bash
-npm run test
-```
+## 🛠️ Stack Tecnológico
 
-## Estrutura do projeto 📂
-* `src/` - código fonte da aplicação
-* `src/pages/registration/` - página de cadastro de pets
-* `src/pages/home/` - página inicial
-* `src/pages/details/` - página de detalhes do pet
-* `src/pages/favorites/` - página de favoritos
-* `src/components/` - componentes reutilizáveis
-* `src/routes.tsx` - rotas da aplicação
+- **Frontend Framework**: React 18+ com TypeScript
+- **Build Tool**: Vite
+- **Estilização**: Tailwind CSS
+- **Roteamento**: React Router v6
+- **Estado Global**: React Context API
+- **Autenticação & BD**: Supabase
+- **Testes**: Vitest + React Testing Library
+- **Linting**: ESLint
+- **Dados**: JSON locais (breeds) + API de localidades do Brasil
 
 ## Funcionalidades principais ✨
 * Listar animais disponíveis para adoção ✅
-* Salvar favoritos ✅
-* Cadastro de pets com formulário (em andamento) 🚧
-* Cadastro de usuários (em andamento) 🚧
+* Persistência local de favoritos (localStorage) ✅
+* Página dedicada para visualizar favoritos salvos ✅
+* Indicadores visuais de favoritos na listagem ✅
+* Busca de animais com filtros por raça, tamanho, gênero, temperamento, localização ✅
+* Cadastro de pets com supabase (em andamento) 🚧
+* Cadastro e login de usuários com Supabase Auth ✅
+* Logout com redirecionamento ✅
+* Sessão persistente do usuário ✅
 
 ## Integração com Supabase 🚧
 A integração com o Supabase está em andamento e será usada para:
@@ -61,6 +53,8 @@ Para o funcionamento local, é necessário configurar variáveis de ambiente no 
 ## Hooks e  Hooks personalizados 🎣
 * `useRegistrationForm` -  para lógica de cadastro e validação do formulário.
 * `useFilterFields` -   para lógica de filtros e lista filtrada da página inicial.
+* `useUserSupabase` - Gerencia autenticação e sessão do usuário
+- `useLogout` - Lógica de logout com tratamento de erros
   
 * `useReducer` para gerenciar o estado e ações do formulário de cadastro.
 * `useReducer` em useFilterfields.ts para gerenciar os filtros de busca de pets.
@@ -76,3 +70,76 @@ Para o funcionamento local, é necessário configurar variáveis de ambiente no 
 * `localStorage`: persiste e carrega a lista de favoritos no navegador.
 * API de localidades: retorna os estados e cidades do Brasil.
 * `Supabase`: utilizado para armazenamento de dados.
+
+ ## Estrutura do Projeto 📂
+
+```
+src/
+├── App.tsx                          # Componente raiz com gerenciamento de sessão
+├── main.tsx                         # Ponto de entrada
+├── routes.tsx                       # Definição das rotas
+├── supabase-client.ts               # Cliente Supabase configurado
+│
+├── assets/                          # Ícones e assets SVG
+│   └── ...
+│
+├── components/                     # Componentes reutilizáveis
+│   ├── layout.tsx                  # Layout principal
+│   ├── sidebar.tsx                 # Navegação lateral
+│   └── ...
+│
+├── pages/                          # Páginas/rotas
+│   ├── landing/                    # Página inicial (landing)
+│   │   ├── landing.tsx
+│   │   └── ...
+│   │
+│   ├── home/               
+│   │   └── ...
+│   │
+│   ├── details/                    # Página de detalhes do animal
+│   │   └── details.tsx
+│   │
+│   ├── favorites/                  # Página de favoritos
+│   │   ├── favorites.tsx
+│   │   └── ...
+│   │
+│   ├── registration/               # Página de cadastro de animais
+│   │   ├── registration.tsx
+│   │   ├── hooks/
+│   │   │   └── useRegistrationForm.ts
+│   │   └── formFields/
+│   │       └── ...
+│   │
+│   ├── signup/                     # Página de cadastro de usuários
+│   │   ├── signup.tsx
+│   │   └── formFields/
+│   │       └── ...
+│   │
+│   ├── common/                     # Componentes e lógica compartilhada
+│   │   ├── constants.ts
+│   │   ├── types.ts
+│   │   ├── components/
+│   │   │   └── ...
+│   │   │
+│   │   ├── context/
+│   │   │   ├── favoritesProvider.tsx
+│   │   │   └── ...
+│   │   │
+│   │   ├── hooks/
+│   │   │   └── ...
+│   │   ├── service/
+│   │       └── ... 
+│   │
+│   ├── context/
+│   │   └── userSupabaseContext.tsx # Context global de autenticação
+│   │
+│   └── pets.json                   # Dados de exemplo de animais
+│
+├── context/
+│   └── userSupabaseContext.tsx     # Contexto global de usuário
+│
+├── catsBreed.json                  # Catálogo de raças de gatos
+├── dogsBreed.json                  # Catálogo de raças de cães
+└──  index.css                       # Estilos globais
+
+```
