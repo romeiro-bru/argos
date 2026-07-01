@@ -19,7 +19,7 @@ Em seguida, abra o navegador em:
 http://localhost:5173
 ```
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico 🛠️ 
 
 - **Frontend Framework**: React 18+ com TypeScript
 - **Build Tool**: Vite
