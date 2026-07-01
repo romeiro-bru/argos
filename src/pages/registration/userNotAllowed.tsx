@@ -19,7 +19,7 @@ export function UserNotAllowed() {
           <>
             Vá até a página de{" "}
             <Link to={appRoutes.SIGN_UP.path} className="text-blue-500 underline">
-              login ou cadastro
+              login
             </Link>{" "}
             para criar uma conta.
           </>
