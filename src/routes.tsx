@@ -1,4 +1,13 @@
-export const appRoutes = {
+export interface RoutesInterface {
+  path: string;
+  meta: {
+    label: string;
+    showInSidebar: boolean;
+    icon?: React.ReactNode;
+  };
+}
+
+export const appRoutes: { [key: string]: RoutesInterface } = {
   LANDING: {
     path: "/",
     meta: {
@@ -40,7 +49,7 @@ export const appRoutes = {
       showInSidebar: true,
     },
   },
-  
+
   SIGN_UP: {
     path: "/sign-up",
     meta: {
