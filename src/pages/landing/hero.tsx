@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { appRoutes } from "../../routes";
+import { useUserSupabase } from "../../context/userSupabaseContext";
 
 export function Hero() {
+  const { session } = useUserSupabase();
+
+  const isLoggedIn = !!session;
+
   return (
     <div className="lg:flex md:flex-wrap w-fit m-auto justify-between pl-4 bg-[var(--primary-color-light)] shadow-md rounded-md md:flex-wrap gap-2">
       <div className="lg:px-8">
@@ -29,7 +34,9 @@ export function Hero() {
             </button>
           </Link>
 
-          <Link to={appRoutes.SIGN_UP.path}>
+          <Link
+            to={isLoggedIn ? appRoutes.REGISTER.path : appRoutes.SIGN_UP.path}
+          >
             <button
               className="flex gap-2 border-2 border-[var(--text-hover)] cursor-pointer border-solid rounded-lg p-[8px] lg:px-[1rem] lg:py-[1rem] lg:mt-0 mt-2 hover:bg-[var(--bg)] shadow-md"
               type="button"
