@@ -132,7 +132,7 @@ export function Signup() {
               : "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
           }
           actionLabel="Continuar"
-          onAction={() => navigate(appRoutes.HOME.path)}
+          onAction={() => navigate(appRoutes.REGISTER.path)}
         />
         <ErrorModal
           isOpen={showError}
