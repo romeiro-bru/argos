@@ -36,7 +36,7 @@ http://localhost:5173
 * Persistência local de favoritos (localStorage) ✅
 * Página dedicada para visualizar favoritos salvos ✅
 * Indicadores visuais de favoritos na listagem ✅
-* Busca de animais com filtros por raça, tamanho, gênero, temperamento, localização (estados e cidades do Brasil) ✅
+* Busca de animais com filtros por raça, tamanho, gênero, temperamento, localização ✅
 * Cadastro de pets com supabase (em andamento) 🚧
 * Cadastro e login de usuários com Supabase Auth ✅
 * Logout com redirecionamento ✅
