@@ -8,6 +8,7 @@ import {
 } from "../common/context/favoritesProvider";
 import { useContext } from "react";
 import { WarningTag } from "../../components/warningTag";
+import { useUserSupabase } from "../../context/userSupabaseContext";
 
 export const foundFavorites = (
   list: PetsList[],
@@ -20,15 +21,18 @@ export default function Favorites() {
   const context = useContext(FavoritesContext);
   if (!context) return null;
   const { favorites } = context;
+  const { session } = useUserSupabase();
 
   return (
     <main>
       <div className="mb-8">
         <h1 className="mb-6">Favorites</h1>
-        <WarningTag
-          message="É necessário estar
+        {!session && (
+          <WarningTag
+            message="É necessário estar
           logado em uma conta para finalizar o processo de adoção."
-        />
+          />
+        )}
       </div>
 
       {favorites.length > 0 ? (
