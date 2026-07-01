@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { supabase } from "../../../supabase-client";
 import { EmailField } from "./formFields/emailField";
 import { PasswordField } from "./formFields/passwordField";
 import { NameField } from "./formFields/nameField";
-import { PulseLoading } from "../../components/pulseLoading";
 import { Spinner } from "../../assets/spinner";
 import { SuccessModal } from "../../components/modalSuccess";
 import { appRoutes } from "../../routes";
 import { useNavigate } from "react-router-dom";
 import { ErrorModal } from "../../components/modalError";
+import { useAuthForm } from "./useAuthForm";
+import { AuthFormSkeleton } from "./authFormSkeleton";
 
 export interface FormDataInterface {
   name: string;
@@ -18,59 +17,23 @@ export interface FormDataInterface {
 
 export function Signup() {
   const navigate = useNavigate();
+  const {
+    formData,
+    setFormData,
+    mode,
+    handleSubmit,
+    loading,
+    showError,
+    showSuccess,
+    toggleMode,
+    setShowError,
+    setShowSuccess,
+    errorMessage,
+  } = useAuthForm();
 
-  const [isSignUp, setIsSignUp] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [showError, setShowError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const isLogin = mode === "login";
 
-  const [formData, setFormData] = useState<FormDataInterface>({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    setShowError(false);
-    setErrorMessage("");
-    setLoading(true);
-
-    if (isSignUp) {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (error) {
-        setShowError(true);
-        setErrorMessage(error.message);
-      } else {
-        setShowSuccess(true);
-      }
-    } else {
-      const { error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            name: formData.name,
-          },
-        },
-      });
-
-      if (error) {
-        setShowError(true);
-        setErrorMessage(error.message);
-      } else {
-        setShowSuccess(true);
-      }
-    }
-
-    setLoading(false);
-  };
+  // TODO: se usuário já estiver logado, não permitir logar novamente
 
   return (
     <main>
@@ -84,17 +47,11 @@ export function Signup() {
       <form onSubmit={handleSubmit} className="mb-8">
         <section className="flex flex-wrap gap-4 bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">
           {loading ? (
-            <>
-              <PulseLoading label="E-mail:" height={35} width={170} />
-              {!isSignUp && (
-                <PulseLoading label="Nome:" height={35} width={170} />
-              )}
-              <PulseLoading label="Senha:" height={35} width={170} />
-            </>
+            <AuthFormSkeleton showName={!isLogin} />
           ) : (
             <>
               <EmailField formData={formData} setFormData={setFormData} />
-              {!isSignUp && (
+              {!isLogin && (
                 <NameField formData={formData} setFormData={setFormData} />
               )}
               <PasswordField formData={formData} setFormData={setFormData} />
@@ -105,11 +62,11 @@ export function Signup() {
         <div className="flex gap-2">
           <button
             disabled={loading}
-            onClick={() => setIsSignUp(!isSignUp)}
+            onClick={toggleMode}
             type="button"
             className="cursor-pointer border-2 border-[var(--secondary-color)] text-[var(--secondary-color)] shadow-md rounded-lg py-2 px-4 mr-2"
           >
-            Trocar para {isSignUp ? "Criar conta" : "Login"}
+            Trocar para {isLogin ? "Criar conta" : "Login"}
           </button>
           <button
             disabled={loading}
@@ -118,16 +75,19 @@ export function Signup() {
           >
             {loading && <Spinner className="size-4" />}
 
-            {isSignUp ? "Login" : "Criar conta"}
+            {isLogin ? "Login" : "Criar conta"}
           </button>
         </div>
 
         <SuccessModal
           isOpen={showSuccess}
-          onClose={() => setShowSuccess(false)}
-          title={isSignUp ? "Login realizado!" : "Conta criada!"}
+          onClose={() => {
+            setShowSuccess(false);
+            navigate(appRoutes.REGISTER.path);
+          }}
+          title={isLogin ? "Login realizado!" : "Conta criada!"}
           message={
-            isSignUp
+            isLogin
               ? "Login realizado com sucesso."
               : "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
           }
@@ -136,12 +96,17 @@ export function Signup() {
         />
         <ErrorModal
           isOpen={showError}
-          onClose={() => setShowError(false)}
+          onClose={() => {
+            setShowError(false);
+            navigate(appRoutes.SIGNUP.path);
+          }}
           title={
-            isSignUp
+            isLogin
               ? "Erro ao autenticar"
               : "Não foi possível criar a sua conta."
           }
+          onAction={() => navigate(appRoutes.LANDING.path)}
+          actionLabel="Continuar"
           message={errorMessage}
         />
       </form>
