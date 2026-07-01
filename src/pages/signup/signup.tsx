@@ -46,15 +46,15 @@ export function Signup() {
         </section>
       ) : (
         <>
+          <div className="flex gap-2 mb-8 items-center">
+            <h1>Criar conta</h1>
+          </div>
           <form onSubmit={handleSubmit} className="mb-8">
             <section className="flex flex-wrap gap-4 bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">
               {loading ? (
                 <AuthFormSkeleton showName={!isLogin} />
               ) : (
                 <>
-                  <div className="flex gap-2 mb-8 items-center">
-                    <h1>Criar conta</h1>
-                  </div>
                   <EmailField formData={formData} setFormData={setFormData} />
                   {!isLogin && (
                     <NameField formData={formData} setFormData={setFormData} />
