@@ -1,4 +1,4 @@
-import { TagCheckbox } from "../../common/components/tagCheckbox";
+import { TagCheckbox } from "../../../common/components/tagCheckbox";
 
 interface HealthTagGroupProps {
   neutered: boolean;

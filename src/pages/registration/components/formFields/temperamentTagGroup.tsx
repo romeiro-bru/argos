@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { TagCheckbox } from "../../common/components/tagCheckbox";
-import dogsBreed from "../../../dogsBreed.json";
-import type { PetsList } from "../../common/types";
+import { TagCheckbox } from "../../../common/components/tagCheckbox";
+import dogsBreed from "../../../../dogsBreed.json";
+import type { PetsList } from "../../../common/types";
 
 interface TemperamentTagGroupProps {
   setTemperament: (value: PetsList["temperament"]) => void;

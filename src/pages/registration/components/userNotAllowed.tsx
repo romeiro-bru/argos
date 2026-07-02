@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { NoData } from "../../components/noData";
-import { WarningTag } from "../../components/warningTag";
-import { appRoutes } from "../../routes";
+import { WarningTag } from "../../../components/warningTag";
+import { NoData } from "../../../components/noData";
+import { appRoutes } from "../../../routes";
+
 
 export function UserNotAllowed() {
   return (

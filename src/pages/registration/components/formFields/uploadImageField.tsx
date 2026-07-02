@@ -1,5 +1,5 @@
-import { Upload } from "../../../assets/upload";
-import type { FormState } from "../types";
+import { Upload } from "../../../../assets/upload";
+import type { FormState } from "../../types";
 
 interface FieldProps {
   setField: (file: File | null) => void;

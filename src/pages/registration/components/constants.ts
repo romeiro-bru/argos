@@ -1,5 +1,5 @@
-import dogsBreed from "../../dogsBreed.json";
-import catsBreed from "../../catsBreed.json";
+import dogsBreed from "../../../dogsBreed.json";
+import catsBreed from "../../../catsBreed.json";
 
 export const dogBreeds = dogsBreed.map((breed) => {
   const label = breed.name;
