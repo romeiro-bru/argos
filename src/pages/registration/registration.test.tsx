@@ -3,8 +3,10 @@ import Registration from "./registration";
 import { MemoryRouter } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import userEvent from "@testing-library/user-event";
+import type { Session } from "@supabase/supabase-js";
 
 const mockNavigate = vi.fn();
+const mockUseUserSupabase = vi.fn();
 
 vi.mock(import("react-router-dom"), async (importOriginal) => {
   const actual = await importOriginal();
@@ -14,8 +16,29 @@ vi.mock(import("react-router-dom"), async (importOriginal) => {
   };
 });
 
+vi.mock("../../context/userSupabaseContext", () => ({
+  useUserSupabase: () => mockUseUserSupabase(),
+}));
+
+vi.mock("../common/hooks/useGetStates", () => ({
+  useGetStates: () => ({ states: [], loading: false }),
+}));
+
+vi.mock("../common/hooks/useGetDistricts", () => ({
+  useGetDistricts: () => ({ districts: [], loading: false }),
+}));
+
 describe("Registration Page", () => {
-  beforeEach(() => mockNavigate.mockClear());
+  beforeEach(() => {
+    mockNavigate.mockClear();
+    mockUseUserSupabase.mockReturnValue({
+      session: {
+        user: { user_metadata: { name: "Teste" } },
+      } as unknown as Session,
+      userName: "Teste",
+      isLoading: false,
+    });
+  });
 
   it("should render page title", () => {
     render(
@@ -61,7 +84,7 @@ describe("Registration Page", () => {
     ).not.toBeInTheDocument();
   });
 
-  it.skip("should navigate to adoption page when cancel button is clicked", async () => {
+  it("should navigate to adoption page when cancel button is clicked", async () => {
     render(
       <MemoryRouter>
         <Registration />
