@@ -24,7 +24,7 @@ export interface FormState {
   age: PetsList["age"];
   name: string;
 }
-export interface ApiResponse {
+export interface StatesResponse {
   id: number;
   sigla: string;
   nome: string;

@@ -14,7 +14,7 @@ type SuccessModalProps = {
 export function ErrorModal({
   isOpen,
   onClose,
-  title = "Algo deu errado",
+  title = "Algo deu errado!",
   message = "Não foi possível concluir sua solicitação. Tente novamente.",
   actionLabel,
   onAction,

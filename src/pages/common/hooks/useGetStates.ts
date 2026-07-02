@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { ServiceLocation } from "../../common/service/service";
-import type { ApiResponse } from "../../registration/types";
+import type { StatesResponse } from "../../registration/types";
+
 
 export function useGetStates() {
-  const [states, setStates] = useState<ApiResponse[]>([]);
+  const [states, setStates] = useState<StatesResponse[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 

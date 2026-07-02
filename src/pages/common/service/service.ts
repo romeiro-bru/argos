@@ -1,12 +1,12 @@
 import axios from "axios";
-import type { ApiResponse } from "../../registration/types";
 import type { DistrictResponse } from "./types";
+import type { StatesResponse } from "../../registration/types";
 
 const api = axios.create({
   baseURL: "https://servicodados.ibge.gov.br/api/v1/localidades",
 });
 
-async function getStates(): Promise<ApiResponse[]> {
+async function getStates(): Promise<StatesResponse[]> {
   const url = "/estados";
 
   const response = await api.get(url);

@@ -1,4 +1,4 @@
-import type { ApiResponse } from "../registration/types";
+import type { StatesResponse } from "../registration/types";
 import type { DistrictResponse } from "./service/types";
 import type { PetsList } from "./types";
 
@@ -27,7 +27,7 @@ export const ageOptions: AgeInterface[] = [
   { label: "sênior (acima de 8 anos)", value: "Sênior" },
 ];
 
-export const stateOptions = (states: ApiResponse[]) => [
+export const stateOptions = (states: StatesResponse[]) => [
   { label: "-", value: "" },
   ...states
     .sort((a, b) => a.sigla.localeCompare(b.sigla))
