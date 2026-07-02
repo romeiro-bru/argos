@@ -2,10 +2,15 @@ import { NoData } from "../../components/noData";
 import { Card } from "../common/components/card";
 import { Select } from "../common/components/select";
 import { useFilterFields } from "./hooks/useFilterfields";
-import { districtsOptions, stateOptions } from "../common/constants";
+import {
+  ageOptions,
+  districtsOptions,
+  sizeOptions,
+  stateOptions,
+} from "../common/constants";
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
 import { useGetStates } from "../common/hooks/useGetStates";
-import { ageOptions, sizeOptions, species } from "./constants";
+import { species } from "./constants";
 
 export default function Adoption() {
   const { filters, setField, reset, filteredList } = useFilterFields();

@@ -4,11 +4,16 @@ import { SpeciesGroup } from "./formFields/speciesGroup";
 import { NameInputField } from "./formFields/nameInputField";
 import { GenderGroup } from "./formFields/genderGroup";
 import { Select } from "../common/components/select";
-import { dogBreeds, catBreeds, ageOptions, sizeOptions } from "./constants";
+import { dogBreeds, catBreeds } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { useRegistrationForm } from "./hooks/useRegistrationForm";
-import { districtsOptions, stateOptions } from "../common/constants";
+import {
+  ageOptions,
+  districtsOptions,
+  sizeOptions,
+  stateOptions,
+} from "../common/constants";
 import { useGetStates } from "../common/hooks/useGetStates";
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
 import { UploadImageField } from "./formFields/uploadImageField";
