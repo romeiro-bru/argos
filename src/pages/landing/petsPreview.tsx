@@ -15,7 +15,7 @@ export function PetsPreview({ limit = 3 }: PetsPreviewProps) {
       <div className="flex justify-between">
         <h3 className="font-semibold mb-2">Procurando um lar agora:</h3>
 
-        <Link to={appRoutes.HOME.path}>
+        <Link to={appRoutes.ADOPTION.path}>
           <span className="flex gap-2 items-center text-xs">
             Ver todos
             <img src="/arrow-right.png" className="h-3" />

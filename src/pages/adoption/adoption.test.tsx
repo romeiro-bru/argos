@@ -6,12 +6,12 @@ vi.mock("./hooks/useFilterfields", () => ({
   useFilterFields: vi.fn(),
 }));
 
-import Home from "./home";
+import Adoption from "./adoption";
 import { useFilterFields } from "./hooks/useFilterfields";
 
 const mockedUseFilterFields = vi.mocked(useFilterFields);
 
-describe("Home Page", () => {
+describe("Adoption Page", () => {
   beforeEach(() => {
     mockedUseFilterFields.mockReset();
   });
@@ -32,7 +32,7 @@ describe("Home Page", () => {
 
     render(
       <MemoryRouter>
-        <Home />
+        <Adoption />
       </MemoryRouter>,
     );
 
@@ -59,7 +59,7 @@ describe("Home Page", () => {
 
     render(
       <MemoryRouter>
-        <Home />
+        <Adoption />
       </MemoryRouter>,
     );
 
@@ -86,7 +86,7 @@ describe("Home Page", () => {
 
     render(
       <MemoryRouter>
-        <Home />
+        <Adoption />
       </MemoryRouter>,
     );
 

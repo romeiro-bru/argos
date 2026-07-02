@@ -154,7 +154,7 @@ export default function Registration() {
                 submit
               </button>
               <button
-                onClick={() => navigate(appRoutes.HOME.path)}
+                onClick={() => navigate(appRoutes.ADOPTION.path)}
                 type="button"
                 className="cursor-pointer bg-[var(--gray)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
               >

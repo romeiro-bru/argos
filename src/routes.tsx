@@ -16,10 +16,10 @@ export const appRoutes: { [key: string]: RoutesInterface } = {
       showInSidebar: false,
     },
   },
-  HOME: {
-    path: "/home",
+  ADOPTION: {
+    path: "/adoption",
     meta: {
-      label: "Home",
+      label: "Adoção",
       icon: <img className="w-12 ml-2" src="/favicon.png" />,
 
       showInSidebar: true,

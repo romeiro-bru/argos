@@ -21,7 +21,7 @@ export function Hero() {
         </section>
 
         <div className="lg:flex gap-2 my-8 md:flex-wrap md:gap-2">
-          <Link to={appRoutes.HOME.path}>
+          <Link to={appRoutes.ADOPTION.path}>
             <button
               className="flex gap-2 bg-[var(--secondary-color)] border-2 border-[var(--secondary-color)] cursor-pointer rounded-lg p-[8px] lg:px-[2rem] py-[1rem] hover:bg-[var(--secondary-color-hover)] shadow-md"
               type="button"
