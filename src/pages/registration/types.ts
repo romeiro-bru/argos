@@ -9,7 +9,7 @@ export type FormAction =
   | { type: "RESET" };
 
 export interface FormState {
-  size: PetsList["size"];
+  size: string;
   gender: PetsList["gender"];
   species: PetsList["species"];
   temperament: PetsList["temperament"];
@@ -21,7 +21,7 @@ export interface FormState {
   state: string;
   city: string;
   breed: string;
-  age: PetsList["age"];
+  age: string;
   name: string;
 }
 export interface StatesResponse {

@@ -73,6 +73,7 @@ export function Form({
             label="Idade:"
             options={ageOptions}
             onChange={(value) => setField("age", value)}
+            error={errors.age}
           />
           <GenderGroup
             selectedGender={formState.gender}
@@ -106,6 +107,7 @@ export function Form({
               onChange={(value) => setField("size", value)}
               label="Porte:"
               options={sizeOptions}
+              error={errors.size}
             />
           )}
 

@@ -5,7 +5,7 @@ type FormErrors = Partial<Record<keyof FormState, string>>;
 
 const initialState: FormState = {
   name: "",
-  size: "Pequeno",
+  size: "",
   gender: "Fêmea",
   species: "Cachorro",
   temperament: [],
@@ -14,7 +14,7 @@ const initialState: FormState = {
   state: "",
   city: "",
   breed: "SRD",
-  age: "Filhote",
+  age: "",
   neutered: false,
   vaccinated: false,
   dewormed: false,
@@ -44,6 +44,14 @@ function validateFields(formState: FormState): FormErrors {
   if (formState.temperament.length === 0)
     errors.temperament = "Selecione pelo menos uma característica.";
 
+  if(formState.age.length === 0) {
+    errors.age = "Selecione uma opção.";
+  }
+
+  if(formState.size.length === 0 && formState.species === "Cachorro") {
+    errors.size = "Selecione uma opção.";
+  }
+  
   if (!formState.fileName) {
     errors.fileName = "Selecione uma imagem.";
   } else if (!/\.(jpg|jpeg|png|webp|gif)$/i.test(formState.fileName)) {
