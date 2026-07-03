@@ -5,6 +5,7 @@ import { FavoriteButton } from "./favoriteButton";
 import { female } from "../../../assets/female";
 import { male } from "../../../assets/male";
 import { petSizes } from "../helpers/petSizes";
+import { truncateText } from "../helpers/truncateText";
 
 interface CardProps {
   list: PetsList[] | null;
@@ -17,17 +18,24 @@ export function Card({ list }: CardProps) {
     <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 relative sm:grid-cols-2">
       {list?.map((dog: PetsList) => (
         <article
-          className="grid shadow-[var(--shadow)] shadow-md w-54 pl-3 pr-2 py-2 rounded-2xl"
+          className="grid shadow-[var(--shadow)] shadow-md w-54 pl-3 pr-2 py-2 rounded-2xl overflow-visible"
           key={dog.id}
           id={dog.id}
         >
           <div className="card rounded-2xl">
-            <FavoriteButton id={dog.id} name={dog.name} className="top-2 right-2" />
+            <FavoriteButton
+              id={dog.id}
+              name={dog.name}
+              className="top-2 right-2"
+            />
             <img className="h-46 w-50 object-cover" alt="dog" src={dog.img} />
-            <div className="card-text">
-              <span>
-                {dog.name} | {dog.city}
-              </span>
+            <div className="card-text text-sm">
+              <Tooltip
+                text={dog.name}
+                tooltipText={truncateText(dog.name, 10)}
+                position="top"
+              />{" "}
+              | {truncateText(dog.city, 14)}
             </div>
           </div>
 
@@ -36,15 +44,17 @@ export function Card({ list }: CardProps) {
 
             {dog.gender === "Fêmea" ? (
               <div className="mt-1">
-                <Tooltip text="Fêmea" tooltipText={female} />
+                <Tooltip text="Fêmea" tooltipText={female} position="right" />
               </div>
             ) : (
               <div className="mt-1">
-                <Tooltip text="Macho" tooltipText={male} />
+                <Tooltip text="Macho" tooltipText={male} position="right" />
               </div>
             )}
           </span>
-          <span className="flex">Porte {dog.size} {petSizes({size: dog.size}).icon}</span>
+          <span className="flex">
+            Porte {dog.size} {petSizes({ size: dog.size }).icon}
+          </span>
 
           <button
             onClick={() => navigate(`/details/${dog.id}`)}
