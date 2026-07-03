@@ -18,7 +18,7 @@ export function Tooltip({ text, tooltipText, position = "top" }: TooltipType) {
     <div className="group relative inline-block">
       {tooltipText}
       <span
-        className={`invisible absolute z-10 w-16 rounded-md bg-[#171717c1] px-0 py-[5px] text-center text-white opacity-0 transition-opacity duration-300 group-hover:visible group-hover:opacity-100 ${positionClasses[position]}`}
+        className={`invisible absolute z-10 w-[8em] rounded-md bg-[#171717c1] px-0 py-[5px] text-center text-white opacity-0 transition-opacity duration-300 group-hover:visible group-hover:opacity-100 ${positionClasses[position]}`}
       >
         {text}
       </span>
