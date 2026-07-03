@@ -17,17 +17,21 @@ import { catBreeds, dogBreeds } from "./constants";
 import type { useGetStates } from "../../common/hooks/useGetStates";
 import type { useGetDistricts } from "../../common/hooks/useGetDistricts";
 import type { FormState } from "../types";
-import { handleSubmit } from "../hooks/useRegistrationSubmit";
 
 interface FormProps {
   formState: FormState;
   setField: (field: keyof FormState, value: FormState[keyof FormState]) => void;
-  errors:  Partial<Record<keyof FormState, string>>;
+  errors: Partial<Record<keyof FormState, string>>;
   validateForm: () => boolean;
   states: ReturnType<typeof useGetStates>["states"];
   loading: boolean;
   districts: ReturnType<typeof useGetDistricts>["districts"];
   isLoading: boolean;
+  onSubmit: (params: {
+    e: React.FormEvent<HTMLFormElement>;
+    formState: FormState;
+    validateForm: () => boolean;
+  }) => Promise<void> | void;
 }
 
 export function Form({
@@ -39,12 +43,13 @@ export function Form({
   loading,
   districts,
   isLoading,
+  onSubmit,
 }: FormProps) {
   const navigate = useNavigate();
 
   return (
     <form
-      onSubmit={(e) => handleSubmit({ e, formState, validateForm })}
+      onSubmit={(e) => onSubmit({ e, formState, validateForm })}
       className="mb-8"
     >
       <section className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-4">

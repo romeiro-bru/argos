@@ -6,7 +6,5 @@ interface NewPetServiceParams {
 }
 
 export async function newPetService({ pet }: NewPetServiceParams) {
-  const { data, error } = await supabase.from("new-pets").insert(pet).single();
-  if (error) throw error;
-  return data;
+  return supabase.from("new-pets").insert(pet).single();
 }

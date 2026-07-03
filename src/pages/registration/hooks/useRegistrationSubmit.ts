@@ -1,29 +1,48 @@
+import { useState } from "react";
 import { newPetService } from "../service/newPetService";
-import type { useRegistrationForm } from "./useRegistrationForm";
+import type { FormState } from "../types";
 
 interface HandleSubmitParams {
   e: React.FormEvent<HTMLFormElement>;
-  formState: ReturnType<typeof useRegistrationForm>["formState"];
-  validateForm: ReturnType<typeof useRegistrationForm>["validateForm"];
+  formState: FormState;
+  validateForm: () => boolean;
 }
 
-export const handleSubmit = async ({
-  e,
-  formState,
-  validateForm,
-}: HandleSubmitParams) => {
-  e.preventDefault();
-  console.log("submitted", formState);
+export function useRegistrationSubmit() {
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  if (!validateForm()) return;
+  const handleSubmit = async ({
+    e,
+    formState,
+    validateForm,
+  }: HandleSubmitParams) => {
+    e.preventDefault();
 
-  const { data, error } = await newPetService({ pet: formState });
+    if (!validateForm()) return;
 
-  if (error) {
-    console.error("Erro ao cadastrar pet:", error);
-    // TODO: Adicionar tratamento visual de erro (modal de erro)
-    return;
-  }
+    const { error } = await newPetService({ pet: formState });
 
-  // TODO: Adicionar feedback de sucesso ao usuário
-};
+    if (error) {
+      setShowSuccess(false);
+      setShowError(true);
+      setErrorMessage(error.message);
+      return;
+    }
+
+    setShowError(false);
+    setErrorMessage("");
+    setShowSuccess(true);
+  };
+
+  return {
+    handleSubmit,
+    showSuccess,
+    setShowSuccess,
+    showError,
+    setShowError,
+    errorMessage,
+    setErrorMessage,
+  };
+}
