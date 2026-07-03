@@ -14,19 +14,12 @@ import { SpeciesGroup } from "./formFields/speciesGroup";
 import { TemperamentTagGroup } from "./formFields/temperamentTagGroup";
 import { UploadImageField } from "./formFields/uploadImageField";
 import { catBreeds, dogBreeds } from "./constants";
-import type { useGetStates } from "../../common/hooks/useGetStates";
-import type { useGetDistricts } from "../../common/hooks/useGetDistricts";
+import { useGetStates } from "../../common/hooks/useGetStates";
+import { useGetDistricts } from "../../common/hooks/useGetDistricts";
 import type { FormState } from "../types";
+import { useRegistrationForm } from "../hooks/useRegistrationForm";
 
 interface FormProps {
-  formState: FormState;
-  setField: (field: keyof FormState, value: FormState[keyof FormState]) => void;
-  errors: Partial<Record<keyof FormState, string>>;
-  validateForm: () => boolean;
-  states: ReturnType<typeof useGetStates>["states"];
-  loading: boolean;
-  districts: ReturnType<typeof useGetDistricts>["districts"];
-  isLoading: boolean;
   onSubmit: (params: {
     e: React.FormEvent<HTMLFormElement>;
     formState: FormState;
@@ -34,18 +27,15 @@ interface FormProps {
   }) => Promise<void> | void;
 }
 
-export function Form({
-  formState,
-  setField,
-  errors,
-  validateForm,
-  states,
-  loading,
-  districts,
-  isLoading,
-  onSubmit,
-}: FormProps) {
+export function Form({ onSubmit }: FormProps) {
   const navigate = useNavigate();
+
+  const { formState, setField, errors, validateForm } = useRegistrationForm();
+
+  const { districts, loading: isLoading } = useGetDistricts({
+    UF: formState.state,
+  });
+  const { states, loading } = useGetStates();
 
   return (
     <form
