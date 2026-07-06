@@ -86,40 +86,38 @@ export function Signup() {
                 {isLogin ? "Login" : "Criar conta"}
               </button>
             </div>
-
-            <SuccessModal
-              isOpen={showSuccess}
-              onClose={() => {
-                setShowSuccess(false);
-                navigate(appRoutes.REGISTER.path);
-              }}
-              title={isLogin ? "Login realizado!" : "Conta criada!"}
-              message={
-                isLogin
-                  ? "Login realizado com sucesso."
-                  : "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
-              }
-              actionLabel="Continuar"
-              onAction={() => navigate(appRoutes.REGISTER.path)}
-            />
-            <ErrorModal
-              isOpen={showError}
-              onClose={() => {
-                setShowError(false);
-                navigate(appRoutes.SIGNUP.path);
-              }}
-              title={
-                isLogin
-                  ? "Erro ao autenticar"
-                  : "Não foi possível criar a sua conta."
-              }
-              onAction={() => navigate(appRoutes.LANDING.path)}
-              actionLabel="Continuar"
-              message={errorMessage}
-            />
           </form>
         </>
       )}
+
+      <SuccessModal
+        isOpen={showSuccess}
+        onClose={() => {
+          setShowSuccess(false);
+          navigate(appRoutes.REGISTER.path);
+        }}
+        title={isLogin ? "Login realizado!" : "Conta criada!"}
+        message={
+          isLogin
+            ? "Login realizado com sucesso."
+            : "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
+        }
+        actionLabel="Continuar"
+        onAction={() => navigate(appRoutes.REGISTER.path)}
+      />
+      <ErrorModal
+        isOpen={showError}
+        onClose={() => {
+          setShowError(false);
+          navigate(appRoutes.SIGNUP.path);
+        }}
+        title={
+          isLogin ? "Erro ao autenticar" : "Não foi possível criar a sua conta."
+        }
+        onAction={() => navigate(appRoutes.LANDING.path)}
+        actionLabel="Continuar"
+        message={errorMessage}
+      />
     </main>
   );
 }
