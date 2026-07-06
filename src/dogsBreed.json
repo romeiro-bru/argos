@@ -5,8 +5,14 @@
     "origem": "Brasil",
     "grupo": "Misturado",
     "porte": "Variável",
-    "temperament": ["Medroso", "Brincalhão", "Desconfiado", "Observador", "Impaciente", "Caçador"],
-    "pelo": "Variável"
+    "temperament": [
+      "Medroso",
+      "Brincalhão",
+      "Desconfiado",
+      "Observador",
+      "Impaciente",
+      "Caçador"
+    ]
   },
   {
     "id": 1,
@@ -14,8 +20,7 @@
     "origem": "Canadá",
     "grupo": "Recuperadores",
     "porte": "Grande",
-    "temperament": ["Amigável", "Ativo", "Confiável"],
-    "pelo": "Curto e denso"
+    "temperament": ["Amigável", "Ativo", "Confiável"]
   },
   {
     "id": 2,
@@ -23,8 +28,7 @@
     "origem": "Alemanha",
     "grupo": "Pastoreio",
     "porte": "Grande",
-    "temperament": ["Corajoso", "Inteligente", "Leal"],
-    "pelo": "Duplo, médio"
+    "temperament": ["Corajoso", "Inteligente", "Leal"]
   },
   {
     "id": 3,
@@ -32,8 +36,7 @@
     "origem": "Escócia",
     "grupo": "Recuperadores",
     "porte": "Grande",
-    "temperament": ["Confiável", "Confiante", "Amigável"],
-    "pelo": "Longo e denso"
+    "temperament": ["Confiável", "Confiante", "Amigável"]
   },
   {
     "id": 4,
@@ -41,8 +44,7 @@
     "origem": "França",
     "grupo": "Companhia",
     "porte": "Pequeno",
-    "temperament": ["Brincalhão", "Afetivo", "Sociável"],
-    "pelo": "Curto e liso"
+    "temperament": ["Brincalhão", "Afetivo", "Sociável"]
   },
   {
     "id": 5,
@@ -50,8 +52,7 @@
     "origem": "França / Alemanha",
     "grupo": "Companhia",
     "porte": "Variável (Toy, Miniatura, Padrão)",
-    "temperament": ["Inteligente", "Ativo", "Instintivo"],
-    "pelo": "Crespo e denso"
+    "temperament": ["Inteligente", "Ativo", "Instintivo"]
   },
   {
     "id": 6,
@@ -59,8 +60,7 @@
     "origem": "Inglaterra",
     "grupo": "Farejadores",
     "porte": "Médio",
-    "temperament": ["Curioso", "Amigável", "Alegre"],
-    "pelo": "Curto e resistente"
+    "temperament": ["Curioso", "Amigável", "Alegre"]
   },
   {
     "id": 7,
@@ -68,8 +68,7 @@
     "origem": "Alemanha",
     "grupo": "Trabalho",
     "porte": "Grande",
-    "temperament": ["Obediente", "Calmo", "Corajoso"],
-    "pelo": "Curto, denso e brilhante"
+    "temperament": ["Obediente", "Calmo", "Corajoso"]
   },
   {
     "id": 8,
@@ -77,8 +76,7 @@
     "origem": "Inglaterra",
     "grupo": "Terriers",
     "porte": "Pequeno",
-    "temperament": ["Corajoso", "Inteligente", "Determinado"],
-    "pelo": "Longo e sedoso"
+    "temperament": ["Corajoso", "Inteligente", "Determinado"]
   },
   {
     "id": 9,
@@ -86,8 +84,7 @@
     "origem": "Alemanha",
     "grupo": "Farejadores",
     "porte": "Pequeno",
-    "temperament": ["Persistente", "Espirituoso", "Brincalhão"],
-    "pelo": "Curto, longo ou arame"
+    "temperament": ["Persistente", "Espirituoso", "Brincalhão"]
   },
   {
     "id": 10,
@@ -95,8 +92,7 @@
     "origem": "Alemanha",
     "grupo": "Trabalho",
     "porte": "Grande",
-    "temperament": ["Alegre", "Afetivo", "Leal"],
-    "pelo": "Curto e brilhante"
+    "temperament": ["Alegre", "Afetivo", "Leal"]
   },
   {
     "id": 11,
@@ -104,8 +100,7 @@
     "origem": "Rússia (Sibéria)",
     "grupo": "Trabalho",
     "porte": "Médio",
-    "temperament": ["Extrovertido", "Amigável", "Gentil"],
-    "pelo": "Duplo e espesso"
+    "temperament": ["Extrovertido", "Amigável", "Gentil"]
   },
   {
     "id": 12,
@@ -113,8 +108,7 @@
     "origem": "China / Tibet",
     "grupo": "Companhia",
     "porte": "Pequeno",
-    "temperament": ["Afetivo", "Brincalhão", "Dócil"],
-    "pelo": "Longo e duplo"
+    "temperament": ["Afetivo", "Brincalhão", "Dócil"]
   },
   {
     "id": 13,
@@ -122,8 +116,7 @@
     "origem": "Grã-Bretanha",
     "grupo": "Pastoreio",
     "porte": "Médio",
-    "temperament": ["Inteligente", "Energético", "Responsivo"],
-    "pelo": "Médio e denso"
+    "temperament": ["Inteligente", "Energético", "Responsivo"]
   },
   {
     "id": 14,
@@ -131,8 +124,7 @@
     "origem": "Tibet",
     "grupo": "Companhia",
     "porte": "Pequeno",
-    "temperament": ["Assertivo", "Esperto", "Seguro"],
-    "pelo": "Longo, liso e pesado"
+    "temperament": ["Assertivo", "Esperto", "Seguro"]
   },
   {
     "id": 15,
@@ -140,8 +132,7 @@
     "origem": "Malta",
     "grupo": "Companhia",
     "porte": "Pequeno",
-    "temperament": ["Dócil", "Responsivo", "Confiante"],
-    "pelo": "Longo, liso e sedoso"
+    "temperament": ["Dócil", "Responsivo", "Confiante"]
   },
   {
     "id": 16,
@@ -149,8 +140,7 @@
     "origem": "Alemanha",
     "grupo": "Trabalho",
     "porte": "Grande",
-    "temperament": ["Energético", "Obediente", "Alerta", "Profundamente Leal"],
-    "pelo": "Curto e liso"
+    "temperament": ["Energético", "Obediente", "Alerta", "Profundamente Leal"]
   },
   {
     "id": 17,
@@ -158,8 +148,7 @@
     "origem": "China",
     "grupo": "Companhia",
     "porte": "Pequeno",
-    "temperament": ["Carinhoso", "Obstinado", "Brincalhão"],
-    "pelo": "Fino, suave e curto"
+    "temperament": ["Carinhoso", "Obstinado", "Brincalhão"]
   },
   {
     "id": 18,
@@ -167,8 +156,7 @@
     "origem": "México",
     "grupo": "Companhia",
     "porte": "Miniatura",
-    "temperament": ["Esperto", "Animado", "Leal"],
-    "pelo": "Curto ou longo"
+    "temperament": ["Esperto", "Animado", "Leal"]
   },
   {
     "id": 19,
@@ -176,8 +164,7 @@
     "origem": "China",
     "grupo": "Utilidade",
     "porte": "Médio",
-    "temperament": ["Independente", "Leal", "Quieto"],
-    "pelo": "Denso, duplo, áspero ou liso"
+    "temperament": ["Independente", "Leal", "Quieto"]
   },
   {
     "id": 20,
@@ -185,8 +172,7 @@
     "origem": "Japão",
     "grupo": "Utilidade",
     "porte": "Grande",
-    "temperament": ["Corajoso", "Quieto", "Profundamente Leal"],
-    "pelo": "Duplo e denso"
+    "temperament": ["Corajoso", "Quieto", "Profundamente Leal"]
   },
   {
     "id": 21,
@@ -194,8 +180,7 @@
     "origem": "Suíça",
     "grupo": "Trabalho",
     "porte": "Grande",
-    "temperament": ["Bom temperamento", "Afetivo", "Leal"],
-    "pelo": "Longo, espesso e liso ou levemente ondulado"
+    "temperament": ["Bom temperamento", "Afetivo", "Leal"]
   },
   {
     "id": 22,
@@ -203,8 +188,7 @@
     "origem": "Suíça / Itália",
     "grupo": "Trabalho",
     "porte": "Gigante",
-    "temperament": ["Gentil", "Amigável", "Paciente"],
-    "pelo": "Curto e liso, ou longo e ondulado"
+    "temperament": ["Gentil", "Amigável", "Paciente"]
   },
   {
     "id": 23,
@@ -212,8 +196,7 @@
     "origem": "Alemanha",
     "grupo": "Utilidade",
     "porte": "Variável",
-    "temperament": ["Dedicado", "Animado", "Atento"],
-    "pelo": "Duplo, abundante"
+    "temperament": ["Dedicado", "Animado", "Atento"]
   },
   {
     "id": 24,
@@ -221,8 +204,7 @@
     "origem": "França / Inglaterra",
     "grupo": "Farejadores",
     "porte": "Médio",
-    "temperament": ["Gentil", "Teimoso", "Amigável"],
-    "pelo": "Curto, liso e denso"
+    "temperament": ["Gentil", "Teimoso", "Amigável"]
   },
   {
     "id": 25,
@@ -230,7 +212,6 @@
     "origem": "Inglaterra",
     "grupo": "Espaniéis",
     "porte": "Médio",
-    "temperament": ["Alegre", "Afetivo", "Sociável"],
-    "pelo": "Sedoso, liso ou levemente ondulado"
+    "temperament": ["Alegre", "Afetivo", "Sociável"]
   }
 ]

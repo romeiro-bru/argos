@@ -1,12 +1,19 @@
 [
   {
+    "id": 76,
+    "name": "SRD",
+    "origem": "Brasil",
+    "grupo": "Misturado",
+    "porte": "Médio",
+    "temperament": ["Ativo"]
+  },
+  {
     "id": 1,
     "name": "Persa",
     "origem": "Irã",
     "grupo": "Pelo Longo",
     "porte": "Médio",
-    "temperament": ["Calmo", "Carinhoso", "Reservado"],
-    "pelo": "Longo e denso"
+    "temperament": ["Calmo", "Carinhoso", "Reservado"]
   },
   {
     "id": 2,
@@ -14,8 +21,7 @@
     "origem": "Estados Unidos",
     "grupo": "Natural",
     "porte": "Grande",
-    "temperament": ["Sociável", "Inteligente", "Gentil"],
-    "pelo": "Longo e espesso"
+    "temperament": ["Sociável", "Inteligente", "Gentil"]
   },
   {
     "id": 3,
@@ -23,8 +29,7 @@
     "origem": "Tailândia",
     "grupo": "Oriental",
     "porte": "Médio",
-    "temperament": ["Comunicativo", "Afetuoso", "Ativo"],
-    "pelo": "Curto e fino"
+    "temperament": ["Comunicativo", "Afetuoso", "Ativo"]
   },
   {
     "id": 4,
@@ -32,8 +37,7 @@
     "origem": "Estados Unidos",
     "grupo": "Pelo Semilongo",
     "porte": "Grande",
-    "temperament": ["Dócil", "Tranquilo", "Carinhoso"],
-    "pelo": "Semilongo e sedoso"
+    "temperament": ["Dócil", "Tranquilo", "Carinhoso"]
   },
   {
     "id": 5,
@@ -41,8 +45,7 @@
     "origem": "Estados Unidos",
     "grupo": "Híbrido",
     "porte": "Médio",
-    "temperament": ["Energético", "Curioso", "Inteligente"],
-    "pelo": "Curto e macio"
+    "temperament": ["Energético", "Curioso", "Inteligente"]
   },
   {
     "id": 6,
@@ -50,8 +53,7 @@
     "origem": "Reino Unido",
     "grupo": "Pelo Curto",
     "porte": "Médio",
-    "temperament": ["Calmo", "Independente", "Leal"],
-    "pelo": "Curto e denso"
+    "temperament": ["Calmo", "Independente", "Leal"]
   },
   {
     "id": 7,
@@ -59,8 +61,7 @@
     "origem": "Canadá",
     "grupo": "Sem Pelo",
     "porte": "Médio",
-    "temperament": ["Extrovertido", "Afetuoso", "Brincalhão"],
-    "pelo": "Ausente"
+    "temperament": ["Extrovertido", "Afetuoso", "Brincalhão"]
   },
   {
     "id": 8,
@@ -68,8 +69,7 @@
     "origem": "Escócia",
     "grupo": "Pelo Curto",
     "porte": "Médio",
-    "temperament": ["Doce", "Calmo", "Adaptável"],
-    "pelo": "Curto e macio"
+    "temperament": ["Doce", "Calmo", "Adaptável"]
   },
   {
     "id": 9,
@@ -77,8 +77,7 @@
     "origem": "Noruega",
     "grupo": "Natural",
     "porte": "Grande",
-    "temperament": ["Independente", "Amigável", "Corajoso"],
-    "pelo": "Longo e impermeável"
+    "temperament": ["Independente", "Amigável", "Corajoso"]
   },
   {
     "id": 10,
@@ -86,8 +85,7 @@
     "origem": "Etiópia",
     "grupo": "Pelo Curto",
     "porte": "Médio",
-    "temperament": ["Ativo", "Curioso", "Inteligente"],
-    "pelo": "Curto e sedoso"
+    "temperament": ["Ativo", "Curioso", "Inteligente"]
   },
   {
     "id": 11,
@@ -95,8 +93,7 @@
     "origem": "Mianmar",
     "grupo": "Pelo Semilongo",
     "porte": "Médio",
-    "temperament": ["Gentil", "Afetuoso", "Sociável"],
-    "pelo": "Semilongo e sedoso"
+    "temperament": ["Gentil", "Afetuoso", "Sociável"]
   },
   {
     "id": 12,
@@ -104,8 +101,7 @@
     "origem": "Rússia",
     "grupo": "Pelo Curto",
     "porte": "Médio",
-    "temperament": ["Reservado", "Leal", "Inteligente"],
-    "pelo": "Curto e aveludado"
+    "temperament": ["Reservado", "Leal", "Inteligente"]
   },
   {
     "id": 13,
@@ -113,8 +109,7 @@
     "origem": "Estados Unidos",
     "grupo": "Pelo Curto",
     "porte": "Médio",
-    "temperament": ["Afetuoso", "Brincalhão", "Sociável"],
-    "pelo": "Curto e brilhante"
+    "temperament": ["Afetuoso", "Brincalhão", "Sociável"]
   },
   {
     "id": 14,
@@ -122,8 +117,7 @@
     "origem": "Estados Unidos",
     "grupo": "Pelo Curto",
     "porte": "Médio",
-    "temperament": ["Calmo", "Carinhoso", "Gentil"],
-    "pelo": "Curto e denso"
+    "temperament": ["Calmo", "Carinhoso", "Gentil"]
   },
   {
     "id": 15,
@@ -131,7 +125,6 @@
     "origem": "Turquia",
     "grupo": "Pelo Longo",
     "porte": "Médio",
-    "temperament": ["Elegante", "Ativo", "Inteligente"],
-    "pelo": "Longo e sedoso"
+    "temperament": ["Elegante", "Ativo", "Inteligente"]
   }
 ]
