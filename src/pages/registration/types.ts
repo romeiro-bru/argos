@@ -16,8 +16,7 @@ export interface FormState {
   neutered: boolean;
   vaccinated: boolean;
   dewormed: boolean;
-  fileName: string | null;
-  file: File | null;
+  image_url: string;
   state: string;
   city: string;
   breed: string;

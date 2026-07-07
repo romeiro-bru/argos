@@ -104,8 +104,7 @@ export function Form({ onSubmit }: FormProps) {
           <UploadImageField
             formState={formState}
             setField={(file) => {
-              setField("fileName", file ? file.name : "");
-              setField("file", file);
+              setField("image_url", file ? URL.createObjectURL(file) : "");
             }}
             validateForm={validateForm}
             errors={errors}

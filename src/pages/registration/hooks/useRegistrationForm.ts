@@ -9,8 +9,7 @@ const initialState: FormState = {
   gender: "Fêmea",
   species: "Cachorro",
   temperament: [],
-  fileName: null,
-  file: null,
+  image_url: "",
   state: "",
   city: "",
   breed: "SRD",
@@ -52,10 +51,10 @@ function validateFields(formState: FormState): FormErrors {
     errors.size = "Selecione uma opção.";
   }
   
-  if (!formState.fileName) {
-    errors.fileName = "Selecione uma imagem.";
-  } else if (!/\.(jpg|jpeg|png|webp|gif)$/i.test(formState.fileName)) {
-    errors.fileName = "Formato inválido. Use JPG, PNG, WEBP ou GIF.";
+  if (!formState.image_url) {
+    errors.image_url = "Selecione uma imagem.";
+  } else if (!/\.(jpg|jpeg|png)$/i.test(formState.image_url)) {
+    errors.image_url = "Formato inválido. Use JPG, PNG ou JPEG.";
   }
   return errors;
 }
