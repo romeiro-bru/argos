@@ -8,13 +8,13 @@ interface FieldProps {
   validateForm: () => boolean;
 }
 
-
 export function UploadImageField({
   setField,
   validateForm,
   formState,
   errors,
 }: FieldProps) {
+
   return (
     <div>
       <label className="font-semibold">Imagem:</label>
@@ -32,14 +32,14 @@ export function UploadImageField({
       >
         <Upload />
         Escolher imagem
-        {formState.image_url && (
+        {formState.imageUrl && (
           <span className="text-xs italic text-[var(--gray)] px-2">
-            ✓ {formState.image_url}
+            ✓ {formState.imageUrl.name}
           </span>
         )}
       </label>
       <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">
-        {errors.image_url}
+        {errors.imageUrl}
       </span>
     </div>
   );
