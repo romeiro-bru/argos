@@ -32,14 +32,14 @@ export function UploadImageField({
       >
         <Upload />
         Escolher imagem
-        {formState.imageUrl && (
+        {formState.image && (
           <span className="text-xs italic text-[var(--gray)] px-2">
-            ✓ {formState.imageUrl.name}
+            ✓ {formState.image.name}
           </span>
         )}
       </label>
       <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">
-        {errors.imageUrl}
+        {errors.image}
       </span>
     </div>
   );

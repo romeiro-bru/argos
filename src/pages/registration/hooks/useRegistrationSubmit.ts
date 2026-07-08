@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { newPetService } from "../service/newPetService";
+import { newPetService, uploadPetImage } from "../service/newPetService";
 import type { FormState } from "../types";
 
 interface HandleSubmitParams {
@@ -22,7 +22,20 @@ export function useRegistrationSubmit() {
 
     if (!validateForm()) return;
 
-    const { error } = await newPetService({ pet: formState });
+    if (!formState.image) {
+      return;
+    }
+
+    const imageUrl = await uploadPetImage(formState.image);
+
+    const { image, ...fields } = formState;
+
+    // monta payload com url retornada(string), excluindo image (file)
+    const payload = {
+      ...fields,
+      imageUrl,
+    };
+    const { error } = await newPetService({ pet: payload });
 
     if (error) {
       setShowSuccess(false);
