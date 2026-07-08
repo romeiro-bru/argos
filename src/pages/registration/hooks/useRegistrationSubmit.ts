@@ -8,7 +8,7 @@ interface HandleSubmitParams {
   validateForm: () => boolean;
 }
 
-export function useRegistrationSubmit() {
+export function useRegistrationSubmit({ userId }: { userId: string }) {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -34,7 +34,9 @@ export function useRegistrationSubmit() {
     const payload = {
       ...fields,
       imageUrl,
+      user_id: userId,
     };
+
     const { error } = await newPetService({ pet: payload });
 
     if (error) {

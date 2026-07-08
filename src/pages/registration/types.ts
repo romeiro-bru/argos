@@ -28,6 +28,7 @@ export interface FormState {
 // tipagem da request para table new-pets
 export type NewPet = Omit<FormState, "image"> & {
   imageUrl: string; // imagem retornada do bucket supabase
+  user_id: string
 };
 
 export interface StatesResponse {

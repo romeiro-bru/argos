@@ -20,7 +20,7 @@ export default function Registration() {
     setShowError,
     errorMessage,
     setErrorMessage,
-  } = useRegistrationSubmit();
+  } = useRegistrationSubmit({userId: session?.user.id});
 
   if (!session) return <UserNotAllowed />;
 
