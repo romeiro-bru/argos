@@ -14,6 +14,7 @@ export function UploadImageField({
   formState,
   errors,
 }: FieldProps) {
+
   return (
     <div>
       <label className="font-semibold">Imagem:</label>
@@ -21,7 +22,7 @@ export function UploadImageField({
         id="f2"
         type="file"
         className="hidden"
-        accept="image/*"
+        accept=".png,.jpg,.jpeg,image/png,image/jpeg"
         onChange={(e) => setField(e.target.files?.[0] ?? null)}
         onBlur={validateForm}
       />
@@ -31,14 +32,14 @@ export function UploadImageField({
       >
         <Upload />
         Escolher imagem
-        {formState.fileName && (
+        {formState.image && (
           <span className="text-xs italic text-[var(--gray)] px-2">
-            ✓ {formState.fileName}
+            ✓ {formState.image.name}
           </span>
         )}
       </label>
       <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">
-        {errors.fileName}
+        {errors.image}
       </span>
     </div>
   );

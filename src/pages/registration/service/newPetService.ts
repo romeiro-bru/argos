@@ -1,8 +1,26 @@
 import { supabase } from "../../../../supabase-client";
-import type { FormState } from "../types";
+import type { NewPet } from "../types";
 
 interface NewPetServiceParams {
-  pet: FormState;
+  pet: NewPet;
+}
+
+export async function uploadPetImage(file: File): Promise<string> {
+  // envia somente imagem para bucket e retorna a url da imagem
+  const { data, error } = await supabase.storage
+    .from("listing_pets")
+    .upload(`${Date.now()}-${file.name}`, file, {
+      contentType: file.type,
+    });
+
+  if (error) throw error;
+
+  // retorna url da imagem enviada para bucket no supabase
+  const { data: publicUrlData } = supabase.storage
+    .from("listing_pets")
+    .getPublicUrl(data.path);
+
+  return publicUrlData.publicUrl;
 }
 
 export async function newPetService({ pet }: NewPetServiceParams) {

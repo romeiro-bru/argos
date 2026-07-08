@@ -17,7 +17,7 @@ import { catBreeds, dogBreeds } from "./constants";
 import { useGetStates } from "../../common/hooks/useGetStates";
 import { useGetDistricts } from "../../common/hooks/useGetDistricts";
 import type { FormState } from "../types";
-import { useRegistrationForm } from "../hooks/useRegistrationForm";
+import { useFormFields } from "../hooks/useFormFields";
 
 interface FormProps {
   onSubmit: (params: {
@@ -30,7 +30,7 @@ interface FormProps {
 export function Form({ onSubmit }: FormProps) {
   const navigate = useNavigate();
 
-  const { formState, setField, errors, validateForm } = useRegistrationForm();
+  const { formState, setField, errors, validateForm } = useFormFields();
 
   const { districts, loading: isLoading } = useGetDistricts({
     UF: formState.state,
@@ -103,10 +103,7 @@ export function Form({ onSubmit }: FormProps) {
 
           <UploadImageField
             formState={formState}
-            setField={(file) => {
-              setField("fileName", file ? file.name : "");
-              setField("file", file);
-            }}
+            setField={(file) => setField("image", file)}
             validateForm={validateForm}
             errors={errors}
           />

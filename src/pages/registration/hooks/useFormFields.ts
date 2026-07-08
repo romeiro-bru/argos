@@ -9,8 +9,7 @@ const initialState: FormState = {
   gender: "Fêmea",
   species: "Cachorro",
   temperament: [],
-  fileName: null,
-  file: null,
+  image: null,
   state: "",
   city: "",
   breed: "SRD",
@@ -44,23 +43,23 @@ function validateFields(formState: FormState): FormErrors {
   if (formState.temperament.length === 0)
     errors.temperament = "Selecione pelo menos uma característica.";
 
-  if(formState.age.length === 0) {
+  if (formState.age.length === 0) {
     errors.age = "Selecione uma opção.";
   }
 
-  if(formState.size.length === 0 && formState.species === "Cachorro") {
+  if (formState.size.length === 0 && formState.species === "Cachorro") {
     errors.size = "Selecione uma opção.";
   }
-  
-  if (!formState.fileName) {
-    errors.fileName = "Selecione uma imagem.";
-  } else if (!/\.(jpg|jpeg|png|webp|gif)$/i.test(formState.fileName)) {
-    errors.fileName = "Formato inválido. Use JPG, PNG, WEBP ou GIF.";
+
+  if (!formState.image) {
+    errors.image = "Selecione uma imagem.";
+  } else if (!/\.(jpg|jpeg|png)$/i.test(formState.image.name)) {
+    errors.image = "Formato inválido. Use JPG, PNG ou JPEG.";
   }
   return errors;
 }
 
-export function useRegistrationForm() {
+export function useFormFields() {
   const [formState, dispatch] = useReducer(formReducer, initialState);
   const [errors, setErrors] = useState<FormErrors>({});
 
