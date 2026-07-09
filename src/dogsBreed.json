@@ -213,5 +213,13 @@
     "grupo": "Espaniéis",
     "porte": "Médio",
     "temperament": ["Alegre", "Afetivo", "Sociável"]
+  },
+  {
+    "id": 26,
+    "name": "Pastor malinois",
+    "origem": "Bélgica",
+    "grupo": "Espaniéis",
+    "porte": "Médio",
+    "temperament": ["Leal", "Protetor", "Dedicado", "Energético"]
   }
 ]
