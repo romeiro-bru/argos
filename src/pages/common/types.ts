@@ -1,10 +1,14 @@
+export type Gender = "Macho" | "Fêmea";
+export type Species = "Cachorro" | "Gato";
+export type Age = "Filhote" | "Jovem" | "Adulto" | "Sênior";
+export type Size = "Pequeno" | "Médio" | "Grande" | "Gigante";
 
 export interface PetsList {
   id: string;
   name: string;
-  gender: "Macho" | "Fêmea";
-  age: "Filhote" | "Jovem" | "Adulto" | "Sênior";
-  size: "Pequeno" | "Médio" | "Grande" | "Gigante";
+  gender: Gender;
+  age: Age;
+  size: Size;
   breed: string;
   city: string;
   state: string;
@@ -12,6 +16,6 @@ export interface PetsList {
   neutered: boolean;
   vaccinated: boolean;
   temperament: string[];
-  species: "Cachorro" | "Gato",
-  dewormed: boolean
+  species: Species;
+  dewormed: boolean;
 }

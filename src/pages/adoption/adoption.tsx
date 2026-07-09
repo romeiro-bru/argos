@@ -11,9 +11,12 @@ import {
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
 import { useGetStates } from "../common/hooks/useGetStates";
 import { species } from "./constants";
+import { useGetPetsService } from "../common/hooks/useGetPetsService";
 
 export default function Adoption() {
-  const { filters, setField, reset, filteredList } = useFilterFields();
+  const { pets } = useGetPetsService();
+
+  const { filters, setField, reset, filteredList } = useFilterFields({ pets });
 
   const { states, loading } = useGetStates();
   const { districts, loading: isLoading } = useGetDistricts({

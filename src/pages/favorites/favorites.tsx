@@ -1,6 +1,4 @@
-import data from "../pets.json";
 import { Card } from "../common/components/card";
-import type { PetsList } from "../common/types";
 import { NoData } from "../../components/noData";
 import {
   FavoritesContext,
@@ -9,14 +7,16 @@ import {
 import { useContext } from "react";
 import { WarningTag } from "../../components/warningTag";
 import { useUserSupabase } from "../../context/userSupabaseContext";
+import { useGetPetsService } from "../common/hooks/useGetPetsService";
+import type { GetPetsListResponse } from "../adoption/types";
 
 export const foundFavorites = (
-  list: PetsList[],
+  list: GetPetsListResponse[],
   savedFavorites: FavoriteItem[],
 ) => list.filter((dog) => savedFavorites.some((fav) => fav.id === dog.id));
 
 export default function Favorites() {
-  const list = data as PetsList[];
+  const { pets } = useGetPetsService();
 
   const context = useContext(FavoritesContext);
   if (!context) return null;
@@ -26,7 +26,7 @@ export default function Favorites() {
   return (
     <main>
       <div className="mb-8">
-        <h1 className="mb-6">Favorites</h1>
+        <h1 className="mb-6">Favoritos</h1>
         {!session && (
           <WarningTag
             message="É necessário estar
@@ -36,7 +36,7 @@ export default function Favorites() {
       </div>
 
       {favorites.length > 0 ? (
-        <Card list={foundFavorites(list, favorites)} />
+        <Card list={foundFavorites(pets, favorites)} />
       ) : (
         <NoData
           text="Você ainda não tem um aumigo favorito."

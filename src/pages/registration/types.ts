@@ -1,4 +1,4 @@
-import type { PetsList } from "../common/types";
+import type { Age, Gender, Size, Species } from "../common/types";
 
 export type FormAction =
   | {
@@ -10,10 +10,10 @@ export type FormAction =
 
 // tipagem dos campos do form
 export interface FormState {
-  size: string;
-  gender: PetsList["gender"];
-  species: PetsList["species"];
-  temperament: PetsList["temperament"];
+  size: Size;
+  gender: Gender;
+  species: Species;
+  temperament: string[];
   neutered: boolean;
   vaccinated: boolean;
   dewormed: boolean;
@@ -21,14 +21,14 @@ export interface FormState {
   state: string;
   city: string;
   breed: string;
-  age: string;
+  age: Age;
   name: string;
 }
 
 // tipagem da request para table new-pets
 export type NewPet = Omit<FormState, "image"> & {
   imageUrl: string; // imagem retornada do bucket supabase
-  user_id: string
+  user_id: string;
 };
 
 export interface StatesResponse {

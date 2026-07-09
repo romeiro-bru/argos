@@ -1,7 +1,10 @@
 import { useReducer } from "react";
-import type { PetsList } from "../../common/types";
-import data from "../../pets.json";
 import type { FiltersAction, FiltersValue } from "./types";
+import type { GetPetsListResponse } from "../types";
+
+interface UseFilterFieldsProps {
+  pets: GetPetsListResponse[];
+}
 
 const initialValues: FiltersValue = {
   species: "",
@@ -22,17 +25,16 @@ function reducer(state: FiltersValue, action: FiltersAction): FiltersValue {
   }
 }
 
-export function useFilterFields() {
-  const list = data as PetsList[];
-
+export function useFilterFields({ pets }: UseFilterFieldsProps) {
   const [filters, dispatch] = useReducer(reducer, initialValues);
+
 
   const setField = (field: keyof typeof initialValues, value: string) =>
     dispatch({ type: "SET_FIELD", field, value });
 
   const reset = () => dispatch({ type: "RESET" });
 
-  const filteredList = list.filter((pet) => {
+  const filteredList = pets.filter((pet) => {
     // filtro ativo? o pet atende a condição do filtro para ser incluído na lista filtrada?
     if (filters.species && pet.species !== filters.species) return false;
     if (filters.age && pet.age !== filters.age) return false;

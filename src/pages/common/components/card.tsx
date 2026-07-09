@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "./tooltip/tooltip";
-import type { PetsList } from "../types";
 import { FavoriteButton } from "./favoriteButton";
 import { female } from "../../../assets/female";
 import { male } from "../../../assets/male";
 import { petSizes } from "../helpers/petSizes";
 import { truncateText } from "../helpers/truncateText";
+import type { GetPetsListResponse } from "../../adoption/types";
 
 interface CardProps {
-  list: PetsList[] | null;
+  list: GetPetsListResponse[] | null;
 }
 
 export function Card({ list }: CardProps) {
@@ -16,33 +16,37 @@ export function Card({ list }: CardProps) {
 
   return (
     <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 relative sm:grid-cols-2">
-      {list?.map((dog: PetsList) => (
+      {list?.map((pet: GetPetsListResponse) => (
         <article
           className="grid shadow-[var(--shadow)] shadow-md w-54 pl-3 pr-2 py-2 rounded-2xl overflow-visible"
-          key={dog.id}
-          id={dog.id}
+          key={pet.id}
+          id={pet.id}
         >
           <div className="card rounded-2xl">
             <FavoriteButton
-              id={dog.id}
-              name={dog.name}
+              id={pet.id}
+              name={pet.name}
               className="top-2 right-2"
             />
-            <img className="h-46 w-50 object-cover" alt="dog" src={dog.img} />
+            <img
+              className="h-46 w-50 object-cover"
+              alt="pet"
+              src={pet.imageUrl}
+            />
             <div className="card-text text-sm">
               <Tooltip
-                text={dog.name}
-                tooltipText={truncateText(dog.name, 10)}
+                text={pet.name}
+                tooltipText={truncateText(pet.name, 10)}
                 position="top"
               />{" "}
-              | {truncateText(dog.city, 14)}
+              | {truncateText(pet.city, 14)}
             </div>
           </div>
 
           <span className="flex mt-2 gap-x-2">
-            {dog.age}
+            {pet.age}
 
-            {dog.gender === "Fêmea" ? (
+            {pet.gender === "Fêmea" ? (
               <div className="mt-1">
                 <Tooltip text="Fêmea" tooltipText={female} position="right" />
               </div>
@@ -53,11 +57,11 @@ export function Card({ list }: CardProps) {
             )}
           </span>
           <span className="flex">
-            Porte {dog.size} {petSizes({ size: dog.size }).icon}
+            Porte {pet.size} {petSizes({ size: pet.size }).icon}
           </span>
 
           <button
-            onClick={() => navigate(`/details/${dog.id}`)}
+            onClick={() => navigate(`/details/${pet.id}`)}
             className="cursor-pointer bg-[var(--secondary-color)] font-semibold hover:bg-[var(--secondary-color-hover)] text-white my-2 py-2 px-4 rounded-full"
           >
             ver perfil
