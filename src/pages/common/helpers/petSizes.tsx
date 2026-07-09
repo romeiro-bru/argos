@@ -31,5 +31,5 @@ const sizeComponents: Record<PetsList["size"], SizeComponentsType> = {
 };
 
 export function petSizes({ size }: SizesType) {
-  return sizeComponents[size];
+  return sizeComponents[size] ?? sizeComponents["Médio"];
 }
