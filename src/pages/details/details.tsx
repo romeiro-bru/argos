@@ -21,7 +21,6 @@ export default function Details() {
 
   const { pets, isLoading } = useGetPetsService();
 
-
   useEffect(() => {
     const found = findDetails(id ?? "", pets)[0];
 
@@ -44,14 +43,10 @@ export default function Details() {
             />
           </div>
 
-          <article className="col-span-2 relative w-4/5">
-            <div className="flex">
-              <h1 className="mb-6">{pet?.name}</h1>
-              <FavoriteButton
-                id={pet.id}
-                name={pet.name}
-                className="left-50 top-0"
-              />
+          <article className="col-span-2 w-4/5">
+            <div className="flex items-center gap-4 mb-6">
+              <h1>{pet?.name}</h1>
+              <FavoriteButton id={pet.id} name={pet.name} />
             </div>
 
             <span className="flex mb-2">

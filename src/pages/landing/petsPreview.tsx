@@ -27,7 +27,7 @@ export function PetsPreview({ limit = 3 }: PetsPreviewProps) {
           <Link
             key={item.id}
             to={`/details/${item.id}`}
-            className="card rounded-2xl block shadow-md"
+            className="card relative overflow-hidden rounded-2xl block shadow-md"
           >
             <img
               className="h-40 w-45 object-cover"
@@ -35,7 +35,7 @@ export function PetsPreview({ limit = 3 }: PetsPreviewProps) {
               src={item.img}
             />
 
-            <div className="card-text">
+            <div className="absolute bottom-[0.8rem] left-4 text-white z-10">
               <span>{item.name} | {item.state}</span>
             </div>
           </Link>

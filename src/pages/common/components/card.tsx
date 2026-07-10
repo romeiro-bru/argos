@@ -22,18 +22,18 @@ export function Card({ list }: CardProps) {
           key={pet.id}
           id={pet.id}
         >
-          <div className="card rounded-2xl">
+          <div className="card relative overflow-hidden rounded-2xl">
             <FavoriteButton
               id={pet.id}
               name={pet.name}
-              className="top-2 right-2"
+              className="top-2 right-2 absolute"
             />
             <img
               className="h-46 w-50 object-cover"
               alt="pet"
               src={pet.imageUrl}
             />
-            <div className="card-text text-sm">
+            <div className="absolute bottom-[0.8rem] left-4 text-white z-10 text-sm">
               <Tooltip
                 text={pet.name}
                 tooltipText={truncateText(pet.name, 10)}
