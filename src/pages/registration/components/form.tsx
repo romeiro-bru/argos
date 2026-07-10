@@ -20,6 +20,7 @@ import type { FormState } from "../types";
 import { useFormFields } from "../hooks/useFormFields";
 
 interface FormProps {
+  isPending: boolean;
   onSubmit: (params: {
     e: React.FormEvent<HTMLFormElement>;
     formState: FormState;
@@ -27,7 +28,7 @@ interface FormProps {
   }) => Promise<void> | void;
 }
 
-export function Form({ onSubmit }: FormProps) {
+export function Form({ onSubmit, isPending }: FormProps) {
   const navigate = useNavigate();
 
   const { formState, setField, errors, validateForm } = useFormFields();
@@ -121,6 +122,7 @@ export function Form({ onSubmit }: FormProps) {
 
       <div className="flex gap-2">
         <button
+          disabled={isPending}
           type="submit"
           className="cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
         >

@@ -14,6 +14,7 @@ export default function Registration() {
 
   const {
     handleSubmit,
+    isPending,
     showSuccess,
     setShowSuccess,
     showError,
@@ -27,7 +28,7 @@ export default function Registration() {
   return (
     <main>
       <h1 className="mb-8">Cadastre um pet para adoção</h1>
-      <Form onSubmit={handleSubmit} />
+      <Form onSubmit={handleSubmit} isPending={isPending} />
 
       <SuccessModal
         isOpen={showSuccess}
