@@ -4,7 +4,21 @@ import { MemoryRouter } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import userEvent from "@testing-library/user-event";
 import type { Session } from "@supabase/supabase-js";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+function renderWithProviders(ui: React.ReactNode) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false }, // evita retries automáticos que podem travar o teste
+    },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter>{ui}</MemoryRouter>
+    </QueryClientProvider>,
+  );
+}
 const mockNavigate = vi.fn();
 const mockUseUserSupabase = vi.fn();
 
@@ -41,20 +55,13 @@ describe("Registration Page", () => {
   });
 
   it("should render page title", () => {
-    render(
-      <MemoryRouter>
-        <Registration />
-      </MemoryRouter>,
-    );
+    renderWithProviders(<Registration />);
+
     expect(screen.getByText("Cadastre um pet para adoção")).toBeInTheDocument();
   });
 
   it("should render all fields and dogs breeds when 'Cachorro' is selected", () => {
-    render(
-      <MemoryRouter>
-        <Registration />
-      </MemoryRouter>,
-    );
+    renderWithProviders(<Registration />);
 
     expect(screen.getByRole("checkbox", { name: "Cachorro" })).toBeChecked();
     expect(
@@ -66,11 +73,7 @@ describe("Registration Page", () => {
   });
 
   it("should not render 'Porte' field and render cat breeds when 'Gato' is selected", () => {
-    render(
-      <MemoryRouter>
-        <Registration />
-      </MemoryRouter>,
-    );
+    renderWithProviders(<Registration />);
 
     act(() => {
       screen.getByRole("checkbox", { name: "Gato" }).click();
@@ -85,11 +88,7 @@ describe("Registration Page", () => {
   });
 
   it("should navigate to adoption page when cancel button is clicked", async () => {
-    render(
-      <MemoryRouter>
-        <Registration />
-      </MemoryRouter>,
-    );
+    renderWithProviders(<Registration />);
 
     await userEvent.click(screen.getByRole("button", { name: "cancelar" }));
 
