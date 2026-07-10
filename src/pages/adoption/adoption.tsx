@@ -27,7 +27,7 @@ export default function Adoption() {
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
 
-      <form className="lg:sticky top-0 z-10 bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
+      <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
         <div className="flex flex-wrap gap-4 ">
           <Select
             label="Espécie:"
