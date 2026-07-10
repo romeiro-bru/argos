@@ -23,8 +23,6 @@ export default function Adoption() {
   const { districts, loading: isLoading } = useGetDistricts({
     UF: filters.state,
   });
-// TODO: criar skeleton loading enquanto os itens não carregaram
-
 
   return (
     <main>
