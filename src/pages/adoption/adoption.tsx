@@ -12,9 +12,10 @@ import { useGetDistricts } from "../common/hooks/useGetDistricts";
 import { useGetStates } from "../common/hooks/useGetStates";
 import { species } from "./constants";
 import { useGetPetsService } from "../common/hooks/useGetPetsService";
+import { SkeletonLoadingCard } from "../common/components/skeletonLoadingCard";
 
 export default function Adoption() {
-  const { pets } = useGetPetsService();
+  const { pets, isLoading: fetching } = useGetPetsService();
 
   const { filters, setField, reset, filteredList } = useFilterFields({ pets });
 
@@ -22,10 +23,14 @@ export default function Adoption() {
   const { districts, loading: isLoading } = useGetDistricts({
     UF: filters.state,
   });
+// TODO: criar skeleton loading enquanto os itens não carregaram
+
 
   return (
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
+
+      {fetching && <SkeletonLoadingCard />}
 
       <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
         <div className="flex flex-wrap gap-4 ">
