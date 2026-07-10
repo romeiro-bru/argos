@@ -75,6 +75,8 @@ export default function Details() {
                   Vermifugado <Check color="green" />
                 </span>
               )}
+
+              {!pet.neutered && !pet.dewormed && !pet.vaccinated && "-"}
             </section>
 
             <h3 className="text-lg font-semibold text-[var(--subtitle)] mb-2">
