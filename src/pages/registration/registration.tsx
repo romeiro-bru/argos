@@ -12,8 +12,6 @@ export default function Registration() {
 
   const { session } = useUserSupabase();
 
-  if (!session) return <UserNotAllowed />;
-
   const {
     handleSubmit,
     showSuccess,
@@ -22,7 +20,9 @@ export default function Registration() {
     setShowError,
     errorMessage,
     setErrorMessage,
-  } = useRegistrationSubmit({ userId: session?.user.id });
+  } = useRegistrationSubmit({ userId: session?.user.id ?? "" });
+
+  if (!session) return <UserNotAllowed />;
 
   return (
     <main>
