@@ -99,6 +99,7 @@ export function Form({ onSubmit, isPending }: FormProps) {
               label="Porte:"
               options={sizeOptions}
               error={errors.size}
+              onBlur={validateForm}
             />
           )}
 

@@ -10,7 +10,7 @@ export type FormAction =
 
 // tipagem dos campos do form
 export interface FormState {
-  size: Size;
+  size: Size | "";
   gender: Gender;
   species: Species;
   temperament: string[];
@@ -21,7 +21,7 @@ export interface FormState {
   state: string;
   city: string;
   breed: string;
-  age: Age;
+  age: Age | "";
   name: string;
 }
 
