@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { appRoutes } from "../../routes";
 import { useGetPetsService } from "../common/hooks/useGetPetsService";
 import { SkeletonLoadingPreview } from "./skeletonLoadingPreview";
+import { Tooltip } from "../common/components/tooltip/tooltip";
+import { truncateText } from "../common/helpers/truncateText";
 
 interface PetsPreviewProps {
   limit?: number;
@@ -25,21 +27,25 @@ export function PetsPreview({ limit = 3 }: PetsPreviewProps) {
       <div className="flex flex-wrap  gap-4">
         {fetching && <SkeletonLoadingPreview count={6} />}
 
-        {pets.slice(0, limit).map((item) => (
+        {pets.slice(0, limit).map((pet) => (
           <Link
-            key={item.id}
-            to={`/details/${item.id}`}
+            key={pet.id}
+            to={`/details/${pet.id}`}
             className="card relative overflow-hidden rounded-2xl block shadow-md"
           >
             <img
               className="h-40 w-45 object-cover"
-              alt={item.name}
-              src={item.imageUrl}
+              alt={pet.name}
+              src={pet.imageUrl}
             />
-
             <div className="absolute bottom-[0.8rem] left-4 text-white z-10">
               <span>
-                {item.name} | {item.state}
+                <Tooltip
+                  text={pet.name}
+                  tooltipText={truncateText(pet.name, 10)}
+                  position="top"
+                />{" "}
+                | {pet.state}
               </span>
             </div>
           </Link>
