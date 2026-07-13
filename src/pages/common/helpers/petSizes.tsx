@@ -14,8 +14,8 @@ type SizeComponentsType = {
 };
 
 const defaultSize: SizeComponentsType = {
-  icon: <Medium />,
-  description: "10 - 25kg",
+  icon: <Small />,
+  description: "até 10kg",
 };
 
 const sizeComponents: Partial<Record<Size | "", SizeComponentsType>> = {
