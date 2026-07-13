@@ -12,22 +12,23 @@ export default function Registration() {
 
   const { session } = useUserSupabase();
 
-  if (!session) return <UserNotAllowed />;
-
   const {
     handleSubmit,
+    isPending,
     showSuccess,
     setShowSuccess,
     showError,
     setShowError,
     errorMessage,
     setErrorMessage,
-  } = useRegistrationSubmit({ userId: session?.user.id });
+  } = useRegistrationSubmit({ userId: session?.user.id ?? "" });
+
+  if (!session) return <UserNotAllowed />;
 
   return (
     <main>
       <h1 className="mb-8">Cadastre um pet para adoção</h1>
-      <Form onSubmit={handleSubmit} />
+      <Form onSubmit={handleSubmit} isPending={isPending} />
 
       <SuccessModal
         isOpen={showSuccess}

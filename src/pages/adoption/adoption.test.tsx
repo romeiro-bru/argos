@@ -1,6 +1,21 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { vi } from "vitest";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+function renderWithProviders(ui: React.ReactNode) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false }, // evita retries automáticos que podem travar o teste
+    },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter>{ui}</MemoryRouter>
+    </QueryClientProvider>,
+  );
+}
 
 vi.mock("./hooks/useFilterfields", () => ({
   useFilterFields: vi.fn(),
@@ -30,11 +45,7 @@ describe("Adoption Page", () => {
       filteredList: [],
     });
 
-    render(
-      <MemoryRouter>
-        <Adoption />
-      </MemoryRouter>,
-    );
+    renderWithProviders(<Adoption />);
 
     expect(
       screen.getByRole("heading", {
@@ -57,11 +68,7 @@ describe("Adoption Page", () => {
       filteredList: [],
     });
 
-    render(
-      <MemoryRouter>
-        <Adoption />
-      </MemoryRouter>,
-    );
+    renderWithProviders(<Adoption />);
 
     expect(screen.getByText("Espécie:")).toBeInTheDocument();
     expect(screen.getByText("Porte:")).toBeInTheDocument();
@@ -84,11 +91,7 @@ describe("Adoption Page", () => {
       filteredList: [],
     });
 
-    render(
-      <MemoryRouter>
-        <Adoption />
-      </MemoryRouter>,
-    );
+    renderWithProviders(<Adoption />);
 
     expect(screen.queryByText("Porte:")).not.toBeInTheDocument();
   });

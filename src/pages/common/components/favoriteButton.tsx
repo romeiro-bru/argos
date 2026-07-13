@@ -10,7 +10,7 @@ export function FavoriteButton({ id, name, className }: { id: string; name: stri
   
   return (
     <button
-      className={`card-heart ${className} rounded-full bg-purple-500 cursor-pointer`}
+      className={`z-10 h-9 w-9 bg-white ${className} rounded-full bg-purple-500 cursor-pointer`}
       onClick={() => toggleFavorite({ id, name })}
       id={id}
       value={id}

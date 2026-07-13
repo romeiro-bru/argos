@@ -127,10 +127,6 @@ select {
 }
 
 /* -------------------- */
-.card {
-  position: relative;
-  overflow: hidden;
-}
 
 .card::after {
   content: "";
@@ -140,20 +136,4 @@ select {
   right: 0;
   height: 50%;
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.75));
-}
-
-.card-text {
-  position: absolute;
-  bottom: 0.8rem;
-  left: 1rem;
-  color: white;
-  z-index: 1;
-}
-
-.card-heart {
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  background-color: white;
-  z-index: 1;
 }

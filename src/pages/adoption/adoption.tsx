@@ -11,9 +11,13 @@ import {
 import { useGetDistricts } from "../common/hooks/useGetDistricts";
 import { useGetStates } from "../common/hooks/useGetStates";
 import { species } from "./constants";
+import { useGetPetsService } from "../common/hooks/useGetPetsService";
+import { SkeletonLoadingCard } from "../common/components/skeletonLoadingCard";
 
 export default function Adoption() {
-  const { filters, setField, reset, filteredList } = useFilterFields();
+  const { pets, isLoading: fetching } = useGetPetsService();
+
+  const { filters, setField, reset, filteredList } = useFilterFields({ pets });
 
   const { states, loading } = useGetStates();
   const { districts, loading: isLoading } = useGetDistricts({
@@ -24,7 +28,9 @@ export default function Adoption() {
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
 
-      <form className="lg:sticky top-0 z-10 bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
+      {fetching && <SkeletonLoadingCard />}
+
+      <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
         <div className="flex flex-wrap gap-4 ">
           <Select
             label="Espécie:"

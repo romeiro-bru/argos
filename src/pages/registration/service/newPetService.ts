@@ -5,7 +5,7 @@ interface NewPetServiceParams {
   pet: NewPet;
 }
 
-export async function uploadPetImage(file: File): Promise<string> {
+async function uploadPetImage(file: File): Promise<string> {
   // envia somente imagem para bucket e retorna a url da imagem
   const { data, error } = await supabase.storage
     .from("listing_pets")
@@ -23,6 +23,14 @@ export async function uploadPetImage(file: File): Promise<string> {
   return publicUrlData.publicUrl;
 }
 
-export async function newPetService({ pet }: NewPetServiceParams) {
-  return supabase.from("new-pets").insert(pet).single();
+async function newPetService({ pet }: NewPetServiceParams) {
+  const { data, error } = await supabase.from("new-pets").insert(pet).single();
+
+  if (error) throw error;
+  return data;
 }
+
+export const service = {
+  uploadPetImage,
+  newPetService,
+};

@@ -1,9 +1,9 @@
-import type { PetsList } from "../common/types";
+import type { GetPetsListResponse } from "../adoption/types";
 import { foundFavorites } from "./favorites";
 
-const list: PetsList[] = [
+const list: GetPetsListResponse[] = [
   {
-    id: "1",
+    id: "12",
     name: "Argos",
     gender: "Macho",
     age: "Filhote",
@@ -11,12 +11,14 @@ const list: PetsList[] = [
     breed: "SRD",
     city: "Rio de Janeiro",
     state: "Rio de Janeiro",
-    img: "../../../public/0999.jpeg",
+    imageUrl: "",
     dewormed: true,
     neutered: true,
     species: "Cachorro",
     temperament: [],
     vaccinated: true,
+    created_at: "",
+    user_id: "",
   },
   {
     id: "2",
@@ -27,12 +29,14 @@ const list: PetsList[] = [
     breed: "SRD",
     city: "Rio de Janeiro",
     state: "Rio de Janeiro",
-    img: "../../../public/16ff6543.jpg",
+    imageUrl: "",
     dewormed: true,
     neutered: true,
     species: "Cachorro",
     temperament: [],
     vaccinated: true,
+    created_at: "",
+    user_id: "",
   },
 ];
 
@@ -40,7 +44,7 @@ describe("Found Favorites", () => {
   it("Should return saved items correctly", () => {
     const favorites = [
       {
-        id: "1",
+        id: "12",
         name: " Argos",
       },
     ];
@@ -62,7 +66,7 @@ describe("Found Favorites", () => {
 
   it("Should return multiple matched favorites", () => {
     const favorites = [
-      { id: "1", name: "Argos" },
+      { id: "12", name: "Argos" },
       { id: "2", name: "Mel" },
     ];
 
@@ -73,8 +77,8 @@ describe("Found Favorites", () => {
 
   it("Should handle duplicate favorite ids", () => {
     const favorites = [
-      { id: "1", name: "Argos" },
-      { id: "1", name: "Argos" },
+      { id: "12", name: "Argos" },
+      { id: "12", name: "Argos" },
     ];
 
     const expected = [list[0]];

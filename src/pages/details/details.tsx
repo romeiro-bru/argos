@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom";
-import list from "../pets.json";
 import { useEffect, useState } from "react";
-import type { PetsList } from "../common/types";
 import { NoData } from "../../components/noData";
 import { Check } from "../../assets/check";
 import { Pin } from "../../assets/pin";
@@ -11,24 +9,27 @@ import { Female } from "../../assets/female";
 import { Male } from "../../assets/male";
 import { petSizes } from "../common/helpers/petSizes";
 import { FavoriteButton } from "../common/components/favoriteButton";
+import { useGetPetsService } from "../common/hooks/useGetPetsService";
+import type { GetPetsListResponse } from "../adoption/types";
 
-export const findDetails = (id: string) =>
-  list.filter((dog) => dog.id === id) as PetsList[];
+export const findDetails = (id: string, pets: GetPetsListResponse[]) =>
+  pets.filter((pet) => String(pet.id) === id) as GetPetsListResponse[];
 
 export default function Details() {
-  const [pet, setPet] = useState<PetsList | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const [pet, setPet] = useState<GetPetsListResponse>();
+
+  const { pets, isLoading } = useGetPetsService();
 
   useEffect(() => {
-    const found = findDetails(id || "")[0];
+    const found = findDetails(id ?? "", pets)[0];
+
     setPet(found);
-    setLoading(false);
-  }, [id]);
+  }, [id, pets]);
 
   return (
     <main>
-      {loading && <p>Carregando...</p>}
+      {isLoading && <p>Carregando...</p>}
 
       {!pet ? (
         <NoData text="Não encontramos nenhum pet correspondente a sua busca." />
@@ -37,19 +38,15 @@ export default function Details() {
           <div>
             <img
               className="h-auto object-cover rounded-xl"
-              src={pet?.img}
+              src={pet.imageUrl}
               alt={pet?.name}
             />
           </div>
 
-          <article className="col-span-2 relative w-4/5">
-            <div className="flex">
-              <h1 className="mb-6">{pet?.name}</h1>
-              <FavoriteButton
-                id={pet.id}
-                name={pet.name}
-                className="left-50 top-0"
-              />
+          <article className="col-span-2 w-4/5">
+            <div className="flex items-center gap-4 mb-6">
+              <h1>{pet?.name}</h1>
+              <FavoriteButton id={pet.id} name={pet.name} />
             </div>
 
             <span className="flex mb-2">
@@ -78,6 +75,8 @@ export default function Details() {
                   Vermifugado <Check color="green" />
                 </span>
               )}
+
+              {!pet.neutered && !pet.dewormed && !pet.vaccinated && "-"}
             </section>
 
             <h3 className="text-lg font-semibold text-[var(--subtitle)] mb-2">

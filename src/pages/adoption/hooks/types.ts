@@ -1,7 +1,9 @@
+import type { Age, Size, Species } from "../../common/types";
+
 export interface FiltersValue {
-  species: string;
-  age: string;
-  size: string;
+  species: Species | "";
+  age: Age | "";
+  size: Size | "";
   city: string;
   state: string;
 }
