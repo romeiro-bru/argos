@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import { appRoutes } from "../../routes";
-import { useGetPetsService } from "../common/hooks/useGetPetsService";
 import { SkeletonLoadingPreview } from "./skeletonLoadingPreview";
 import { Tooltip } from "../common/components/tooltip/tooltip";
 import { truncateText } from "../common/helpers/truncateText";
+import type { GetPetsListResponse } from "../adoption/types";
 
 interface PetsPreviewProps {
   limit?: number;
+  pets: GetPetsListResponse[],
+  isLoading: boolean
 }
 
-export function PetsPreview({ limit = 3 }: PetsPreviewProps) {
-  const { pets, isLoading: fetching } = useGetPetsService();
+export function PetsPreview({ limit = 3, pets, isLoading }: PetsPreviewProps) {
 
   return (
     <article className="m-auto w-fit my-10">
@@ -25,7 +26,7 @@ export function PetsPreview({ limit = 3 }: PetsPreviewProps) {
         </Link>
       </div>
       <div className="flex flex-wrap  gap-4">
-        {fetching && <SkeletonLoadingPreview count={6} />}
+        {isLoading && <SkeletonLoadingPreview count={6} />}
 
         {pets.slice(0, limit).map((pet) => (
           <Link

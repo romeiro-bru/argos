@@ -4,14 +4,28 @@ import { ImpactStats } from "./impactStats";
 import { Steps } from "./steps";
 
 import { PetsPreview } from "./petsPreview";
+import { useGetPetsService } from "../common/hooks/useGetPetsService";
+import { useMemo } from "react";
 
 export default function Landing() {
+  const { pets, isLoading } = useGetPetsService();
+
+  const stats = useMemo(() => {
+    return {
+      petsCount: pets.length,
+      statesCount: new Set(pets.map((item) => item.state)).size,
+    };
+  }, [pets]);
 
   return (
     <main className="md:flex flex-wrap lg:block">
       <Hero />
-      <PetsPreview limit={6} />
-      <ImpactStats />
+      <PetsPreview pets={pets} isLoading={isLoading} limit={6} />
+      <ImpactStats
+        petsCount={stats.petsCount}
+        statesCount={stats.statesCount}
+        isLoading={isLoading}
+      />
       <Steps />
 
       <div className="flex flex-wrap justify-center gap-8 m-auto items-center">
