@@ -3,6 +3,7 @@ import { appRoutes } from "../../../routes";
 import { Select } from "../../common/components/select";
 import {
   ageOptions,
+  catSizeOptions,
   districtsOptions,
   sizeOptions,
   stateOptions,
@@ -93,15 +94,15 @@ export function Form({ onSubmit, isPending }: FormProps) {
             error={errors.city}
           />
 
-          {formState.species === "Cachorro" && (
-            <Select
-              onChange={(value) => setField("size", value)}
-              label="Porte:"
-              options={sizeOptions}
-              error={errors.size}
-              onBlur={validateForm}
-            />
-          )}
+          <Select
+            onChange={(value) => setField("size", value)}
+            label="Porte:"
+            options={
+              formState.species === "Cachorro" ? sizeOptions : catSizeOptions
+            }
+            error={errors.size}
+            onBlur={validateForm}
+          />
 
           <UploadImageField
             formState={formState}

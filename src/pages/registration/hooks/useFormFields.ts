@@ -47,7 +47,7 @@ function validateFields(formState: FormState): FormErrors {
     errors.age = "Selecione uma opção.";
   }
 
-  if (formState.size.length === 0 && formState.species === "Cachorro") {
+  if (formState.size.length === 0) {
     errors.size = "Selecione uma opção.";
   }
 

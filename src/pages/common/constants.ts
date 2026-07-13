@@ -18,6 +18,13 @@ export const sizeOptions: SizeInterface[] = [
   { label: "Grande (25 - 45kg)", value: "Grande" },
   { label: "Gigante (45kg >)", value: "Gigante" },
 ];
+export const catSizeOptions: SizeInterface[] = [
+  { label: "-", value: "" },
+  { label: "Pequeno (até 3kg)", value: "Pequeno" },
+  { label: "Médio (3 - 5kg)", value: "Médio" },
+  { label: "Grande (5 - 7kg)", value: "Grande" },
+  { label: "Gigante (acima de 7kg)", value: "Gigante" },
+];
 
 export const ageOptions: AgeInterface[] = [
     { label: "-", value: "" },
