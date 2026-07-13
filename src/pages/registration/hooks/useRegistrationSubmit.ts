@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormState } from "../types";
-import { service } from "../service/newPetService";
 import { useNewPetService } from "./useNewPetService";
+import { useUploadImgService } from "./useUploadImgService";
 
 interface HandleSubmitParams {
   e: React.FormEvent<HTMLFormElement>;
@@ -14,7 +14,12 @@ export function useRegistrationSubmit({ userId }: { userId: string }) {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { mutate, isPending, error } = useNewPetService();
+  const {
+    mutate: createPet,
+    isPending: isCreatingPet,
+    error: createPetError,
+  } = useNewPetService();
+  const { mutateAsync: uploadImg, isPending: isUploadingImg } = useUploadImgService();
 
   const handleSubmit = async ({
     e,
@@ -29,7 +34,7 @@ export function useRegistrationSubmit({ userId }: { userId: string }) {
       return;
     }
 
-    const imageUrl = await service.uploadPetImage(formState.image);
+    const imageUrl = await uploadImg(formState.image);
 
     const { image, ...fields } = formState;
 
@@ -39,12 +44,12 @@ export function useRegistrationSubmit({ userId }: { userId: string }) {
       imageUrl,
       user_id: userId,
     };
-    mutate({ pet: payload });
+    createPet({ pet: payload });
 
-    if (error) {
+    if (createPetError) {
       setShowSuccess(false);
       setShowError(true);
-      setErrorMessage(error.message);
+      setErrorMessage(createPetError.message);
       return;
     }
 
@@ -55,7 +60,8 @@ export function useRegistrationSubmit({ userId }: { userId: string }) {
 
   return {
     handleSubmit,
-    isPending,
+    isPending: isCreatingPet,
+    isUploadingImg,
     showSuccess,
     setShowSuccess,
     showError,

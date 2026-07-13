@@ -15,6 +15,7 @@ export default function Registration() {
   const {
     handleSubmit,
     isPending,
+    isUploadingImg,
     showSuccess,
     setShowSuccess,
     showError,
@@ -25,10 +26,12 @@ export default function Registration() {
 
   if (!session) return <UserNotAllowed />;
 
+  const isLoadingRegister = isPending || isUploadingImg
+
   return (
     <main>
       <h1 className="mb-8">Cadastre um pet para adoção</h1>
-      <Form onSubmit={handleSubmit} isPending={isPending} />
+      <Form onSubmit={handleSubmit} isPending={isLoadingRegister} />
 
       <SuccessModal
         isOpen={showSuccess}
