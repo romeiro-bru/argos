@@ -125,8 +125,13 @@ export function Form({ onSubmit, isPending }: FormProps) {
         <button
           disabled={isPending}
           type="submit"
-          className="cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
+          className="cursor-pointer flex gap-2 bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
         >
+          {isPending ? (
+            <img src="/loading.png" className="h-4 animate-spin m-auto" />
+          ) : (
+            ""
+          )}
           submit
         </button>
         <button
