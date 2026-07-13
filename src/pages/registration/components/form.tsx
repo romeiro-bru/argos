@@ -132,7 +132,7 @@ export function Form({ onSubmit, isPending }: FormProps) {
           ) : (
             ""
           )}
-          submit
+          cadastrar
         </button>
         <button
           onClick={() => navigate(appRoutes.ADOPTION.path)}
