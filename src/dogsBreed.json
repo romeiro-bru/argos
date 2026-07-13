@@ -175,22 +175,6 @@
     "temperament": ["Corajoso", "Quieto", "Profundamente Leal"]
   },
   {
-    "id": 21,
-    "name": "Bernese Mountain Dog",
-    "origem": "Suíça",
-    "grupo": "Trabalho",
-    "porte": "Grande",
-    "temperament": ["Bom temperamento", "Afetivo", "Leal"]
-  },
-  {
-    "id": 22,
-    "name": "São Bernardo",
-    "origem": "Suíça / Itália",
-    "grupo": "Trabalho",
-    "porte": "Gigante",
-    "temperament": ["Gentil", "Amigável", "Paciente"]
-  },
-  {
     "id": 23,
     "name": "Spitz Alemão",
     "origem": "Alemanha",
@@ -221,5 +205,92 @@
     "grupo": "Espaniéis",
     "porte": "Médio",
     "temperament": ["Leal", "Protetor", "Dedicado", "Energético"]
+  },
+  {
+    "id": 27,
+    "name": "Cane Corso",
+    "origem": "Itália",
+    "grupo": "Molossoides (Mastins)",
+    "porte": "Grande",
+    "temperament": [
+      "Leal",
+      "Protetor",
+      "Dedicado",
+      "Inteligente",
+      "Corajoso",
+      "Calmo"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Dogue Alemão",
+    "origem": "Alemanha",
+    "grupo": "Molossoides (Mastins)",
+    "porte": "Gigante",
+    "peso": "50 a 90 kg",
+    "altura": "71 a 86 cm",
+    "expectativa_vida": "7 a 10 anos",
+    "temperament": ["Gentil", "Afetuoso", "Dócil", "Calmo", "Leal"]
+  },
+  {
+    "id": 29,
+    "name": "Mastiff Inglês",
+    "origem": "Inglaterra",
+    "grupo": "Molossoides (Mastins)",
+    "porte": "Gigante",
+    "peso": "70 a 100 kg",
+    "altura": "70 a 91 cm",
+    "expectativa_vida": "6 a 10 anos",
+    "temperament": ["Calmo", "Protetor", "Dócil", "Confiável", "Leal"]
+  },
+  {
+    "id": 30,
+    "name": "São Bernardo",
+    "origem": "Suíça",
+    "grupo": "Molossoides (Mastins)",
+    "porte": "Gigante",
+    "peso": "55 a 90 kg",
+    "altura": "65 a 90 cm",
+    "expectativa_vida": "8 a 10 anos",
+    "temperament": ["Gentil", "Paciente", "Amigável", "Calmo", "Protetor"]
+  },
+  {
+    "id": 31,
+    "name": "Terra Nova",
+    "origem": "Canadá",
+    "grupo": "Cães de Trabalho",
+    "porte": "Gigante",
+    "peso": "45 a 70 kg",
+    "altura": "66 a 74 cm",
+    "expectativa_vida": "9 a 10 anos",
+    "temperament": ["Doce", "Paciente", "Protetor", "Dedicado", "Calmo"]
+  },
+  {
+    "id": 32,
+    "name": "Boiadeiro de Berna",
+    "origem": "Suíça",
+    "grupo": "Cães de Trabalho",
+    "porte": "Gigante",
+    "peso": "40 a 55 kg",
+    "altura": "58 a 70 cm",
+    "expectativa_vida": "7 a 10 anos",
+    "temperament": ["Afetuoso", "Leal", "Calmo", "Dedicado", "Gentil"]
+  },
+  {
+    "id": 33,
+    "name": "Kangal",
+    "origem": "Turquia",
+    "grupo": "Cães de Guarda de Gado",
+    "porte": "Gigante",
+    "peso": "40 a 65 kg",
+    "altura": "65 a 81 cm",
+    "expectativa_vida": "12 a 15 anos",
+    "temperament": [
+      "Protetor",
+      "Independente",
+      "Corajoso",
+      "Leal",
+      "Territorial"
+    ]
   }
 ]
