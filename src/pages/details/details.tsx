@@ -89,7 +89,7 @@ export default function Details() {
             <h3 className="text-lg font-semibold text-[var(--subtitle)] mb-2">
               Características
             </h3>
-            <section className="flex mb-4 gap-4">
+            <section className="flex items-center mb-4 gap-4">
               <div className="flex">
                 <Cake /> {pet.age}
               </div>
