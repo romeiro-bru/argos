@@ -90,7 +90,7 @@ export default function Details() {
               Características
             </h3>
             <section className="flex items-center mb-4 gap-4">
-              <div className="flex">
+              <div className="flex items-center">
                 <Cake /> {pet.age}
               </div>
               <div className="flex">
@@ -98,11 +98,11 @@ export default function Details() {
                 {petSizes({ size: pet.size }).description})
               </div>
               {pet.gender === "Fêmea" ? (
-                <div className="flex">
+                <div className="flex items-center">
                   <Female /> Fêmea
                 </div>
               ) : (
-                <div className="flex">
+                <div className="flex items-center">
                   <Male /> Macho
                 </div>
               )}
