@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { service } from "../service/getPetsService";
 
 export function useGetPetsService() {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error, isError } = useQuery({
     queryKey: ["get-pets-list"],
     queryFn: () => service.getPets(),
   });
@@ -10,6 +10,7 @@ export function useGetPetsService() {
   return {
     pets: data ?? [],
     isLoading,
-    error
+    error,
+    isError
   };
 }
