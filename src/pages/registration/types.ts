@@ -41,3 +41,22 @@ export interface StatesResponse {
     nome: string;
   };
 }
+
+// 
+
+export const NewPetBuilder = (params: Partial<NewPet>): NewPet => ({
+  size: params.size || "",
+  gender: params.gender || ("Macho" as Gender),
+  species: params.species || ("Cachorro" as Species),
+  temperament: params.temperament || [],
+  neutered: params.neutered ?? false,
+  vaccinated: params.vaccinated ?? false,
+  dewormed: params.dewormed ?? false,
+  state: params.state || "",
+  city: params.city || "",
+  breed: params.breed || "",
+  age: params.age || "",
+  name: params.name || "",
+  imageUrl: params.imageUrl || "",
+  user_id: params.user_id || "",
+});
