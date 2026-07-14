@@ -3,6 +3,7 @@ import { appRoutes } from "../../../routes";
 import { Select } from "../../common/components/select";
 import {
   ageOptions,
+  catSizeOptions,
   districtsOptions,
   sizeOptions,
   stateOptions,
@@ -93,15 +94,15 @@ export function Form({ onSubmit, isPending }: FormProps) {
             error={errors.city}
           />
 
-          {formState.species === "Cachorro" && (
-            <Select
-              onChange={(value) => setField("size", value)}
-              label="Porte:"
-              options={sizeOptions}
-              error={errors.size}
-              onBlur={validateForm}
-            />
-          )}
+          <Select
+            onChange={(value) => setField("size", value)}
+            label="Porte:"
+            options={
+              formState.species === "Cachorro" ? sizeOptions : catSizeOptions
+            }
+            error={errors.size}
+            onBlur={validateForm}
+          />
 
           <UploadImageField
             formState={formState}
@@ -125,9 +126,14 @@ export function Form({ onSubmit, isPending }: FormProps) {
         <button
           disabled={isPending}
           type="submit"
-          className="cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
+          className="cursor-pointer flex gap-2 bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
         >
-          submit
+          {isPending ? (
+            <img src="/loading.png" className="h-4 animate-spin m-auto" />
+          ) : (
+            ""
+          )}
+          cadastrar
         </button>
         <button
           onClick={() => navigate(appRoutes.ADOPTION.path)}

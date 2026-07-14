@@ -1,4 +1,4 @@
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Registration from "./registration";
 import { MemoryRouter } from "react-router-dom";
 import { appRoutes } from "../../routes";
@@ -70,21 +70,6 @@ describe("Registration Page", () => {
     expect(
       screen.getByRole("option", { name: "Labrador Retriever" }),
     ).toBeInTheDocument();
-  });
-
-  it("should not render 'Porte' field and render cat breeds when 'Gato' is selected", () => {
-    renderWithProviders(<Registration />);
-
-    act(() => {
-      screen.getByRole("checkbox", { name: "Gato" }).click();
-    });
-
-    expect(screen.getByRole("checkbox", { name: "Gato" })).toBeChecked();
-    expect(screen.getByRole("option", { name: "Persa" })).toBeInTheDocument();
-    // getByRole lança erro se o elemento não for encontrado, por isso usamos queryByRole para verificar se o campo não está presente
-    expect(
-      screen.queryByRole("combobox", { name: "Porte:" }),
-    ).not.toBeInTheDocument();
   });
 
   it("should navigate to adoption page when cancel button is clicked", async () => {

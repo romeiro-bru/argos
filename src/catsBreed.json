@@ -126,5 +126,53 @@
     "grupo": "Pelo Longo",
     "porte": "Médio",
     "temperament": ["Elegante", "Ativo", "Inteligente"]
+  },
+  {
+    "id": 16,
+    "name": "Maine Coon",
+    "origem": "Estados Unidos",
+    "grupo": "Pelo Longo",
+    "porte": "Gigante",
+    "temperament": ["Amigável", "Inteligente", "Brincalhão"]
+  },
+  {
+    "id": 17,
+    "name": "Norwegian Forest Cat",
+    "origem": "Noruega",
+    "grupo": "Pelo Longo",
+    "porte": "Gigante",
+    "temperament": ["Independente", "Ativo", "Sociável"]
+  },
+  {
+    "id": 18,
+    "name": "Ragdoll",
+    "origem": "Estados Unidos",
+    "grupo": "Pelo Longo",
+    "porte": "Gigante",
+    "temperament": ["Dócil", "Afetuoso", "Calmo"]
+  },
+  {
+    "id": 19,
+    "name": "Siberiano",
+    "origem": "Rússia",
+    "grupo": "Pelo Longo",
+    "porte": "Gigante",
+    "temperament": ["Leal", "Ágil", "Brincalhão"]
+  },
+  {
+    "id": 20,
+    "name": "British Shorthair",
+    "origem": "Reino Unido",
+    "grupo": "Pelo Curto",
+    "porte": "Gigante",
+    "temperament": ["Calmo", "Independente", "Afetuoso"]
+  },
+  {
+    "id": 21,
+    "name": "Savannah",
+    "origem": "Estados Unidos",
+    "grupo": "Pelo Curto",
+    "porte": "Gigante",
+    "temperament": ["Enérgico", "Curioso", "Atlético"]
   }
 ]
