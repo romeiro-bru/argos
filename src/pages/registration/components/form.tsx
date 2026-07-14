@@ -34,7 +34,7 @@ export function Form({ onSubmit, isPending }: FormProps) {
 
   const { formState, setField, errors, validateForm } = useFormFields();
 
-  const { districts, loading: isLoading } = useGetDistricts({
+  const { data: districts, isLoading: districtsLoading } = useGetDistricts({
     UF: formState.state,
   });
   const { states, loading } = useGetStates();
@@ -86,7 +86,7 @@ export function Form({ onSubmit, isPending }: FormProps) {
             error={errors.state}
           />
           <Select
-            disabled={loading || isLoading || districts.length === 0}
+            disabled={loading || districtsLoading || districts?.length === 0}
             label="Cidade:"
             options={districtsOptions(districts)}
             onChange={(value) => setField("city", value)}
