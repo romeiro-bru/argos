@@ -47,7 +47,9 @@ describe("Registration Page", () => {
     mockNavigate.mockClear();
     mockUseUserSupabase.mockReturnValue({
       session: {
-        user: { user_metadata: { name: "Teste" } },
+        user: { 
+          id: "12345",
+          user_metadata: { name: "Teste" } },
       } as unknown as Session,
       userName: "Teste",
       isLoading: false,
@@ -79,5 +81,41 @@ describe("Registration Page", () => {
 
     expect(mockNavigate).toHaveBeenCalledWith(appRoutes.ADOPTION.path);
     expect(mockNavigate).toHaveBeenCalledTimes(1);
+  });
+
+  describe("Use not authenticated", () => {
+    beforeEach(() => {
+      vi.clearAllMocks();
+      mockUseUserSupabase.mockReturnValue({
+        session: {
+          user: { user_metadata: { name: null } },
+        } as unknown as Session,
+        userName: "Teste",
+        isLoading: false,
+      });
+    });
+
+    it("should render UserNotAllowed when there is no session", () => {
+      mockUseUserSupabase.mockReturnValue({
+        session: null,
+        userName: "",
+        isLoading: false,
+      });
+
+      renderWithProviders(<Registration />);
+
+      // ajuste o texto/role conforme o que o UserNotAllowed realmente renderiza
+      expect(screen.getByText(/Usuário não autenticado/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          /É necessário estar logado na plataforma para cadastrar um animal para adoção./i,
+        ),
+      ).toBeInTheDocument();
+
+      // garante que o formulário de cadastro NÃO aparece
+      expect(
+        screen.queryByText("Cadastre um pet para adoção"),
+      ).not.toBeInTheDocument();
+    });
   });
 });
