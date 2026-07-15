@@ -5,14 +5,14 @@ interface IconProps {
 }
 
 export const Cake = ({
-  size = 30,
+  size = 24,
   color = "var(--text)",
   className,
 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
-    viewBox="0 0 30 20"
+    viewBox="0 0 25 25"
     fill={color}
     className={className}
   >
