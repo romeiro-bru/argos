@@ -27,7 +27,7 @@ export const catSizeOptions: SizeInterface[] = [
 ];
 
 export const ageOptions: AgeInterface[] = [
-    { label: "-", value: "" },
+  { label: "-", value: "" },
   { label: "filhote (0 - 06 meses)", value: "Filhote" },
   { label: "jovem (06 meses - 2 anos)", value: "Jovem" },
   { label: "adulto (2 - 8 anos)", value: "Adulto" },
@@ -47,8 +47,8 @@ export const stateOptions = (states: StatesResponse[]) => [
 ];
 
 export const districtsOptions = (districts: DistrictResponse[]) =>
-  Array.from(new Map(districts.map((d) => [d.nome, d])).values()) // Map usa d.nome como chave para eliminar duplicatas, depois converte de volta para array
-    .sort((a, b) => a.nome.localeCompare(b.nome))
+  districts
+    ?.sort((a, b) => a.nome.localeCompare(b.nome))
     .map((district) => {
       const label = district.nome;
       const value = district.nome;

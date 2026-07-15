@@ -32,7 +32,7 @@ export function Select({
         id={label}
         className={`text-sm ${disabled ? "text-[var(--gray)]! cursor-not-allowed" : ""}`}
       >
-        {options.map((option) => (
+        {options?.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>

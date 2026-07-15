@@ -1,38 +1,27 @@
-import { useEffect, useState } from "react";
 import { ServiceLocation } from "../../common/service/service";
-import type { DistrictResponse } from "../service/types";
+import { useQuery } from "@tanstack/react-query";
 
 interface UseGetDistrictsProps {
   UF: string;
 }
 
 export function useGetDistricts({ UF }: UseGetDistrictsProps) {
-  const [districts, setdistricts] = useState<DistrictResponse[]>([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["get-districts", UF],
+    queryFn: () => ServiceLocation.getDistrict({ UF }),
+  });
 
-  useEffect(() => {
-    if (!UF) return;
-    
-    setError("");
-    setdistricts([]);
-    setLoading(true);
-
-    ServiceLocation.getDistrict({ UF })
-      .then(setdistricts)
-      .catch((err: unknown) => {
-        const message =
-          err instanceof Error
-            ? err.message
-            : String(err ?? "Erro ao buscar distritos");
-        setError(message);
-      })
-      .finally(() => setLoading(false));
-  }, [UF]);
+  const errorMessage = isError
+    ? error instanceof Error
+      ? error.message
+      : "Erro ao buscar os bairros"
+    : "";
 
   return {
-    districts,
+    data: data ?? [],
+    isLoading,
+    isError,
     error,
-    loading,
+    errorMessage
   };
 }
