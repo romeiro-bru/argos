@@ -15,7 +15,7 @@ export function Select({
   disabled,
   className,
   error,
-  onBlur
+  onBlur,
 }: SelectProps) {
   return (
     <fieldset className={`flex flex-col gap-2 ${className}`}>
@@ -32,13 +32,15 @@ export function Select({
         id={label}
         className={`text-sm ${disabled ? "text-[var(--gray)]! cursor-not-allowed" : ""}`}
       >
-        {options?.map((option) => (
-          <option key={option.value} value={option.value}>
+        {options?.map((option, i) => (
+          <option key={`${option.value}-${i}`} value={option.value}>
             {option.label}
           </option>
         ))}
       </select>
-      <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">{error}</span>
+      <span className="text-[var(--error)] italic text-xs min-h-[1rem] block mt-1">
+        {error}
+      </span>
     </fieldset>
   );
 }
