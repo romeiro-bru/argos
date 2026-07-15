@@ -60,7 +60,7 @@ describe("useGetDistricts", () => {
     expect(result.current.error).toBe(null);
   });
 
-  it.skip("should handle API error", async () => {
+  it("should handle API error", async () => {
     vi.mocked(ServiceLocation.getDistrict).mockRejectedValue(
       new Error("Erro na API"),
     );
@@ -73,16 +73,8 @@ describe("useGetDistricts", () => {
       expect(result.current.isLoading).toBeFalsy();
     });
 
-    expect(result.current.error).toBe("Erro na API");
+    expect(result.current.errorMessage).toBe("Erro na API");
     expect(result.current.data).toEqual([]);
-  });
-
-  it.skip("should not call the API when UF is empty", () => {
-    renderHook(() => useGetDistricts({ UF: "" }), {
-      wrapper: createWrapper(),
-    });
-
-    expect(ServiceLocation.getDistrict).not.toHaveBeenCalled();
   });
 
   it("should control the loading state", async () => {

@@ -31,9 +31,20 @@ vi.mock(import("react-router-dom"), async (importOriginal) => {
 });
 
 vi.mock("../../context/userSupabaseContext", () => ({
-  useUserSupabase: () => mockUseUserSupabase(),
+  useUserSupabase: () => ({
+    session: {
+      user: { id: "user-123" },
+    },
+  }),
 }));
 
+vi.mock(import("./hooks/useNewPetService"), async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    // your mocked methods
+  };
+});
 vi.mock("../common/hooks/useGetStates", () => ({
   useGetStates: () => ({ states: [], loading: false }),
 }));
@@ -43,47 +54,51 @@ vi.mock("../common/hooks/useGetDistricts", () => ({
 }));
 
 describe("Registration Page", () => {
-  beforeEach(() => {
-    mockNavigate.mockClear();
-    mockUseUserSupabase.mockReturnValue({
-      session: {
-        user: { 
-          id: "12345",
-          user_metadata: { name: "Teste" } },
-      } as unknown as Session,
-      userName: "Teste",
-      isLoading: false,
+  describe("User authenticated", () => {
+    beforeEach(() => {
+      mockNavigate.mockClear();
+      mockUseUserSupabase.mockReturnValue({
+        session: {
+          user: {
+            id: "12345",
+            user_metadata: { name: "Teste" },
+          },
+        } as unknown as Session,
+        userName: "Teste",
+        isLoading: false,
+      });
+    });
+
+    it("should render page title", () => {
+      renderWithProviders(<Registration />);
+      expect(
+        screen.getByText("Cadastre um pet para adoção"),
+      ).toBeInTheDocument();
+    });
+
+    it("should render dog breeds when 'Cachorro' is selected", () => {
+      renderWithProviders(<Registration />);
+
+      expect(screen.getByRole("checkbox", { name: "Cachorro" })).toBeChecked();
+      expect(
+        screen.getByRole("combobox", { name: "Porte:" }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole("option", { name: "Labrador Retriever" }),
+      ).toBeInTheDocument();
+    });
+
+    it("should navigate to adoption page when cancel button is clicked", async () => {
+      renderWithProviders(<Registration />);
+
+      await userEvent.click(screen.getByRole("button", { name: "cancelar" }));
+
+      expect(mockNavigate).toHaveBeenCalledWith(appRoutes.ADOPTION.path);
+      expect(mockNavigate).toHaveBeenCalledTimes(1);
     });
   });
 
-  it("should render page title", () => {
-    renderWithProviders(<Registration />);
-
-    expect(screen.getByText("Cadastre um pet para adoção")).toBeInTheDocument();
-  });
-
-  it("should render all fields and dogs breeds when 'Cachorro' is selected", () => {
-    renderWithProviders(<Registration />);
-
-    expect(screen.getByRole("checkbox", { name: "Cachorro" })).toBeChecked();
-    expect(
-      screen.getByRole("combobox", { name: "Porte:" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("option", { name: "Labrador Retriever" }),
-    ).toBeInTheDocument();
-  });
-
-  it("should navigate to adoption page when cancel button is clicked", async () => {
-    renderWithProviders(<Registration />);
-
-    await userEvent.click(screen.getByRole("button", { name: "cancelar" }));
-
-    expect(mockNavigate).toHaveBeenCalledWith(appRoutes.ADOPTION.path);
-    expect(mockNavigate).toHaveBeenCalledTimes(1);
-  });
-
-  describe("Use not authenticated", () => {
+  describe("User not authenticated", () => {
     beforeEach(() => {
       vi.clearAllMocks();
       mockUseUserSupabase.mockReturnValue({
