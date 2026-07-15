@@ -6,3 +6,14 @@ export interface DistrictResponse {
     nome: string;
   };
 }
+
+export interface StatesResponse {
+  id: number;
+  sigla: string;
+  nome: string;
+  regiao?: {
+    id: number;
+    sigla: string;
+    nome: string;
+  };
+}

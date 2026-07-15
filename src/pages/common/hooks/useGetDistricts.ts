@@ -14,7 +14,7 @@ export function useGetDistricts({ UF }: UseGetDistrictsProps) {
   const errorMessage = isError
     ? error instanceof Error
       ? error.message
-      : "Erro ao buscar os bairros"
+      : "Erro ao buscar cidades"
     : "";
 
   return {

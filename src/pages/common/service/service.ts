@@ -1,6 +1,5 @@
 import axios from "axios";
-import type { DistrictResponse } from "./types";
-import type { StatesResponse } from "../../registration/types";
+import type { DistrictResponse, StatesResponse } from "./types";
 
 const api = axios.create({
   baseURL: "https://servicodados.ibge.gov.br/api/v1/localidades",

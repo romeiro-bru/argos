@@ -1,5 +1,4 @@
-import type { StatesResponse } from "../registration/types";
-import type { DistrictResponse } from "./service/types";
+import type { DistrictResponse, StatesResponse } from "./service/types";
 import type { PetsList } from "./types";
 
 interface SizeInterface {
@@ -37,7 +36,7 @@ export const ageOptions: AgeInterface[] = [
 export const stateOptions = (states: StatesResponse[]) => [
   { label: "-", value: "" },
   ...states
-    .sort((a, b) => a.sigla.localeCompare(b.sigla))
+    ?.sort((a, b) => a.sigla.localeCompare(b.sigla))
     .map((state) => {
       const label = `${state.sigla} - ${state.nome}`;
       const value = state.sigla;

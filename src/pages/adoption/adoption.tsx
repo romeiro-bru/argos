@@ -19,7 +19,7 @@ export default function Adoption() {
 
   const { filters, setField, reset, filteredList } = useFilterFields({ pets });
 
-  const { states, loading } = useGetStates();
+  const { data: states, isLoading: stateLoading } = useGetStates();
   const { data: districts, isLoading: districtsLoading } = useGetDistricts({
     UF: filters.state,
   });
@@ -54,13 +54,13 @@ export default function Adoption() {
             label="Estado:"
             options={stateOptions(states)}
             onChange={(value) => setField("state", value)}
-            disabled={loading}
+            disabled={stateLoading}
           />
           <Select
             label="Cidade:"
             options={districtsOptions(districts)}
             onChange={(value) => setField("city", value)}
-            disabled={loading || districtsLoading || districts?.length === 0}
+            disabled={stateLoading || districtsLoading || districts?.length === 0}
             className="min-w-[12rem]"
           />
         </div>

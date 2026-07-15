@@ -31,17 +31,6 @@ export type NewPet = Omit<FormState, "image"> & {
   user_id: string;
 };
 
-export interface StatesResponse {
-  id: number;
-  sigla: string;
-  nome: string;
-  regiao?: {
-    id: number;
-    sigla: string;
-    nome: string;
-  };
-}
-
 // 
 
 export const NewPetBuilder = (params: Partial<NewPet>): NewPet => ({
