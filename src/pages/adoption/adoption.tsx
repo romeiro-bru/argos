@@ -27,9 +27,6 @@ export default function Adoption() {
   return (
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
-
-      {fetching && <SkeletonLoadingCard />}
-
       <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
         <div className="flex flex-wrap gap-4 ">
           <Select
@@ -60,7 +57,9 @@ export default function Adoption() {
             label="Cidade:"
             options={districtsOptions(districts)}
             onChange={(value) => setField("city", value)}
-            disabled={stateLoading || districtsLoading || districts?.length === 0}
+            disabled={
+              stateLoading || districtsLoading || districts?.length === 0
+            }
             className="min-w-[12rem]"
           />
         </div>
@@ -73,6 +72,8 @@ export default function Adoption() {
           limpar filtros
         </button>
       </form>
+
+      {fetching && <SkeletonLoadingCard />}
 
       {filteredList.length > 0 && <Card list={filteredList} />}
 
