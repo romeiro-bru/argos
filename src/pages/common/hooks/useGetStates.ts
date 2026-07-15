@@ -5,6 +5,7 @@ export function useGetStates() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["get-states"],
     queryFn: () => ServiceLocation.getStates(),
+    staleTime: Infinity
   });
 
   const errorMessage = isError
@@ -13,7 +14,6 @@ export function useGetStates() {
       : "Erro ao buscar estados"
     : "";
 
-    console.log({data})
   return {
     data: data ?? [],
     isLoading,
