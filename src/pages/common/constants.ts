@@ -35,14 +35,14 @@ export const ageOptions: AgeInterface[] = [
 
 export const stateOptions = (states: StatesResponse[]) => [
   { label: "-", value: "" },
-  ...states
+  ...(states
     ?.sort((a, b) => a.sigla.localeCompare(b.sigla))
     .map((state) => {
       const label = `${state.sigla} - ${state.nome}`;
       const value = state.sigla;
 
       return { label, value };
-    }),
+    }) ?? []),
 ];
 
 export const districtsOptions = (districts: DistrictResponse[]) =>
