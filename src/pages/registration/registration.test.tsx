@@ -20,7 +20,9 @@ function renderWithProviders(ui: React.ReactNode) {
   );
 }
 const mockNavigate = vi.fn();
-const mockUseUserSupabase = vi.fn();
+const { mockUseUserSupabase } = vi.hoisted(() => ({ //add .hoisted para criar essa function antes de qualquer import mockado.
+  mockUseUserSupabase: vi.fn(),
+}));
 
 vi.mock(import("react-router-dom"), async (importOriginal) => {
   const actual = await importOriginal();
@@ -31,18 +33,13 @@ vi.mock(import("react-router-dom"), async (importOriginal) => {
 });
 
 vi.mock("../../context/userSupabaseContext", () => ({
-  useUserSupabase: () => ({
-    session: {
-      user: { id: "user-123" },
-    },
-  }),
+  useUserSupabase: mockUseUserSupabase,
 }));
 
 vi.mock(import("./hooks/useNewPetService"), async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...actual,
-    // your mocked methods
   };
 });
 vi.mock("../common/hooks/useGetStates", () => ({
