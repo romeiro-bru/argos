@@ -9,12 +9,13 @@ export function useGetDistricts({ UF }: UseGetDistrictsProps) {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["get-districts", UF],
     queryFn: () => ServiceLocation.getDistrict({ UF }),
+    enabled: !!UF // só faz a busca quanfo UF existir
   });
 
   const errorMessage = isError
     ? error instanceof Error
       ? error.message
-      : "Erro ao buscar os bairros"
+      : "Erro ao buscar cidades"
     : "";
 
   return {

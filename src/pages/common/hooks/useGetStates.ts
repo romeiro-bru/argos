@@ -1,31 +1,23 @@
-import { useEffect, useState } from "react";
-import { ServiceLocation } from "../../common/service/service";
-import type { StatesResponse } from "../../registration/types";
-
+import { useQuery } from "@tanstack/react-query";
+import { ServiceLocation } from "../service/service";
 
 export function useGetStates() {
-  const [states, setStates] = useState<StatesResponse[]>([]);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["get-states"],
+    queryFn: () => ServiceLocation.getStates(),
+    staleTime: Infinity
+  });
 
-  useEffect(() => {
-    setError("");
-    
-    ServiceLocation.getStates()
-      .then(setStates)
-      .catch((err: unknown) => {
-        const message =
-          err instanceof Error
-            ? err.message
-            : String(err ?? "Erro ao buscar estados");
-        setError(message);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  const errorMessage = isError
+    ? error instanceof Error
+      ? error.message
+      : "Erro ao buscar estados"
+    : "";
 
   return {
-    states,
-    error,
-    loading,
+    data: data ?? [],
+    isLoading,
+    isError,
+    errorMessage
   };
 }

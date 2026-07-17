@@ -13,23 +13,37 @@ import { useGetStates } from "../common/hooks/useGetStates";
 import { species } from "./constants";
 import { useGetPetsService } from "../common/hooks/useGetPetsService";
 import { SkeletonLoadingCard } from "../common/components/skeletonLoadingCard";
+import { ErrorModal } from "../../components/modalError";
+import { useEffect, useState } from "react";
 
 export default function Adoption() {
+  const [showError, setShowError] = useState(false);
   const { pets, isLoading: fetching } = useGetPetsService();
 
   const { filters, setField, reset, filteredList } = useFilterFields({ pets });
 
-  const { states, loading } = useGetStates();
-  const { data: districts, isLoading: districtsLoading } = useGetDistricts({
+  const {
+    data: states,
+    isLoading: stateLoading,
+    isError: isErrorStates,
+    errorMessage: errorMsgStates,
+  } = useGetStates();
+  const {
+    data: districts,
+    isLoading: districtsLoading,
+    errorMessage: errorMsgDistricts,
+    isError: isErrorDistricts,
+  } = useGetDistricts({
     UF: filters.state,
   });
+
+  useEffect(() => {
+    setShowError(isErrorStates || isErrorDistricts);
+  }, [isErrorStates, isErrorDistricts]);
 
   return (
     <main>
       <h1 className="mb-10">Aumigos disponíveis para adoção</h1>
-
-      {fetching && <SkeletonLoadingCard />}
-
       <form className="bg-[var(--card-bg)] shadow-[var(--shadow)] shadow-md rounded-lg p-4 mb-8">
         <div className="flex flex-wrap gap-4 ">
           <Select
@@ -54,13 +68,15 @@ export default function Adoption() {
             label="Estado:"
             options={stateOptions(states)}
             onChange={(value) => setField("state", value)}
-            disabled={loading}
+            disabled={stateLoading}
           />
           <Select
             label="Cidade:"
             options={districtsOptions(districts)}
             onChange={(value) => setField("city", value)}
-            disabled={loading || districtsLoading || districts?.length === 0}
+            disabled={
+              stateLoading || districtsLoading || districts?.length === 0
+            }
             className="min-w-[12rem]"
           />
         </div>
@@ -74,11 +90,21 @@ export default function Adoption() {
         </button>
       </form>
 
+      {fetching && <SkeletonLoadingCard />}
+
       {filteredList.length > 0 && <Card list={filteredList} />}
 
       {filteredList?.length === 0 && (
         <NoData text="Não encontramos nenhum pet correspondente a sua busca." />
       )}
+
+      <ErrorModal
+        isOpen={showError}
+        onClose={() => setShowError(false)}
+        message={errorMsgStates || errorMsgDistricts}
+        actionLabel="Fechar"
+        onAction={() => setShowError(false)}
+      />
     </main>
   );
 }

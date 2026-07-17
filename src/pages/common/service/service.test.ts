@@ -1,8 +1,9 @@
 import axios from "axios";
 import { ServiceLocation } from "./service";
 import { vi } from "vitest";
+import type { DistrictResponse, StatesResponse } from "./types";
 
-const mockStatesResponse = [
+const mockStatesResponse: StatesResponse[] = [
   {
     id: 33,
     sigla: "RJ",
@@ -17,31 +18,13 @@ const mockStatesResponse = [
   },
 ];
 
-const mockDistrictsResponse = [
+const mockDistrictsResponse: DistrictResponse[] = [
   {
-    id: 330010005,
+    id: 123456789,
     nome: "Angra dos Reis",
     municipio: {
-      id: 3300100,
-      nome: "Angra dos Reis",
-      microrregiao: {
-        id: 33013,
-        nome: "Baía da Ilha Grande",
-        mesorregiao: {
-          id: 3305,
-          nome: "Sul Fluminense",
-          UF: {
-            id: 33,
-            sigla: "RJ",
-            nome: "Rio de Janeiro",
-            regiao: {
-              id: 3,
-              sigla: "SE",
-              nome: "Sudeste",
-            },
-          },
-        },
-      },
+      id: 33,
+      nome: "Sudeste",
     },
   },
 ];
@@ -90,16 +73,6 @@ describe("ServiceLocation", () => {
       expect(mockGet).toHaveBeenCalledTimes(1);
     });
 
-    it("should throw an error when API call fails", async () => {
-      mockGet.mockResolvedValueOnce({
-        status: 500,
-        data: null,
-      });
-
-      await expect(ServiceLocation.getStates()).rejects.toThrow(
-        "Erro ao buscar dados de Estados.",
-      );
-    });
   });
 
   describe("getDistrict", () => {

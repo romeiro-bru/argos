@@ -60,7 +60,7 @@ describe("useGetDistricts", () => {
     expect(result.current.error).toBe(null);
   });
 
-  it.skip("should handle API error", async () => {
+  it("should handle API error", async () => {
     vi.mocked(ServiceLocation.getDistrict).mockRejectedValue(
       new Error("Erro na API"),
     );
@@ -73,16 +73,8 @@ describe("useGetDistricts", () => {
       expect(result.current.isLoading).toBeFalsy();
     });
 
-    expect(result.current.error).toBe("Erro na API");
+    expect(result.current.errorMessage).toBe("Erro na API");
     expect(result.current.data).toEqual([]);
-  });
-
-  it.skip("should not call the API when UF is empty", () => {
-    renderHook(() => useGetDistricts({ UF: "" }), {
-      wrapper: createWrapper(),
-    });
-
-    expect(ServiceLocation.getDistrict).not.toHaveBeenCalled();
   });
 
   it("should control the loading state", async () => {
@@ -107,5 +99,26 @@ describe("useGetDistricts", () => {
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
     });
+  });
+
+  
+  it("should not fetch data when uf dos not exist", async () => {
+    const mockDistricts = [
+      { id: 1, name: "Distrito A" },
+    ];
+
+    vi.mocked(ServiceLocation.getDistrict).mockResolvedValue(
+      mockDistricts as any,
+    );
+
+    const { result } = renderHook(() => useGetDistricts({ UF: "" }), {
+      wrapper: createWrapper(),
+    });
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBeFalsy();
+    });
+
+    expect(ServiceLocation.getDistrict).not.toHaveBeenCalled()
   });
 });
