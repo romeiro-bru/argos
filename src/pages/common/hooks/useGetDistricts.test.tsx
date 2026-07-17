@@ -100,4 +100,25 @@ describe("useGetDistricts", () => {
       expect(result.current.isLoading).toBe(false);
     });
   });
+
+  
+  it("should not fetch data when uf dos not exist", async () => {
+    const mockDistricts = [
+      { id: 1, name: "Distrito A" },
+    ];
+
+    vi.mocked(ServiceLocation.getDistrict).mockResolvedValue(
+      mockDistricts as any,
+    );
+
+    const { result } = renderHook(() => useGetDistricts({ UF: "" }), {
+      wrapper: createWrapper(),
+    });
+
+    await waitFor(() => {
+      expect(result.current.isLoading).toBeFalsy();
+    });
+
+    expect(ServiceLocation.getDistrict).not.toHaveBeenCalled()
+  });
 });
