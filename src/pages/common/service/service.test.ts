@@ -1,8 +1,9 @@
 import axios from "axios";
 import { ServiceLocation } from "./service";
 import { vi } from "vitest";
+import type { DistrictResponse, StatesResponse } from "./types";
 
-const mockStatesResponse = [
+const mockStatesResponse: StatesResponse[] = [
   {
     id: 33,
     sigla: "RJ",
@@ -17,31 +18,13 @@ const mockStatesResponse = [
   },
 ];
 
-const mockDistrictsResponse = [
+const mockDistrictsResponse: DistrictResponse[] = [
   {
-    id: 330010005,
+    id: 123456789,
     nome: "Angra dos Reis",
     municipio: {
-      id: 3300100,
-      nome: "Angra dos Reis",
-      microrregiao: {
-        id: 33013,
-        nome: "Baía da Ilha Grande",
-        mesorregiao: {
-          id: 3305,
-          nome: "Sul Fluminense",
-          UF: {
-            id: 33,
-            sigla: "RJ",
-            nome: "Rio de Janeiro",
-            regiao: {
-              id: 3,
-              sigla: "SE",
-              nome: "Sudeste",
-            },
-          },
-        },
-      },
+      id: 33,
+      nome: "Sudeste",
     },
   },
 ];

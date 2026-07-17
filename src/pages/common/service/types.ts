@@ -1,7 +1,7 @@
 export interface DistrictResponse {
   id: number;
   nome: string;
-  municipoio: {
+  municipio: {
     id: number;
     nome: string;
   };

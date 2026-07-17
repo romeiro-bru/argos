@@ -13,16 +13,33 @@ import { useGetStates } from "../common/hooks/useGetStates";
 import { species } from "./constants";
 import { useGetPetsService } from "../common/hooks/useGetPetsService";
 import { SkeletonLoadingCard } from "../common/components/skeletonLoadingCard";
+import { ErrorModal } from "../../components/modalError";
+import { useEffect, useState } from "react";
 
 export default function Adoption() {
+  const [showError, setShowError] = useState(false);
   const { pets, isLoading: fetching } = useGetPetsService();
 
   const { filters, setField, reset, filteredList } = useFilterFields({ pets });
 
-  const { data: states, isLoading: stateLoading } = useGetStates();
-  const { data: districts, isLoading: districtsLoading } = useGetDistricts({
+  const {
+    data: states,
+    isLoading: stateLoading,
+    isError: isErrorStates,
+    errorMessage: errorMsgStates,
+  } = useGetStates();
+  const {
+    data: districts,
+    isLoading: districtsLoading,
+    errorMessage: errorMsgDistricts,
+    isError: isErrorDistricts,
+  } = useGetDistricts({
     UF: filters.state,
   });
+
+  useEffect(() => {
+    setShowError(isErrorStates || isErrorDistricts);
+  }, [isErrorStates, isErrorDistricts]);
 
   return (
     <main>
@@ -80,6 +97,14 @@ export default function Adoption() {
       {filteredList?.length === 0 && (
         <NoData text="Não encontramos nenhum pet correspondente a sua busca." />
       )}
+
+      <ErrorModal
+        isOpen={showError}
+        onClose={() => setShowError(false)}
+        message={errorMsgStates || errorMsgDistricts}
+        actionLabel="Fechar"
+        onAction={() => setShowError(false)}
+      />
     </main>
   );
 }
