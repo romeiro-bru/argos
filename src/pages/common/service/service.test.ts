@@ -73,16 +73,6 @@ describe("ServiceLocation", () => {
       expect(mockGet).toHaveBeenCalledTimes(1);
     });
 
-    it("should throw an error when API call fails", async () => {
-      mockGet.mockResolvedValueOnce({
-        status: 500,
-        data: null,
-      });
-
-      await expect(ServiceLocation.getStates()).rejects.toThrow(
-        "Erro ao buscar dados de Estados.",
-      );
-    });
   });
 
   describe("getDistrict", () => {

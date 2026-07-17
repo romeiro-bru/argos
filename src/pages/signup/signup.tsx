@@ -69,21 +69,31 @@ export function Signup() {
 
             <div className="flex gap-2">
               <button
-                disabled={loading}
-                onClick={toggleMode}
-                type="button"
-                className="cursor-pointer border-2 border-[var(--secondary-color)] text-[var(--secondary-color)] shadow-md rounded-lg py-2 px-4 mr-2"
-              >
-                Trocar para {isLogin ? "Criar conta" : "Login"}
-              </button>
-              <button
                 disabled={loading || !!session}
                 type="submit"
-                className="flex gap-2  items-center cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
+                className="flex gap-2 items-center cursor-pointer bg-[var(--secondary-color)] shadow-md font-semibold text-white rounded-lg py-2 px-6"
               >
                 {loading && <Spinner className="size-4" />}
 
                 {isLogin ? "Login" : "Criar conta"}
+              </button>
+              <button
+                disabled={loading}
+                onClick={toggleMode}
+                type="button"
+                className="cursor-pointer py-1 px-4 text-sm rounded-lg"
+              >
+                {isLogin ? (
+                  <div className="flex flex-col">
+                    <span>Não tenho uma conta.</span>
+                    <span className="text-xs underline">criar conta</span>
+                  </div>
+                ) : (
+                  <div className="flex flex-col">
+                    <span>Já tem uma conta?</span>
+                    <span className="text-xs underline">fazer login</span>
+                  </div>
+                )}
               </button>
             </div>
           </form>

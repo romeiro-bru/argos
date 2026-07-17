@@ -10,10 +10,6 @@ async function getStates(): Promise<StatesResponse[]> {
 
   const response = await api.get(url);
 
-  if (response.status !== 200) {
-    throw new Error("Erro ao buscar dados de Estados.");
-  }
-
   return response.data;
 }
 
@@ -25,10 +21,6 @@ async function getDistrict({
   const url = `/estados/${UF}/distritos`;
 
   const response = await api.get(url);
-
-  if (response.status !== 200) {
-    throw new Error("Erro ao buscar dados de distritos.")
-  }
 
   return response.data;
 }
