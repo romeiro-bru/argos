@@ -6,7 +6,7 @@ import { SuccessModal } from "../../components/modalSuccess";
 import { appRoutes } from "../../routes";
 import { useNavigate } from "react-router-dom";
 import { ErrorModal } from "../../components/modalError";
-import { useAuthForm } from "./useAuthForm";
+import { useAuthForm } from "./hooks/useAuthForm";
 import { AuthFormSkeleton } from "./authFormSkeleton";
 import { useUserSupabase } from "../../context/userSupabaseContext";
 import { WarningTag } from "../../components/warningTag";

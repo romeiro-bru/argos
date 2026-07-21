@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { service } from "./service/useSignup";
+import { service } from "../service/useSignup";
 
 export interface FormDataInterface {
   name: string;
