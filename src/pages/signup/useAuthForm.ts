@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { loginUser, signupUser } from "./service/useSignup";
+import { useMutation } from "@tanstack/react-query";
+import { service } from "./service/useSignup";
 
 export interface FormDataInterface {
   name: string;
@@ -18,32 +19,30 @@ const initialFormData: FormDataInterface = {
 export function useAuthForm() {
   const [mode, setMode] = useState<Mode>("signup");
   const [formData, setFormData] = useState<FormDataInterface>(initialFormData);
-  const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [showError, setShowError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const toggleMode = () => {
     setMode((prev) => (prev === "signup" ? "login" : "signup"));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const { mutate, reset, isError, isPending, error } = useMutation({
+    mutationFn: async (data: FormDataInterface) => {
+      const { error } =
+        mode === "login"
+          ? await service.loginUser(data.email, data.password)
+          : await service.signupUser(data.name, data.email, data.password);
+
+      if (error) throw error; // precisa ser um objeto com "message"
+
+      return true;
+    },
+    onSuccess: () => setShowSuccess(true),
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowError(false);
-    setErrorMessage("");
-    setLoading(true);
-
-    const { error } =
-      mode === "login"
-        ? await loginUser(formData.email, formData.password)
-        : await signupUser(formData.name, formData.email, formData.password);
-
-    if (error) {
-      setShowError(true);
-      setErrorMessage(error.message);
-    } else {
-      setShowSuccess(true);
-    }
+    reset(); // limpa o estado da mutation
+    mutate(formData);
   };
 
   return {
@@ -51,12 +50,12 @@ export function useAuthForm() {
     toggleMode,
     formData,
     setFormData,
-    loading,
+    loading: isPending,
     showSuccess,
-    showError,
+    showError: isError,
     setShowSuccess,
-    setShowError,
-    errorMessage,
+    setShowError: () => reset(),
+    errorMessage: error?.message ?? "",
     handleSubmit,
   };
 }

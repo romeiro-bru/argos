@@ -28,7 +28,6 @@ export function Signup() {
     showError,
     showSuccess,
     toggleMode,
-    setShowError,
     setShowSuccess,
     errorMessage,
   } = useAuthForm();
@@ -118,7 +117,6 @@ export function Signup() {
       <ErrorModal
         isOpen={showError}
         onClose={() => {
-          setShowError(false);
           navigate(appRoutes.SIGNUP.path);
         }}
         title={
