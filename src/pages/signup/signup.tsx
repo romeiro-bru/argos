@@ -6,7 +6,7 @@ import { SuccessModal } from "../../components/modalSuccess";
 import { appRoutes } from "../../routes";
 import { useNavigate } from "react-router-dom";
 import { ErrorModal } from "../../components/modalError";
-import { useAuthForm } from "./useAuthForm";
+import { useAuthForm } from "./hooks/useAuthForm";
 import { AuthFormSkeleton } from "./authFormSkeleton";
 import { useUserSupabase } from "../../context/userSupabaseContext";
 import { WarningTag } from "../../components/warningTag";
@@ -28,7 +28,6 @@ export function Signup() {
     showError,
     showSuccess,
     toggleMode,
-    setShowError,
     setShowSuccess,
     errorMessage,
   } = useAuthForm();
@@ -82,6 +81,8 @@ export function Signup() {
                 onClick={toggleMode}
                 type="button"
                 className="cursor-pointer py-1 px-4 text-sm rounded-lg"
+                aria-label="toggle-login"
+                role="button"
               >
                 {isLogin ? (
                   <div className="flex flex-col">
@@ -101,16 +102,14 @@ export function Signup() {
       )}
 
       <SuccessModal
-        isOpen={showSuccess}
+        isOpen={showSuccess && !isLogin}
         onClose={() => {
           setShowSuccess(false);
           navigate(appRoutes.REGISTER.path);
         }}
-        title={isLogin ? "Login realizado!" : "Conta criada!"}
+        title={"Conta criada!"}
         message={
-          isLogin
-            ? "Login realizado com sucesso."
-            : "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
+          "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
         }
         actionLabel="Continuar"
         onAction={() => navigate(appRoutes.REGISTER.path)}
@@ -118,7 +117,6 @@ export function Signup() {
       <ErrorModal
         isOpen={showError}
         onClose={() => {
-          setShowError(false);
           navigate(appRoutes.SIGNUP.path);
         }}
         title={
