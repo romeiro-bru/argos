@@ -29,7 +29,7 @@ export function useAuthForm() {
     setMode((prev) => (prev === "signup" ? "login" : "signup"));
   };
 
-  const { mutate, reset, isError, isPending, error } = useMutation({
+  const { mutate, reset, isError, isPending, error, isSuccess } = useMutation({
     mutationFn: async (data: FormDataInterface) => {
       const { error } =
         mode === "login"
@@ -64,5 +64,6 @@ export function useAuthForm() {
     setShowError: () => reset(),
     errorMessage: error?.message ?? "",
     handleSubmit,
+    isSuccess
   };
 }

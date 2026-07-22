@@ -81,6 +81,8 @@ export function Signup() {
                 onClick={toggleMode}
                 type="button"
                 className="cursor-pointer py-1 px-4 text-sm rounded-lg"
+                aria-label="toggle-login"
+                role="button"
               >
                 {isLogin ? (
                   <div className="flex flex-col">
