@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { service } from "../service/useSignup";
+import { useNavigate } from "react-router-dom";
+import { appRoutes } from "../../../routes";
 
 export interface FormDataInterface {
   name: string;
@@ -21,6 +23,8 @@ export function useAuthForm() {
   const [formData, setFormData] = useState<FormDataInterface>(initialFormData);
   const [showSuccess, setShowSuccess] = useState(false);
 
+  const navigate = useNavigate();
+
   const toggleMode = () => {
     setMode((prev) => (prev === "signup" ? "login" : "signup"));
   };
@@ -36,7 +40,10 @@ export function useAuthForm() {
 
       return true;
     },
-    onSuccess: () => setShowSuccess(true),
+    onSuccess: () => {
+      setShowSuccess(true);
+      mode === "login" && navigate(appRoutes.REGISTER.path);
+    },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
