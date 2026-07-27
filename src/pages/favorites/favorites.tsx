@@ -9,6 +9,7 @@ import { WarningTag } from "../../components/warningTag";
 import { useUserSupabase } from "../../context/userSupabaseContext";
 import { useGetPetsService } from "../common/hooks/useGetPetsService";
 import type { GetPetsListResponse } from "../adoption/types";
+import { SkeletonLoadingCard } from "../common/components/skeletonLoadingCard";
 
 export const foundFavorites = (
   list: GetPetsListResponse[],
@@ -16,7 +17,7 @@ export const foundFavorites = (
 ) => list.filter((dog) => savedFavorites.some((fav) => fav.id === dog.id));
 
 export default function Favorites() {
-  const { pets } = useGetPetsService();
+  const { pets, isLoading } = useGetPetsService();
 
   const context = useContext(FavoritesContext);
   if (!context) return null;
@@ -34,6 +35,8 @@ export default function Favorites() {
           />
         )}
       </div>
+
+      {isLoading && <SkeletonLoadingCard count={4} />}
 
       {favorites.length > 0 ? (
         <Card list={foundFavorites(pets, favorites)} />
