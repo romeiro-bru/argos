@@ -31,7 +31,6 @@ export default function Details() {
     <main>
       {isLoading && (
         <div className="flex gap-10 px-4">
-          {/* imagem */}
           <div className="rounded-2xl h-82 w-98 animate-pulse bg-gray-300" />
           <div className="flex flex-col gap-10">
             <div className="h-6 w-38 mb-4 animate-pulse bg-gray-300" />
