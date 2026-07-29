@@ -2,7 +2,6 @@ import { EmailField } from "./formFields/emailField";
 import { PasswordField } from "./formFields/passwordField";
 import { NameField } from "./formFields/nameField";
 import { Spinner } from "../../assets/spinner";
-import { SuccessModal } from "../../components/modalSuccess";
 import { appRoutes } from "../../routes";
 import { useNavigate } from "react-router-dom";
 import { ErrorModal } from "../../components/modalError";
@@ -26,9 +25,7 @@ export function Signup() {
     handleSubmit,
     loading,
     showError,
-    showSuccess,
     toggleMode,
-    setShowSuccess,
     errorMessage,
   } = useAuthForm();
 
