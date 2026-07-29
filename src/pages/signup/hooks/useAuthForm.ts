@@ -21,7 +21,6 @@ const initialFormData: FormDataInterface = {
 export function useAuthForm() {
   const [mode, setMode] = useState<Mode>("signup");
   const [formData, setFormData] = useState<FormDataInterface>(initialFormData);
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const navigate = useNavigate();
 
@@ -41,8 +40,7 @@ export function useAuthForm() {
       return true;
     },
     onSuccess: () => {
-      setShowSuccess(true);
-      mode === "login" && navigate(appRoutes.REGISTER.path);
+      navigate(appRoutes.REGISTER.path);
     },
   });
 
@@ -58,12 +56,10 @@ export function useAuthForm() {
     formData,
     setFormData,
     loading: isPending,
-    showSuccess,
     showError: isError,
-    setShowSuccess,
     setShowError: () => reset(),
     errorMessage: error?.message ?? "",
     handleSubmit,
-    isSuccess
+    isSuccess,
   };
 }
