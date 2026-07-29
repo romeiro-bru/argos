@@ -101,19 +101,6 @@ export function Signup() {
         </>
       )}
 
-      <SuccessModal
-        isOpen={showSuccess && !isLogin}
-        onClose={() => {
-          setShowSuccess(false);
-          navigate(appRoutes.REGISTER.path);
-        }}
-        title={"Conta criada!"}
-        message={
-          "Uma mensagem foi enviada para o seu e-mail, após a confirmação você poderá cadastrar um animal para adoção."
-        }
-        actionLabel="Continuar"
-        onAction={() => navigate(appRoutes.REGISTER.path)}
-      />
       <ErrorModal
         isOpen={showError}
         onClose={() => {

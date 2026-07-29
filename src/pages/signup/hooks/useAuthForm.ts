@@ -42,7 +42,7 @@ export function useAuthForm() {
     },
     onSuccess: () => {
       setShowSuccess(true);
-      mode === "login" && navigate(appRoutes.REGISTER.path);
+      navigate(appRoutes.REGISTER.path);
     },
   });
 
@@ -64,6 +64,6 @@ export function useAuthForm() {
     setShowError: () => reset(),
     errorMessage: error?.message ?? "",
     handleSubmit,
-    isSuccess
+    isSuccess,
   };
 }
