@@ -29,7 +29,18 @@ export default function Details() {
 
   return (
     <main>
-      {isLoading && <p>Carregando...</p>}
+      {isLoading && (
+        <div className="flex gap-10 px-4">
+          <div className="rounded-2xl h-82 w-98 animate-pulse bg-gray-300" />
+          <div className="flex flex-col gap-10">
+            <div className="h-6 w-38 mb-4 animate-pulse bg-gray-300" />
+            <div className="h-4 w-24 animate-pulse bg-gray-300" />
+            <div className="h-4 w-24 animate-pulse bg-gray-300" />
+            <div className="h-4 w-24 animate-pulse bg-gray-300" />
+            <div className="h-4 w-24 animate-pulse bg-gray-300" />
+          </div>
+        </div>
+      )}
 
       {!pet ? (
         <NoData text="Não encontramos nenhum pet correspondente a sua busca." />
